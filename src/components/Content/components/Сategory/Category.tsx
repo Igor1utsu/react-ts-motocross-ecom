@@ -1,51 +1,42 @@
 import "./Category.scss"
-import { Button, InputNumber, Table, Tooltip } from "antd"
+import { Button, Image, InputNumber, Table } from "antd"
 import type { ColumnsType } from "antd/es/table"
-import { InfoCircleOutlined, ShoppingCartOutlined } from "@ant-design/icons"
+import { ShoppingCartOutlined } from "@ant-design/icons"
+import RepairPatrs from "../../../../data/repairParts.json"
 
 export const Category = () => {
-  interface DataType {
-    key: string
-    partName: string
-    price: number
-    description: string
+  interface RepairPartsType {
+    id: string
+    name: string
+    number: string
+    category: string
+    models: {
+      make: string
+      model: string
+      year: number[]
+    }[]
     image: string
+    price: number
   }
 
-  const columns: ColumnsType<DataType> = [
+  console.log(RepairPatrs)
+
+  const columns: ColumnsType<RepairPartsType> = [
     {
       title: "Image",
       dataIndex: "image",
       key: "image",
       render: (image) => (
-        <div className="item__img">
-          <img
-            className=""
-            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            alt="Repair Part"
-          />
-        </div>
+        <Image src={"/img/repair-parts/" + image}/>
       ),
       width: 64,
       align: "center",
     },
     {
       title: "Part Name",
-      dataIndex: "partName",
-      key: "partName",
-      render: (text) => <a>{text}</a>,
-    },
-    {
-      title: "INFO",
-      dataIndex: "description",
-      key: "description",
-      render: (description) => (
-        <Tooltip placement="bottom" title={description}>
-          <InfoCircleOutlined style={{ fontSize: "26px" }} />
-        </Tooltip>
-      ),
-      width: 128,
-      align: "center",
+      dataIndex: "name",
+      key: "name",
+      render: (name) => <a>{name}</a>,
     },
     {
       title: "Price",
@@ -77,36 +68,12 @@ export const Category = () => {
     },
   ]
 
-  const data: DataType[] = [
-    {
-      key: "1",
-      partName: "Piston Honda CR 250",
-      price: 32,
-      description: "Part repair INFO",
-      image: "imageX.jpg",
-    },
-    {
-      key: "2",
-      partName: "Piston Honda CR 250",
-      price: 42,
-      description: "Part repair INFO",
-      image: "imageX.jpg",
-    },
-    {
-      key: "3",
-      partName: "Piston Honda CR 250",
-      price: 32,
-      description: "Part repair INFO",
-      image: "imageX.jpg",
-    },
-  ]
-
   return (
     <div className="category">
       <div className="category__header">Engine</div>
       <Table
         columns={columns}
-        dataSource={data}
+        dataSource={RepairPatrs}
         pagination={false}
         // showHeader={false}
       />
