@@ -1,8 +1,30 @@
 .category {
   &__header {
-    background: red;
+    padding: 5px;
+    background: orange;
+    text-align: center;
   }
 
-  &__item {
+  .item {
+    &__buy {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .buy__input {
+        width: 64px;
+        margin-right: 5px;
+      }
+    }
+    &__img {
+      height: 64px;
+      img {
+        height: 100%;
+        border: 1px orange solid;
+      }
+    }
+  }
+
+  .ant-table-cell {
+    padding: 5px !important;
   }
 }
