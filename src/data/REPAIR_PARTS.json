@@ -1,0 +1,124 @@
+[
+  {
+    "id": 1,
+    "name": "Athena Complete Engine Gasket Kit",
+    "company": "Athena",
+    "category": "engine",
+    "make": [
+      {
+        "repairPartID": 1,
+        "brand": "honda",
+        "models": [
+          {
+            "repairPartID": 1,
+            "model": "CR250R",
+            "series": [
+              {
+                "id": 1,
+                "repairPartID": 1,
+                "number": "P400210850252",
+                "price": 40.85,
+                "image": "Athena_Complete_Gasket_Kit-903923297.jpg",
+                "year": [
+                  1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Cometic Gasket Crankshaft Seals",
+    "company": "Cometic",
+    "category": "engine",
+    "make": [
+      {
+        "repairPartID": 2,
+        "brand": "honda",
+        "models": [
+          {
+            "repairPartID": 2,
+            "model": "CR250R",
+            "series": [
+              {
+                "id": 1,
+                "repairPartID": 2,
+                "number": "C7655",
+                "price": 15.9,
+                "image": "Cometic_Gasket_Crank_Seal_Kit-902338797.jpg",
+                "year": [
+                  1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
+                  2002, 2003, 2004
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Wiseco Piston Kits",
+    "company": "Wiseco",
+    "category": "engine",
+    "make": [
+      {
+        "repairPartID": 3,
+        "brand": "honda",
+        "models": [
+          {
+            "repairPartID": 3,
+            "model": "CR250R",
+            "series": [
+              {
+                "id": 1,
+                "repairPartID": 3,
+                "number": "614M06640",
+                "price": 128.28,
+                "image": "WISECO_PERFORMANCE_PRODUCTS_WISECO_PISTONS-901545756.jpg",
+                "year": [
+                  1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995,
+                  1996
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Pro-X Crankshaft",
+    "company": "ProX",
+    "category": "engine",
+    "make": [
+      {
+        "repairPartID": 4,
+        "brand": "honda",
+        "models": [
+          {
+            "repairPartID": 4,
+            "model": "CR250R",
+            "series": [
+              {
+                "id": 1,
+                "repairPartID": 4,
+                "number": "10.1392",
+                "price": 255.25,
+                "image": "ProX-New_PROX_COMPLETE_CRANKSHAFT_CR1259004-901997475.jpg",
+                "year": [
+                  1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
