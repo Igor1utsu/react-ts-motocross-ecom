@@ -1,0 +1,8 @@
+[
+  { "id": 1, "category": "engine", "title": "Engine" },
+  { "id": 2, "category": "exhaust", "title": "Exaust" },
+  { "id": 3, "category": "brakes", "title": "Brakes" },
+  { "id": 4, "category": "fuel&air", "title": "Fuel & Air" },
+  { "id": 5, "category": "controls", "title": "Controls" },
+  { "id": 6, "category": "plastic", "title": "Plastic" }
+]
