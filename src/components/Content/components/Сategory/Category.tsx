@@ -3,6 +3,7 @@ import { Button, Image, InputNumber, Table } from "antd"
 import type { ColumnsType } from "antd/es/table"
 import { ShoppingCartOutlined } from "@ant-design/icons"
 import REPAIR_PARTS from "../../../../data/REPAIR_PARTS.json"
+import { RepairParts } from "./components/RepairPart/RepairParts"
 
 interface CategoryProps {
   category: string
@@ -67,7 +68,8 @@ export const Category = ({ category, title }: CategoryProps) => {
   )
   console.log("Find.YEAR", findByYear)
   const repairPartsArray = findByYear
-    .filter((res) => res != null)
+    // .filter((res) => res != null)
+    .filter(Boolean)
     .map((rp) => ({
       ...rp,
       name: REPAIR_PARTS.find((RP) => RP.id === rp?.repairPartID)?.name,
@@ -128,6 +130,7 @@ export const Category = ({ category, title }: CategoryProps) => {
         pagination={false}
         // showHeader={false}
       />
+      <RepairParts/>
     </div>
   )
 }

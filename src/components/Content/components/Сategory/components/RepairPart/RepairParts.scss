@@ -1,0 +1,94 @@
+@import "../../../../../../styles/imports/variables";
+
+.rp {
+  &__section {
+    @extend %border-content;
+    padding: 15px;
+    margin-bottom: 30px;
+    background: rgb(234, 234, 234);
+
+    .rp__header {
+      @extend %border-content;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      background: #fff;
+
+      &__colum {
+        .company-logo {
+          height: 40px;
+          img {
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    .rp__img {
+      height: 370px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      img {
+        height: 100%;
+      }
+    }
+
+    .rp__content {
+      display: flex;
+      justify-content: space-between;
+
+      &__item {
+        @extend %border-content;
+        padding: 5px 15px;
+
+        background: #fff;
+
+        .item-colum {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          font-size: 14px;
+          font-weight: 500;
+        }
+
+        .item-row {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:nth-child(1) {
+            margin-bottom: 10px;
+          }
+          &__span {
+            margin-right: 3px;
+          }
+        }
+      }
+
+      .fits-model {
+        display: flex;
+        align-self: center;
+
+        .check-icon {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .details {
+      &__title {
+        margin-bottom: 10px;
+      }
+
+      &__content {
+        padding: 15px;
+
+        .details__text {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
