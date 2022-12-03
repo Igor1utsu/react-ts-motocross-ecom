@@ -1,15 +1,32 @@
 import { CheckOutlined, ShoppingCartOutlined } from "@ant-design/icons"
 import { Button, InputNumber } from "antd"
-import "./RepairParts.scss"
+import "./RepairPart.scss"
+import REPAIR_PARTS from "../../../../../../data/REPAIR_PARTS.json"
+import { useParams } from "react-router-dom"
+import { DataRepairPartsType } from "../../model/DataRepairPartsType.model"
+import { ParamsType } from "./model"
 
-export const RepairParts = () => {
+export const RepairPart = () => {
+  const params = useParams<ParamsType>()
+  const dataRepairPart: DataRepairPartsType | undefined = REPAIR_PARTS.find((rp) =>
+    params.number ? rp.partNumbers.includes(params.number) : false
+  )
+  // console.log("dataRP:", dataRepairPart)
+  // console.log("params:", params)
+const repairPart = (dataRepairPart!.make.map((data) =>
+    data.models.map((data) =>
+      data.series.find((num) => num.number === params.number)
+    )
+  ))[0][0]
+  // console.log("repairPart:", repairPart)
+
   return (
     <div className="rp">
       <section className="rp__section">
         <div className="rp__header">
           <div className="rp__header__colum">
-            <h2>Wiseco Piston Kits</h2>
-            <p># 666.666.00</p>
+            <h2>{dataRepairPart?.name}</h2>
+            <p># {repairPart?.number}</p>
           </div>
           <div className="rp__header__colum">
             <div className="company-logo">
@@ -18,7 +35,10 @@ export const RepairParts = () => {
           </div>
         </div>
         <div className="rp__img">
-          <img src="/img/repair-parts/Athena_Complete_Gasket_Kit-903923297.jpg" />
+          <img
+            src={"/img/repair-parts/" + repairPart?.image}
+            alt="Repair Part"
+          />
         </div>
         <div className="rp__content">
           <div className="rp__content__item fits-model">
@@ -35,7 +55,8 @@ export const RepairParts = () => {
           <div className="rp__content__item">
             <div className="item-row">
               <span className="item-row__span">Price:</span>
-              <span className="item-row__span">$</span> 999
+              <span className="item-row__span">$</span>
+              {repairPart?.price}
             </div>
             <div className="item-row">
               <span className="item-row__span">QTY:</span>

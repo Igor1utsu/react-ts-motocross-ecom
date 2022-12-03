@@ -1,12 +1,15 @@
 import React from "react"
-import { Header } from "./components/Header/Header"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { MainLayouts } from "./layouts/MainLayouts"
 
 function App() {
   return (
     <>
-      <Header />
-      <MainLayouts />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/products/*" element={<MainLayouts />}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

@@ -1,11 +1,15 @@
 import { Content } from "../components/Content/Content"
+import { Header } from "../components/Header/Header"
 import { SideBar } from "../components/SideBar/SideBar"
 
 export const MainLayouts = () => {
   return (
-    <main className="main">
-      <SideBar />
-      <Content />
-    </main>
+    <>
+      <Header />
+      <main className="main">
+        <SideBar />
+        <Content />
+      </main>
+    </>
   )
 }

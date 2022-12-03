@@ -2,35 +2,13 @@ import "./Category.scss"
 import { Button, Image, InputNumber, Table } from "antd"
 import type { ColumnsType } from "antd/es/table"
 import { ShoppingCartOutlined } from "@ant-design/icons"
+import { Link } from 'react-router-dom'
 import REPAIR_PARTS from "../../../../data/REPAIR_PARTS.json"
-import { RepairParts } from "./components/RepairPart/RepairParts"
+import { DataRepairPartsType } from "./model/DataRepairPartsType.model"
 
 interface CategoryProps {
   category: string
   title: string
-}
-
-interface DataRepairPartsType {
-  id: number
-  name: string
-  company: string
-  category: string
-  make: {
-    repairPartID: number
-    brand: string
-    models: {
-      repairPartID: number
-      model: string
-      series: {
-        id: number
-        repairPartID: number
-        number: string
-        price: number
-        image: string
-        year: number[]
-      }[]
-    }[]
-  }[]
 }
 
 interface RepairPartsType {
@@ -89,7 +67,7 @@ export const Category = ({ category, title }: CategoryProps) => {
       title: "Part Name",
       dataIndex: "name",
       key: "name",
-      render: (name) => <a>{name}</a>,
+      render: (name, rp) => <Link to={`${rp.number}`}>{name}</Link>,
     },
     {
       title: "Price",
@@ -130,7 +108,7 @@ export const Category = ({ category, title }: CategoryProps) => {
         pagination={false}
         // showHeader={false}
       />
-      <RepairParts/>
+      {/* <RepairParts/> */}
     </div>
   )
 }
