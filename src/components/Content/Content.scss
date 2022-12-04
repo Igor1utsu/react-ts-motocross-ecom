@@ -1,6 +1,49 @@
 .content {
   max-width: 960px;
-  // border: 1px rgb(190, 190, 190) solid;
-  flex: 1;
   margin-right: 20px;
+  flex: 1;
+
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+
+    &__item {
+      width: 200px;
+      margin: 5px;
+      border: 1px rgb(190, 190, 190) solid;
+
+      .item__title {
+        padding: 5px;
+        background: orange;
+        text-align: center;
+        width: 100%;
+      }
+
+      .body {
+        padding: 10px 15px;
+
+        &__logo {
+          margin-bottom: 10px;
+          img {
+            width: 100%;
+          }
+        }
+
+        &__text {
+          display: flex;
+          flex-wrap: wrap;
+          font-size: 12px;
+          font-weight: 500;
+
+          &__item {
+            width: 50%;
+            padding-bottom: 2px;
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+  }
 }

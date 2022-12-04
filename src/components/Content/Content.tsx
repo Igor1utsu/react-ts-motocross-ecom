@@ -1,32 +1,29 @@
-import { Category } from "./components/Сategory/Category"
 import "./Content.scss"
-import { Routes, Route } from "react-router-dom"
-import CATEGORIES from "../../data/CATEGORIES.json"
-import { RepairPart } from "./components/Сategory/components/RepairPart/RepairPart"
-
-interface CategoriesType {
-  id: number
-  category: string
-  title: string
-}
+import { useNavigate } from "react-router-dom"
+import PartsLogo from "../../assets/img/Dirt-Bike-Parts.jpg"
 
 export const Content = () => {
-  const RepairParts = () => {
-    return (
-      <>
-        {CATEGORIES.map((data: CategoriesType) => (
-          <Category category={data.category} title={data.title} key={data.id} />
-        ))}
-      </>
-    )
-  }
+  const history = useNavigate()
 
   return (
     <div className="content">
-      <Routes>
-        <Route path="/repair-parts/*" element={RepairParts()}></Route>
-        <Route path="/repair-parts/:number" element={<RepairPart />}></Route>
-      </Routes>
+      <div className="products" onClick={() => history("parts")}>
+        <div className="products__item">
+          <h4 className="item__title">Parts:</h4>
+          <div className="item__content body">
+            <div className="body__logo">
+              <img src={PartsLogo} alt="Parts" />
+            </div>
+            <div className="body__text">
+              <span className="body__text__item">Honda</span>
+              <span className="body__text__item">Kawasaki</span>
+              <span className="body__text__item">KTM</span>
+              <span className="body__text__item">Suzuki</span>
+              <span className="body__text__item">Yamaha</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
