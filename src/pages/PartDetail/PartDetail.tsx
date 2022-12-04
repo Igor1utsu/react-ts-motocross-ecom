@@ -1,12 +1,12 @@
 import { CheckOutlined, ShoppingCartOutlined } from "@ant-design/icons"
 import { Button, InputNumber } from "antd"
-import "./RepairPart.scss"
-import REPAIR_PARTS from "../../../../../../data/REPAIR_PARTS.json"
+import "./PartDetail.scss"
+import REPAIR_PARTS from "../../data/REPAIR_PARTS.json"
 import { useParams } from "react-router-dom"
-import { DataRepairPartsType } from "../../model/DataRepairPartsType.model"
+import { DataRepairPartsType } from "../../components/Content/components/Category/model/DataRepairPartsType.model"
 import { ParamsType } from "./model"
 
-export const RepairPart = () => {
+export const PartDetail = () => {
   const params = useParams<ParamsType>()
   const dataRepairPart: DataRepairPartsType | undefined = REPAIR_PARTS.find((rp) =>
     params.number ? rp.partNumbers.includes(params.number) : false

@@ -108,7 +108,6 @@ export const Category = ({ category, title }: CategoryProps) => {
         pagination={false}
         // showHeader={false}
       />
-      {/* <RepairParts/> */}
     </div>
   )
 }
