@@ -3,6 +3,10 @@
   margin-right: 20px;
   flex: 1;
 
+  &__bread-crumbs {
+    padding-bottom: 10px;
+  }
+
   .products {
     display: flex;
     flex-wrap: wrap;

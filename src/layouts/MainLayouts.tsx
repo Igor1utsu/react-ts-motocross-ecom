@@ -4,6 +4,7 @@ import { PartDetail } from "../pages/PartDetail/PartDetail"
 import { Content } from "../components/Content/Content"
 import { Header } from "../components/Header/Header"
 import { SideBar } from "../components/SideBar/SideBar"
+import { Breadcrumbs } from "../components/Content/components/Breadcrumb/Breadcrumb"
 
 export const MainLayouts = () => {
   return (
@@ -12,6 +13,7 @@ export const MainLayouts = () => {
       <main className="main">
         <SideBar />
         <div className="content">
+          <Breadcrumbs />
           <Routes>
             <Route path="/*" element={<Content />}></Route>
             <Route path="parts/*" element={<Parts />}></Route>
