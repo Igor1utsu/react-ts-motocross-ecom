@@ -5,6 +5,7 @@ import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Link } from 'react-router-dom'
 import REPAIR_PARTS from "../../../../data/REPAIR_PARTS.json"
 import { DataRepairPartsType } from "./model/DataRepairPartsType.model"
+import { PATH_TO_PICTURE } from "../../../../data/data"
 
 interface CategoryProps {
   category: string
@@ -59,7 +60,7 @@ export const Category = ({ category, title }: CategoryProps) => {
       title: "Image",
       dataIndex: "image",
       key: "image",
-      render: (image) => <Image src={"/img/repair-parts/" + image} />,
+      render: (image) => <Image src={PATH_TO_PICTURE.parts + image} />,
       width: 64,
       align: "center",
     },
