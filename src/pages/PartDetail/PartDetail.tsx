@@ -5,6 +5,7 @@ import REPAIR_PARTS from "../../data/REPAIR_PARTS.json"
 import { useParams } from "react-router-dom"
 import { DataRepairPartsType } from "../../components/Content/components/Category/model/DataRepairPartsType.model"
 import { ParamsType } from "./model"
+import { PATH_TO_PICTURE } from "../../data/data"
 
 export const PartDetail = () => {
   const params = useParams<ParamsType>()
@@ -36,7 +37,7 @@ const repairPart = (dataRepairPart!.make.map((data) =>
         </div>
         <div className="rp__img">
           <img
-            src={"/img/repair-parts/" + repairPart?.image}
+            src={PATH_TO_PICTURE.parts + repairPart?.image}
             alt="Repair Part"
           />
         </div>
