@@ -34,6 +34,12 @@ export const FilterParts: React.FC = () => {
   const [model, setModel] = useState<string | null>(null)
   const [year, setYear] = useState<string | null>(null)
 
+  const clearSelectBike = () => {
+    setMake(null)
+    setModel(null)
+    setYear(null)
+  }
+
   console.log([make, model, year])
 
   const bikeModelArray = MAKE.find((data) => data.name === make)?.models
@@ -43,7 +49,12 @@ export const FilterParts: React.FC = () => {
 
   const selectBike = [
     getItem(
-      <SelectMake make={make} setMake={setMake} setModel={setModel} setYear={setYear} />,
+      <SelectMake
+        make={make}
+        setMake={setMake}
+        setModel={setModel}
+        setYear={setYear}
+      />,
       "make",
       null
     ),
@@ -71,7 +82,18 @@ export const FilterParts: React.FC = () => {
   ]
 
   const items: MenuProps["items"] = [
-    getItem("Select to Bike", "bike", null, selectBike, "group"),
+    getItem(
+      <div className="menu__select">
+        <span>Select to Bike</span>
+        {make && model && year && (
+          <a onClick={() => clearSelectBike()}>remove</a>
+        )}
+      </div>,
+      "bike",
+      null,
+      selectBike,
+      "group"
+    ),
     getItem("Brand", "brand", null, brandList),
   ]
 

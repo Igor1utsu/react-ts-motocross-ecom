@@ -5,6 +5,11 @@
   &__menu {
     width: 250px;
     height: 100%;
+
+    .menu__select {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   &__select {
