@@ -30,9 +30,9 @@ const brandList = BRANDS.map((brand) => {
 })
 
 export const FilterParts: React.FC = () => {
-  const [make, setMake] = useState("")
-  const [model, setModel] = useState("")
-  const [year, setYear] = useState("")
+  const [make, setMake] = useState<string | null>(null)
+  const [model, setModel] = useState<string | null>(null)
+  const [year, setYear] = useState<string | null>(null)
 
   console.log([make, model, year])
 
@@ -43,7 +43,7 @@ export const FilterParts: React.FC = () => {
 
   const selectBike = [
     getItem(
-      <SelectMake setMake={setMake} setModel={setModel} setYear={setYear} />,
+      <SelectMake make={make} setMake={setMake} setModel={setModel} setYear={setYear} />,
       "make",
       null
     ),

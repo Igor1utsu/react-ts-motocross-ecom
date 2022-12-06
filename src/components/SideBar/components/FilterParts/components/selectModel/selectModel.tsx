@@ -7,11 +7,11 @@ interface BikeModelType {
 }
 
 interface SelectModelProps {
-  make: string
-  model: string
+  make: string  | null
+  model: string | null
   bikeModelArray: BikeModelType[] | undefined
-  setModel: (value: string) => void
-  setYear: (value: string) => void
+  setModel: (value: string | null) => void
+  setYear: (value: string | null) => void
 }
 
 export const SelectModel: React.FC<SelectModelProps> = ({
@@ -22,14 +22,14 @@ export const SelectModel: React.FC<SelectModelProps> = ({
   setYear,
 }) => {
   const onChange = (value: string) => {
-    setYear("")
+    setYear(null)
     setModel(value)
   }
 
   return (
     <Select
       placeholder="Model"
-      value={model === "" ? null : model}
+      value={model}
       disabled={!make && true}
       onChange={onChange}
       className="sidebar__select"

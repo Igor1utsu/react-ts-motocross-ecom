@@ -1,10 +1,10 @@
 import { Select } from "antd"
 
 interface SelectYearProps {
-  model: string
-  year: string
+  model: string | null
+  year: string | null
   bikeYearArray: number[] | undefined
-  setYear: (value: string) => void
+  setYear: (value: string | null) => void
 }
 
 export const SelectYear: React.FC<SelectYearProps> = ({
@@ -16,7 +16,7 @@ export const SelectYear: React.FC<SelectYearProps> = ({
   return (
     <Select
       placeholder="Year"
-      value={year === "" ? null : year}
+      value={year}
       disabled={!model && true}
       onChange={(value) => setYear(value)}
       className="sidebar__select"
