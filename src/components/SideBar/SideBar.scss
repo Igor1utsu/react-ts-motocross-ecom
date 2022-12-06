@@ -1,8 +1,13 @@
 .sidebar {
-  // width: 150px;
+  width: 250px;
   margin-right: 10px;
 
-  .ant-menu {
+  &__menu {
+    width: 250px;
     height: 100%;
+  }
+
+  &__select {
+    width: 100%;
   }
 }
