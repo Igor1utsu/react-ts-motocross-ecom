@@ -105,7 +105,9 @@ export const FilterParts: React.FC = () => {
       "group"
     ),
     getItem("Brand", "brand", null, brandList),
-    getItem("Price: $", "price", null, [getItem(<FilterByPrice/>, 'min', null )], ),
+    getItem("Price: $", "price", null, [
+      getItem(<FilterByPrice />, "filterByPrice", null),
+    ]),
   ]
 
   return (
