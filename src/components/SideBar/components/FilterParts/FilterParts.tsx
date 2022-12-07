@@ -6,6 +6,7 @@ import MAKE from "../../../../data/MAKE.json"
 import { SelectMake } from "./components/SelectMake/SelectMake"
 import { SelectModel } from "./components/selectModel/selectModel"
 import { SelectYear } from "./components/SelectYear/SelectYear"
+import { FilterByPrice } from "./components/FilterByPrice/FilterByPrice"
 
 type MenuItem = Required<MenuProps>["items"][number]
 
@@ -95,11 +96,12 @@ export const FilterParts: React.FC = () => {
       "group"
     ),
     getItem("Brand", "brand", null, brandList),
+    getItem("Price: $", "price", null, [getItem(<FilterByPrice/>, 'min', null )], ),
   ]
 
   return (
     <Menu
-      defaultOpenKeys={["brand"]}
+      defaultOpenKeys={["price"]}
       mode="inline"
       items={items}
       className="sidebar__menu"
