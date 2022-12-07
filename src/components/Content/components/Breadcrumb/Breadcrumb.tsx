@@ -31,7 +31,7 @@ export const Breadcrumbs: React.FC = () => {
 
   const breadcrumbItems = [
     <Breadcrumb.Item key="home">
-      {location.pathname === "/" ? <span>Home</span> : <Link to="/">Home</Link>}
+      {location.pathname === "/" ? null : <Link to="/">Home</Link>}
     </Breadcrumb.Item>,
   ].concat(extraBreadcrumbItems)
 
