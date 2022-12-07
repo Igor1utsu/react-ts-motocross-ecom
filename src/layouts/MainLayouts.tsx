@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import { Parts } from "../pages/Parts/Parts"
 import { PartDetail } from "../pages/PartDetail/PartDetail"
 import { Content } from "../components/Content/Content"
@@ -7,11 +7,13 @@ import { SideBar } from "../components/SideBar/SideBar"
 import { Breadcrumbs } from "../components/Content/components/Breadcrumb/Breadcrumb"
 
 export const MainLayouts = () => {
+  const { pathname } = useLocation()
+
   return (
     <>
       <Header />
       <main className="main">
-        <SideBar />
+        {pathname === "/parts" && <SideBar />}
         <div className="content">
           <Breadcrumbs />
           <Routes>
