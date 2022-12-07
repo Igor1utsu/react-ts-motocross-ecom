@@ -7,6 +7,8 @@ import { SelectMake } from "./components/SelectMake/SelectMake"
 import { SelectModel } from "./components/selectModel/selectModel"
 import { SelectYear } from "./components/SelectYear/SelectYear"
 import { FilterByPrice } from "./components/FilterByPrice/FilterByPrice"
+import { useCookies } from "react-cookie"
+import { filtersCookies } from "../../SideBar.const"
 
 type MenuItem = Required<MenuProps>["items"][number]
 
@@ -31,14 +33,20 @@ const brandList = BRANDS.map((brand) => {
 })
 
 export const FilterParts: React.FC = () => {
-  const [make, setMake] = useState<string | null>(null)
-  const [model, setModel] = useState<string | null>(null)
-  const [year, setYear] = useState<string | null>(null)
+  const [cookies, setCookie, removeCookie] = useCookies()
+  const [make, setMake] = useState<string | null>(cookies._make || null)
+  const [model, setModel] = useState<string | null>(cookies._model || null)
+  const [year, setYear] = useState<string | null>(cookies._year || null)
 
   const clearSelectBike = () => {
+    // очищаем useState
     setMake(null)
     setModel(null)
     setYear(null)
+    // очищаем куки
+    removeCookie(filtersCookies.make)
+    removeCookie(filtersCookies.model)
+    removeCookie(filtersCookies.year)
   }
 
   console.log([make, model, year])
@@ -72,6 +80,7 @@ export const FilterParts: React.FC = () => {
     ),
     getItem(
       <SelectYear
+        make={make}
         model={model}
         year={year}
         bikeYearArray={bikeYearArray}
