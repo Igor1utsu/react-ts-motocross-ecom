@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { Checkbox, MenuProps } from "antd"
 import { Menu } from "antd"
 import BRANDS from "../../../../data/BRANDS.json"
@@ -40,15 +40,9 @@ export const FilterParts: React.FC = () => {
   const [make, setMake] = useState<string | null>(cookies._make || null)
   const [model, setModel] = useState<string | null>(cookies._model || null)
   const [year, setYear] = useState<string | null>(cookies._year || null)
-  const [checkedBrand, setChekedBrand] = useState<string[]>([])
-
-  useEffect(() => {
-    // проверяем session- хранилище на наличие брендов. Если true, добавляем в useState
-    const checkedBrandString = sessionStorage.getItem("checkedBrand")
-    if (checkedBrandString) {
-      setChekedBrand(JSON.parse(checkedBrandString))
-    }
-  }, [])
+  const [checkedBrand, setChekedBrand] = useState<string[]>(
+    JSON.parse(sessionStorage.getItem("checkedBrand") ?? "[]") || []
+  )
 
   const brandList = BRANDS.map((brand) => {
     const changeHandler = (brand: BrandType) => {
