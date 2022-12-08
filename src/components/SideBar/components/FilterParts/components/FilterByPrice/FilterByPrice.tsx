@@ -27,6 +27,7 @@ export const FilterByPrice: React.FC = () => {
         type="number"
         className="input-price"
       ></Input>
+      <span className="price-dash">-</span>
       <Input
         placeholder="max"
         value={max}
