@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Checkbox, MenuProps } from "antd"
 import { Menu } from "antd"
 import BRANDS from "../../../../data/BRANDS.json"
@@ -9,6 +9,13 @@ import { SelectYear } from "./components/SelectYear/SelectYear"
 import { FilterByPrice } from "./components/FilterByPrice/FilterByPrice"
 import { useCookies } from "react-cookie"
 import { filtersCookies } from "../../SideBar.const"
+
+interface BrandType {
+  id: number
+  name: string
+  title: string
+  imageName: string
+}
 
 type MenuItem = Required<MenuProps>["items"][number]
 
@@ -28,15 +35,53 @@ function getItem(
   } as MenuItem
 }
 
-const brandList = BRANDS.map((brand) => {
-  return getItem(<Checkbox>{brand.title}</Checkbox>, brand.id)
-})
-
 export const FilterParts: React.FC = () => {
   const [cookies, setCookie, removeCookie] = useCookies()
   const [make, setMake] = useState<string | null>(cookies._make || null)
   const [model, setModel] = useState<string | null>(cookies._model || null)
   const [year, setYear] = useState<string | null>(cookies._year || null)
+  const [checkedBrand, setChekedBrand] = useState<string[]>([])
+
+  useEffect(() => {
+    // проверяем session- хранилище на наличие брендов. Если true, добавляем в useState
+    const checkedBrandString = sessionStorage.getItem("checkedBrand")
+    if (checkedBrandString) {
+      setChekedBrand(JSON.parse(checkedBrandString))
+    }
+  }, [])
+
+  const brandList = BRANDS.map((brand) => {
+    const changeHandler = (brand: BrandType) => {
+      // проверем useState на наличие брендов, затем обновляем данные
+      if (checkedBrand.includes(brand.name)) {
+        const updateCheckedBrand = checkedBrand.filter(
+          (checked) => checked !== brand.name
+        )
+        setChekedBrand(updateCheckedBrand)
+        sessionStorage.setItem(
+          "checkedBrand",
+          JSON.stringify(updateCheckedBrand)
+        )
+      } else {
+        const updateCheckedBrand = [...checkedBrand, brand.name]
+        setChekedBrand(updateCheckedBrand)
+        sessionStorage.setItem(
+          "checkedBrand",
+          JSON.stringify(updateCheckedBrand)
+        )
+      }
+    }
+
+    return getItem(
+      <Checkbox
+        checked={checkedBrand.includes(brand.name)}
+        onChange={() => changeHandler(brand)}
+      >
+        {brand.title}
+      </Checkbox>,
+      brand.id
+    )
+  })
 
   const clearSelectBike = () => {
     // очищаем useState
@@ -112,7 +157,7 @@ export const FilterParts: React.FC = () => {
 
   return (
     <Menu
-      defaultOpenKeys={["price"]}
+      defaultOpenKeys={["brand"]}
       mode="inline"
       items={items}
       className="sidebar__menu"
