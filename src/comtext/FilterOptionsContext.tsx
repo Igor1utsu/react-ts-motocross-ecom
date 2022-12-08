@@ -13,6 +13,8 @@ export const FilterOptionsContext = createContext<IFilterOptions>({
   setModel: () => {},
   setYear: () => {},
   clearSelectBike: () => {},
+  checkedBrand: [""],
+  setChekedBrand: () => {},
 })
 
 export const FilterOptionsState = ({
@@ -24,6 +26,9 @@ export const FilterOptionsState = ({
   const [make, setMake] = useState<string | null>(cookies._make || null)
   const [model, setModel] = useState<string | null>(cookies._model || null)
   const [year, setYear] = useState<string | null>(cookies._year || null)
+  const [checkedBrand, setChekedBrand] = useState(
+    JSON.parse(sessionStorage.getItem("checkedBrand") ?? "[]")
+  )
 
   const clearSelectBike = () => {
     // очищаем useState
@@ -57,6 +62,8 @@ export const FilterOptionsState = ({
         bikeModelArray,
         bikeYearArray,
         clearSelectBike,
+        checkedBrand,
+        setChekedBrand,
       }}
     >
       {children}

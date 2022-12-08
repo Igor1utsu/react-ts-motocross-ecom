@@ -10,4 +10,6 @@ export interface IFilterOptions {
   clearSelectBike: () => void
   bikeModelArray?: IBikeModel[]
   bikeYearArray?: number[]
+  checkedBrand: string[]
+  setChekedBrand: (value: string[]) => void
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import { Checkbox, MenuProps } from "antd"
 import { Menu } from "antd"
 import BRANDS from "../../../../data/BRANDS.json"
@@ -34,11 +34,8 @@ function getItem(
 }
 
 export const FilterParts: React.FC = () => {
-  const { make, model, year, clearSelectBike } =
+  const { make, model, year, clearSelectBike, checkedBrand, setChekedBrand } =
     useContext(FilterOptionsContext)
-  const [checkedBrand, setChekedBrand] = useState<string[]>(
-    JSON.parse(sessionStorage.getItem("checkedBrand") ?? "[]") || []
-  )
 
   const brandList = BRANDS.map((brand) => {
     const changeHandler = (brand: BrandType) => {
