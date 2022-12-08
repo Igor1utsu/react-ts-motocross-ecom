@@ -49,9 +49,10 @@ export const Category = ({ category, title }: CategoryProps) => {
   const repairPartsArray = findByYear
     // .filter((res) => res != null)
     .filter(Boolean)
-    .map((rp) => ({
+    .map((rp, index) => ({
       ...rp,
       name: REPAIR_PARTS.find((RP) => RP.id === rp?.repairPartID)?.name,
+      key: index
     }))
   console.log("RP_Array:", repairPartsArray)
 
