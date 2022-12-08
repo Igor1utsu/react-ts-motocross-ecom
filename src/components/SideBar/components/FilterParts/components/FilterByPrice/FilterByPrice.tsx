@@ -1,33 +1,37 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { ArrowRightOutlined } from "@ant-design/icons"
 import { Button, Input } from "antd"
+import { FilterOptionsContext } from "../../../../../../comtext/FilterOptionsContext"
 
 export const FilterByPrice: React.FC = () => {
-  const [minPrice, setMinPrice] = useState<number>()
-  const [maxPrice, setMaxPrice] = useState<number>()
+  const { minPrice, maxPrice, setMinPrice, setMaxPrice } =
+    useContext(FilterOptionsContext)
+  const [min, setMin] = useState<number>(0 || minPrice)
+  const [max, setMax] = useState<number>(0 || maxPrice)
 
   const submitHandler = async (event: React.FormEvent) => {
     event.preventDefault()
 
-    console.log([minPrice, maxPrice])
+    setMinPrice(min)
+    setMaxPrice(max)
   }
 
   return (
     <form onSubmit={submitHandler} style={{ display: "flex" }}>
       <Input
         placeholder="min"
-        value={minPrice}
+        value={min}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setMinPrice(Number(e.target.value))
+          setMin(Number(e.target.value))
         }
         type="number"
         className="input-price"
       ></Input>
       <Input
         placeholder="max"
-        value={maxPrice}
+        value={max}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setMaxPrice(Number(e.target.value))
+          setMax(Number(e.target.value))
         }
         type="number"
         className="input-price"

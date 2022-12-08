@@ -12,4 +12,8 @@ export interface IFilterOptions {
   bikeYearArray?: number[]
   checkedBrand: string[]
   setChekedBrand: (value: string[]) => void
+  minPrice: number
+  maxPrice: number
+  setMinPrice: (value: number) => void
+  setMaxPrice: (value: number) => void
 }

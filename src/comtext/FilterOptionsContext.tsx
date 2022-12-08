@@ -15,6 +15,10 @@ export const FilterOptionsContext = createContext<IFilterOptions>({
   clearSelectBike: () => {},
   checkedBrand: [""],
   setChekedBrand: () => {},
+  minPrice: 0,
+  maxPrice: 0,
+  setMinPrice: () => {},
+  setMaxPrice: () => {},
 })
 
 export const FilterOptionsState = ({
@@ -29,6 +33,8 @@ export const FilterOptionsState = ({
   const [checkedBrand, setChekedBrand] = useState(
     JSON.parse(sessionStorage.getItem("checkedBrand") ?? "[]")
   )
+  const [minPrice, setMinPrice] = useState(0)
+  const [maxPrice, setMaxPrice] = useState(0)
 
   const clearSelectBike = () => {
     // очищаем useState
@@ -64,6 +70,10 @@ export const FilterOptionsState = ({
         clearSelectBike,
         checkedBrand,
         setChekedBrand,
+        minPrice,
+        maxPrice,
+        setMinPrice,
+        setMaxPrice,
       }}
     >
       {children}
