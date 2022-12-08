@@ -1,26 +1,10 @@
 import { Select } from "antd"
+import { useContext } from "react"
+import { FilterOptionsContext } from "../../../../../../comtext/FilterOptionsContext"
 
-interface BikeModelType {
-  id: number
-  name: string
-  title: string
-}
-
-interface SelectModelProps {
-  make: string  | null
-  model: string | null
-  bikeModelArray: BikeModelType[] | undefined
-  setModel: (value: string | null) => void
-  setYear: (value: string | null) => void
-}
-
-export const SelectModel: React.FC<SelectModelProps> = ({
-  make,
-  model,
-  bikeModelArray,
-  setModel,
-  setYear,
-}) => {
+export const SelectModel: React.FC = () => {
+  const { make, model, setModel, setYear, bikeModelArray } = useContext(FilterOptionsContext)
+  
   const onChange = (value: string) => {
     setYear(null)
     setModel(value)

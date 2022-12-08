@@ -5,6 +5,7 @@ import { Content } from "../components/Content/Content"
 import { Header } from "../components/Header/Header"
 import { SideBar } from "../components/SideBar/SideBar"
 import { Breadcrumbs } from "../components/Content/components/Breadcrumb/Breadcrumb"
+import { FilterOptionsState } from "../comtext/FilterOptionsContext"
 
 export const MainLayouts = () => {
   const { pathname } = useLocation()
@@ -12,17 +13,19 @@ export const MainLayouts = () => {
   return (
     <>
       <Header />
-      <main className="main">
-        {pathname === "/parts" && <SideBar />}
-        <div className="content">
-          <Breadcrumbs />
-          <Routes>
-            <Route path="/*" element={<Content />}></Route>
-            <Route path="parts/*" element={<Parts />}></Route>
-            <Route path="parts/:number" element={<PartDetail />}></Route>
-          </Routes>
-        </div>
-      </main>
+      <FilterOptionsState>
+        <main className="main">
+          {pathname === "/parts" && <SideBar />}
+          <div className="content">
+            <Breadcrumbs />
+            <Routes>
+              <Route path="/*" element={<Content />}></Route>
+              <Route path="parts/*" element={<Parts />}></Route>
+              <Route path="parts/:number" element={<PartDetail />}></Route>
+            </Routes>
+          </div>
+        </main>
+      </FilterOptionsState>
     </>
   )
 }

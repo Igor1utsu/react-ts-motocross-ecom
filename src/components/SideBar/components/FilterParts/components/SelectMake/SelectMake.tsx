@@ -1,19 +1,11 @@
 import MAKE from "../../../../../../data/MAKE.json"
 import { Select } from "antd"
+import { useContext } from "react"
+import { FilterOptionsContext } from "../../../../../../comtext/FilterOptionsContext"
 
-interface SelectMakeProps {
-  make: string | null
-  setMake: (value: string) => void
-  setModel: (value: string | null) => void
-  setYear: (value: string | null) => void
-}
+export const SelectMake: React.FC = () => {
+  const { make, setMake, setModel, setYear } = useContext(FilterOptionsContext)
 
-export const SelectMake: React.FC<SelectMakeProps> = ({
-  make,
-  setMake,
-  setModel,
-  setYear,
-}) => {
   const onChange = (value: string) => {
     setMake(value)
     setModel(null)

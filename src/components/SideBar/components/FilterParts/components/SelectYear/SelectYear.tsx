@@ -1,22 +1,11 @@
 import { Select } from "antd"
-import React from "react"
+import React, { useContext } from "react"
+import { FilterOptionsContext } from "../../../../../../comtext/FilterOptionsContext"
 import { filtersCookies } from "../../../../SideBar.const"
 
-interface SelectYearProps {
-  make: string | null
-  model: string | null
-  year: string | null
-  bikeYearArray: number[] | undefined
-  setYear: (value: string | null) => void
-}
+export const SelectYear: React.FC = () => {
+  const { make, model, year, setYear, bikeYearArray } = useContext(FilterOptionsContext)
 
-export const SelectYear: React.FC<SelectYearProps> = ({
-  make,
-  model,
-  year,
-  bikeYearArray,
-  setYear,
-}) => {
   const changeHandler = (value: string) => {
     setYear(value)
     // добавляем выбранный мотоцикл в куки
