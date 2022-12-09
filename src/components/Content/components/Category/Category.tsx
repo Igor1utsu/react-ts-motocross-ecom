@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import PARTS from "../../../../data/PARTS.json"
 import { IDataParts } from "./model/IDataParts.model"
 import { PATH_TO_PICTURE } from "../../../../data/data"
-import { useContext } from "react"
+import { useContext, useMemo } from "react"
 import { FilterOptionsContext } from "../../../../comtext/FilterOptionsContext"
 
 interface CategoryProps {
@@ -32,33 +32,37 @@ export const Category = ({ category, title }: CategoryProps) => {
   const dataByCategory = PARTS.filter(
     (data: IDataParts) => data.category === category
   )
+
   // фильтруем данные по выбранным брендам
-  const dataByBrand =
-    checkedBrand.length === 0
-      ? dataByCategory
-      : dataByCategory.filter((data) => {
-          let selectBrand = data.brand
-          return (
-            data.brand ===
-            checkedBrand.find((checked) => checked === selectBrand)
-          )
-        })
-  // фильтруем данные по производителю
-  const dataByMake = dataByBrand.map((data) =>
-    data.partFor.find((searchData) => searchData.make === make)
-  )
-  // фильтруем по модели
-  const dataByModel = dataByMake.map((data) =>
-    data?.models.find((searchData) => searchData.model === model)
-  )
-  // фильтруем по году выпуска
-  const dataByYear = dataByModel.map((data) =>
-    data?.series.find((searchData) =>
-      year ? searchData.year.includes(year) : null
-    )
-  )
+  const dataByBrand = useMemo(() => {
+    if (checkedBrand.length === 0) return dataByCategory
+    else
+      return dataByCategory.filter((data) => {
+        let selectBrand = data.brand
+        return (
+          data.brand === checkedBrand.find((checked) => checked === selectBrand)
+        )
+      })
+  }, [checkedBrand, dataByCategory])
+
+  // фильтруем данные по выбранной марке
+  const dataBySelectBike = useMemo(() => {
+    return dataByBrand
+      .map((data) =>
+        data.partFor.find((searchData) => searchData.make === make)
+      )
+      .map((data) =>
+        data?.models.find((searchData) => searchData.model === model)
+      )
+      .map((data) =>
+        data?.series.find((searchData) =>
+          year ? searchData.year.includes(year) : null
+        )
+      )
+  }, [dataByBrand, make, model, year])
+  
   // получаем полные данные о продукте
-  const PartsDataArray = dataByYear
+  const PartsDataArray = dataBySelectBike
     // фильтруем товар по минимальной цене
     .filter((data) => {
       if (minPrice && data?.price) return data?.price >= minPrice
