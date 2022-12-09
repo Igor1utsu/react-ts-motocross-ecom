@@ -2,10 +2,12 @@ import "./Category.scss"
 import { Button, Image, InputNumber, Table } from "antd"
 import type { ColumnsType } from "antd/es/table"
 import { ShoppingCartOutlined } from "@ant-design/icons"
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 import REPAIR_PARTS from "../../../../data/REPAIR_PARTS.json"
 import { DataRepairPartsType } from "./model/DataRepairPartsType.model"
 import { PATH_TO_PICTURE } from "../../../../data/data"
+import { useContext } from "react"
+import { FilterOptionsContext } from "../../../../comtext/FilterOptionsContext"
 
 interface CategoryProps {
   category: string
@@ -19,42 +21,39 @@ interface RepairPartsType {
   number?: string | undefined
   price?: number | undefined
   image?: string | undefined
-  year?: number[] | undefined
+  year?: number[] | undefined[] | undefined
 }
 
 export const Category = ({ category, title }: CategoryProps) => {
-  console.log([category, title])
+  const { make, model, year } = useContext(FilterOptionsContext)
 
-  // console.log(RepairPatrs)
-  const selectedMake: string = "honda" // выбираем марку
-  const selectedModel: string = "CR250R" // выбираем модель
-  const selectedYear: number = 1993 // выбираем год
-
-  const filterByCategory = REPAIR_PARTS.filter(
-    (rp: DataRepairPartsType) => rp.category === category
+  // фильтруем данные по категориям
+  const dataByCategory = REPAIR_PARTS.filter(
+    (data: DataRepairPartsType) => data.category === category
   )
-  console.log(category, filterByCategory)
-  const findByMake = filterByCategory.map((rp) =>
-    rp.make.find((res) => res.brand === selectedMake)
+  // фильтруем данные по производителю
+  const dataByMake = dataByCategory.map((data) =>
+    data.make.find((searchData) => searchData.brand === make)
   )
-  console.log("Find.MAKE:", findByMake)
-  const findByModel = findByMake.map((rp) =>
-    rp?.models.find((res) => res.model === selectedModel)
+  // фильтруем по модели
+  const dataByModel = dataByMake.map((data) =>
+    data?.models.find((searchData) => searchData.model === model)
   )
-  console.log("Find.MODEL:", findByModel)
-  const findByYear = findByModel.map((rp) =>
-    rp?.series.find((res) => res.year.includes(selectedYear))
+  // фильтруем по году выпуска
+  const dataByYear = dataByModel.map((data) =>
+    data?.series.find((searchData) =>
+      year ? searchData.year.includes(year) : null
+    )
   )
-  console.log("Find.YEAR", findByYear)
-  const repairPartsArray = findByYear
-    // .filter((res) => res != null)
+  // получаем полные данные о продукте
+  const PartsDataArray = dataByYear
+    // .filter((data) => data != null)
     .filter(Boolean)
-    .map((rp, index) => ({
-      ...rp,
-      name: REPAIR_PARTS.find((RP) => RP.id === rp?.repairPartID)?.name,
-      key: index
+    .map((data, index) => ({
+      ...data,
+      name: REPAIR_PARTS.find((DATA) => DATA.id === data?.repairPartID)?.name,
+      key: index,
     }))
-  console.log("RP_Array:", repairPartsArray)
 
   const columns: ColumnsType<RepairPartsType> = [
     {
@@ -69,7 +68,7 @@ export const Category = ({ category, title }: CategoryProps) => {
       title: "Part Name",
       dataIndex: "name",
       key: "name",
-      render: (name, rp) => <Link to={`${rp.number}`}>{name}</Link>,
+      render: (name, data) => <Link to={`${data.number}`}>{name}</Link>,
     },
     {
       title: "Price",
@@ -106,7 +105,7 @@ export const Category = ({ category, title }: CategoryProps) => {
       <div className="category__header">{title}</div>
       <Table
         columns={columns}
-        dataSource={repairPartsArray}
+        dataSource={PartsDataArray}
         pagination={false}
         // showHeader={false}
       />
