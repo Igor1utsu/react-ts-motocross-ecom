@@ -1,49 +1,49 @@
 [
     {
         "id": 1,
-        "name": "Athena",
+        "name": "athena",
         "title": "Athena",
         "imageName": "Athena.png"
     },
     {
         "id": 2,
-        "name": "Cometic",
+        "name": "cometic",
         "title": "Cometic",
         "imageName": "Cometic.png"
     },
     {
         "id": 3,
-        "name": "FMF",
+        "name": "fmf",
         "title": "FMF",
         "imageName": "FMF.png"
     },
     {
         "id": 4,
-        "name": "Hot-Rods",
+        "name": "hot-rods",
         "title": "Hot-Rods",
         "imageName": "Hot-Rods.png"
     },
     {
         "id": 5,
-        "name": "Pro-Circuit",
+        "name": "pro-Circuit",
         "title": "Pro-Circuit",
         "imageName": "Pro-Circuit.png"
     },
     {
         "id": 6,
-        "name": "Prox",
+        "name": "prox",
         "title": "Prox",
         "imageName": "Prox.png"
     },
     {
         "id": 7,
-        "name": "UFO",
+        "name": "ufo",
         "title": "UFO",
         "imageName": "UFO.png"
     },
     {
         "id": 8,
-        "name": "Wiseco",
+        "name": "wiseco",
         "title": "Wiseco",
         "imageName": "Wiseco.png"
     }

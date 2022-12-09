@@ -1,20 +1,20 @@
 import { CheckOutlined, ShoppingCartOutlined } from "@ant-design/icons"
 import { Button, InputNumber } from "antd"
 import "./PartDetail.scss"
-import REPAIR_PARTS from "../../data/REPAIR_PARTS.json"
+import PARTS from "../../data/PARTS.json"
 import { useParams } from "react-router-dom"
-import { DataRepairPartsType } from "../../components/Content/components/Category/model/DataRepairPartsType.model"
+import { IDataParts } from "../../components/Content/components/Category/model/IDataParts.model"
 import { ParamsType } from "./model"
 import { PATH_TO_PICTURE } from "../../data/data"
 
 export const PartDetail = () => {
   const params = useParams<ParamsType>()
-  const dataRepairPart: DataRepairPartsType | undefined = REPAIR_PARTS.find((rp) =>
+  const dataRepairPart: IDataParts | undefined = PARTS.find((rp) =>
     params.number ? rp.partNumbers.includes(params.number) : false
   )
   // console.log("dataRP:", dataRepairPart)
   // console.log("params:", params)
-const repairPart = (dataRepairPart!.make.map((data) =>
+const repairPart = (dataRepairPart!.partFor.map((data) =>
     data.models.map((data) =>
       data.series.find((num) => num.number === params.number)
     )

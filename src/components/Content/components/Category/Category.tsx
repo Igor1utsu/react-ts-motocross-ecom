@@ -3,8 +3,8 @@ import { Button, Image, InputNumber, Table } from "antd"
 import type { ColumnsType } from "antd/es/table"
 import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom"
-import REPAIR_PARTS from "../../../../data/REPAIR_PARTS.json"
-import { DataRepairPartsType } from "./model/DataRepairPartsType.model"
+import PARTS from "../../../../data/PARTS.json"
+import { IDataParts } from "./model/IDataParts.model"
 import { PATH_TO_PICTURE } from "../../../../data/data"
 import { useContext } from "react"
 import { FilterOptionsContext } from "../../../../comtext/FilterOptionsContext"
@@ -17,7 +17,7 @@ interface CategoryProps {
 interface RepairPartsType {
   name: string | undefined
   id?: number | undefined
-  repairPartID?: number | undefined
+  partID?: number | undefined
   number?: string | undefined
   price?: number | undefined
   image?: string | undefined
@@ -29,23 +29,23 @@ export const Category = ({ category, title }: CategoryProps) => {
     useContext(FilterOptionsContext)
 
   // фильтруем данные по категориям
-  const dataByCategory = REPAIR_PARTS.filter(
-    (data: DataRepairPartsType) => data.category === category
+  const dataByCategory = PARTS.filter(
+    (data: IDataParts) => data.category === category
   )
   // фильтруем данные по выбранным брендам
   const dataByBrand =
     checkedBrand.length === 0
       ? dataByCategory
       : dataByCategory.filter((data) => {
-          let selectBrand = data.company
+          let selectBrand = data.brand
           return (
-            data.company ===
+            data.brand ===
             checkedBrand.find((checked) => checked === selectBrand)
           )
         })
   // фильтруем данные по производителю
   const dataByMake = dataByBrand.map((data) =>
-    data.make.find((searchData) => searchData.brand === make)
+    data.partFor.find((searchData) => searchData.make === make)
   )
   // фильтруем по модели
   const dataByModel = dataByMake.map((data) =>
@@ -73,7 +73,7 @@ export const Category = ({ category, title }: CategoryProps) => {
     .filter(Boolean)
     .map((data, index) => ({
       ...data,
-      name: REPAIR_PARTS.find((DATA) => DATA.id === data?.repairPartID)?.name,
+      name: PARTS.find((DATA) => DATA.id === data?.partID)?.name,
       key: index,
     }))
 

@@ -2,21 +2,21 @@
   {
     "id": 1,
     "name": "Athena Complete Engine Gasket Kit",
-    "company": "Athena",
+    "brand": "athena",
     "category": "engine",
     "partNumbers": ["P400210850252"],
-    "make": [
+    "partFor": [
       {
-        "repairPartID": 1,
-        "brand": "honda",
+        "partID": 1,
+        "make": "honda",
         "models": [
           {
-            "repairPartID": 1,
+            "partID": 1,
             "model": "CR250R",
             "series": [
               {
                 "id": 1,
-                "repairPartID": 1,
+                "partID": 1,
                 "number": "P400210850252",
                 "price": 40.85,
                 "image": "Athena_Complete_Gasket_Kit-903923297.jpg",
@@ -33,21 +33,21 @@
   {
     "id": 2,
     "name": "Cometic Gasket Crankshaft Seals",
-    "company": "Cometic",
+    "brand": "cometic",
     "category": "engine",
     "partNumbers": ["C7655"],
-    "make": [
+    "partFor": [
       {
-        "repairPartID": 2,
-        "brand": "honda",
+        "partID": 2,
+        "make": "honda",
         "models": [
           {
-            "repairPartID": 2,
+            "partID": 2,
             "model": "CR250R",
             "series": [
               {
                 "id": 1,
-                "repairPartID": 2,
+                "partID": 2,
                 "number": "C7655",
                 "price": 15.9,
                 "image": "Cometic_Gasket_Crank_Seal_Kit-902338797.jpg",
@@ -65,21 +65,21 @@
   {
     "id": 3,
     "name": "Wiseco Piston Kits",
-    "company": "Wiseco",
+    "brand": "wiseco",
     "category": "engine",
     "partNumbers": ["614M06640"],
-    "make": [
+    "partFor": [
       {
-        "repairPartID": 3,
-        "brand": "honda",
+        "partID": 3,
+        "make": "honda",
         "models": [
           {
-            "repairPartID": 3,
+            "partID": 3,
             "model": "CR250R",
             "series": [
               {
                 "id": 1,
-                "repairPartID": 3,
+                "partID": 3,
                 "number": "614M06640",
                 "price": 128.28,
                 "image": "WISECO_PERFORMANCE_PRODUCTS_WISECO_PISTONS-901545756.jpg",
@@ -97,21 +97,21 @@
   {
     "id": 4,
     "name": "Pro-X Crankshaft",
-    "company": "ProX",
+    "brand": "prox",
     "category": "engine",
     "partNumbers": ["10.1392"],
-    "make": [
+    "partFor": [
       {
-        "repairPartID": 4,
-        "brand": "honda",
+        "partID": 4,
+        "make": "honda",
         "models": [
           {
-            "repairPartID": 4,
+            "partID": 4,
             "model": "CR250R",
             "series": [
               {
                 "id": 1,
-                "repairPartID": 4,
+                "partID": 4,
                 "number": "10.1392",
                 "price": 255.25,
                 "image": "ProX-New_PROX_COMPLETE_CRANKSHAFT_CR1259004-901997475.jpg",
