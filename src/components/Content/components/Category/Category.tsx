@@ -25,14 +25,26 @@ interface RepairPartsType {
 }
 
 export const Category = ({ category, title }: CategoryProps) => {
-  const { make, model, year } = useContext(FilterOptionsContext)
+  const { make, model, year, checkedBrand, minPrice, maxPrice } =
+    useContext(FilterOptionsContext)
 
   // фильтруем данные по категориям
   const dataByCategory = REPAIR_PARTS.filter(
     (data: DataRepairPartsType) => data.category === category
   )
+  // фильтруем данные по выбранным брендам
+  const dataByBrand =
+    checkedBrand.length === 0
+      ? dataByCategory
+      : dataByCategory.filter((data) => {
+          let selectBrand = data.company
+          return (
+            data.company ===
+            checkedBrand.find((checked) => checked === selectBrand)
+          )
+        })
   // фильтруем данные по производителю
-  const dataByMake = dataByCategory.map((data) =>
+  const dataByMake = dataByBrand.map((data) =>
     data.make.find((searchData) => searchData.brand === make)
   )
   // фильтруем по модели
@@ -47,6 +59,16 @@ export const Category = ({ category, title }: CategoryProps) => {
   )
   // получаем полные данные о продукте
   const PartsDataArray = dataByYear
+    // фильтруем товар по минимальной цене
+    .filter((data) => {
+      if (minPrice && data?.price) return data?.price >= minPrice
+      return data
+    })
+    // фильтруем товар по максимальной цене
+    .filter((data) => {
+      if (maxPrice && data?.price) return data?.price <= maxPrice
+      return data
+    })
     // .filter((data) => data != null)
     .filter(Boolean)
     .map((data, index) => ({
