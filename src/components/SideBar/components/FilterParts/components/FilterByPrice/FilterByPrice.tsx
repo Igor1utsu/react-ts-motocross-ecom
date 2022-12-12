@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react"
 import { ArrowRightOutlined } from "@ant-design/icons"
 import { Button, Input } from "antd"
-import { FilterOptionsContext } from "../../../../../../comtext/FilterOptionsContext"
+import { FilterOptionsContext } from "../../../../../../context/FilterOptionsContext"
 
 export const FilterByPrice: React.FC = () => {
   const { minPrice, maxPrice, setMinPrice, setMaxPrice } =

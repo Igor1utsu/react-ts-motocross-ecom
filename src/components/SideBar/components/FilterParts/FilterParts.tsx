@@ -6,7 +6,7 @@ import { SelectMake } from "./components/SelectMake/SelectMake"
 import { SelectModel } from "./components/selectModel/selectModel"
 import { SelectYear } from "./components/SelectYear/SelectYear"
 import { FilterByPrice } from "./components/FilterByPrice/FilterByPrice"
-import { FilterOptionsContext } from "../../../../comtext/FilterOptionsContext"
+import { FilterOptionsContext } from "../../../../context/FilterOptionsContext"
 
 interface BrandType {
   id: number

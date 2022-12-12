@@ -1,6 +1,6 @@
 import { Select } from "antd"
 import { useContext } from "react"
-import { FilterOptionsContext } from "../../../../../../comtext/FilterOptionsContext"
+import { FilterOptionsContext } from "../../../../../../context/FilterOptionsContext"
 
 export const SelectModel: React.FC = () => {
   const { make, model, setModel, setYear, bikeModelArray } = useContext(FilterOptionsContext)

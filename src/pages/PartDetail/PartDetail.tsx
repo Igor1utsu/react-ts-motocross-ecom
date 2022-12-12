@@ -1,63 +1,82 @@
-import { CheckOutlined, ShoppingCartOutlined } from "@ant-design/icons"
+import {
+  CheckOutlined,
+  InfoCircleOutlined,
+  ShoppingCartOutlined,
+} from "@ant-design/icons"
 import { Button, InputNumber } from "antd"
 import "./PartDetail.scss"
 import PARTS from "../../data/PARTS.json"
+import BRANDS from "../../data/BRANDS.json"
 import { useParams } from "react-router-dom"
-import { IDataParts } from "../../components/Content/components/Category/model/IDataParts.model"
 import { ParamsType } from "./model"
 import { PATH_TO_PICTURE } from "../../data/data"
+import { IDataParts } from "../../shared/model/IDataParts"
+import { useContext } from "react"
+import { FilterOptionsContext } from "../../context/FilterOptionsContext"
 
 export const PartDetail = () => {
+  const { make, model, year } = useContext(FilterOptionsContext)
   const params = useParams<ParamsType>()
-  const dataRepairPart: IDataParts | undefined = PARTS.find((rp) =>
-    params.number ? rp.partNumbers.includes(params.number) : false
+  const part: IDataParts | undefined = PARTS.find((part) =>
+    params.number ? part.partNumber === params.number : false
   )
-  // console.log("dataRP:", dataRepairPart)
-  // console.log("params:", params)
-const repairPart = (dataRepairPart!.partFor.map((data) =>
-    data.models.map((data) =>
-      data.series.find((num) => num.number === params.number)
-    )
-  ))[0][0]
-  // console.log("repairPart:", repairPart)
+  const brandLogo = BRANDS.find(
+    (BRAND) => BRAND.name === part?.brand
+  )?.imageName
 
   return (
     <div className="rp">
       <section className="rp__section">
         <div className="rp__header">
           <div className="rp__header__colum">
-            <h2>{dataRepairPart?.name}</h2>
-            <p># {repairPart?.number}</p>
+            <h2>{part?.name}</h2>
+            <p># {part?.partNumber}</p>
           </div>
           <div className="rp__header__colum">
             <div className="company-logo">
-              <img src="/img/repair-parts/Athena_Complete_Gasket_Kit-903923297.jpg" />
+              <img src={PATH_TO_PICTURE.brand + brandLogo} alt={part?.brand} />
             </div>
           </div>
         </div>
         <div className="rp__img">
-          <img
-            src={PATH_TO_PICTURE.parts + repairPart?.image}
-            alt="Repair Part"
-          />
+          <img src={PATH_TO_PICTURE.parts + part?.image} alt="Repair Part" />
         </div>
         <div className="rp__content">
-          <div className="rp__content__item fits-model">
-            <div className="check-icon">
-              <CheckOutlined
-                style={{ fontSize: "48px", color: "rgb(74, 247, 74)" }}
-              />
+          {part?.fits.find(
+            (data) =>
+              data.make === make &&
+              data.model === model &&
+              data.year.find((YEAR) => YEAR === year)
+          ) ? (
+            <div className="rp__content__item fits-model">
+              <div className="check-icon">
+                <CheckOutlined
+                  style={{ fontSize: "48px", color: "rgb(74, 247, 74)" }}
+                />
+              </div>
+              <div className="item-colum">
+                <div>This part fits:</div>
+                <div>{year + " " + make + " " + model}</div>
+              </div>
             </div>
-            <div className="item-colum">
-              <div>This part fits:</div>
-              <div>1993 Honda CR250R</div>
+          ) : (
+            <div className="rp__content__item fits-model">
+              <div className="check-icon">
+                <InfoCircleOutlined
+                  style={{ fontSize: "48px", color: "red" }}
+                />
+              </div>
+              <div className="item-colum">
+                <div>This part does not fit:</div>
+                <div>{year + " " + make + " " + model}</div>
+              </div>
             </div>
-          </div>
+          )}
           <div className="rp__content__item">
             <div className="item-row">
               <span className="item-row__span">Price:</span>
               <span className="item-row__span">$</span>
-              {repairPart?.price}
+              {part?.price}
             </div>
             <div className="item-row">
               <span className="item-row__span">QTY:</span>
@@ -82,7 +101,12 @@ const repairPart = (dataRepairPart!.partFor.map((data) =>
         <h3 className="details__title">Details:</h3>
         <div className="rp__content__item details__content">
           <p className="details__text">This item fits the following models:</p>
-          <a href="kkk">+ view complete vehicle fitment information</a>
+          {part?.fits.map((data) =>
+            data.year.map((d) => {
+              return <div>{d + " " + data.make + " " + data.model}</div>
+            })
+          )}
+          {/* <a href="kkk">+ view complete vehicle fitment information</a> */}
         </div>
       </section>
     </div>

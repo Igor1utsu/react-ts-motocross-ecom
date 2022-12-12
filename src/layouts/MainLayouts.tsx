@@ -5,7 +5,7 @@ import { Content } from "../components/Content/Content"
 import { Header } from "../components/Header/Header"
 import { SideBar } from "../components/SideBar/SideBar"
 import { Breadcrumbs } from "../components/Content/components/Breadcrumb/Breadcrumb"
-import { FilterOptionsState } from "../comtext/FilterOptionsContext"
+import { FilterOptionsState } from "../context/FilterOptionsContext"
 
 export const MainLayouts = () => {
   const { pathname } = useLocation()

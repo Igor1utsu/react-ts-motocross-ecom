@@ -11,7 +11,12 @@ export const Parts = () => {
   return (
     <>
       {CATEGORIES.map((data: CategoriesType) => (
-        <Category category={data.category} title={data.title} key={data.id} />
+        <Category
+          id={data.id}
+          category={data.category}
+          title={data.title}
+          key={data.id}
+        />
       ))}
     </>
   )

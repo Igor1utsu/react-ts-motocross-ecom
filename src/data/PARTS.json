@@ -4,29 +4,14 @@
     "name": "Athena Complete Engine Gasket Kit",
     "brand": "athena",
     "category": "engine",
-    "partNumbers": ["P400210850252"],
-    "partFor": [
+    "partNumber": "P400210850252",
+    "price": 40.85,
+    "image": "Athena_Complete_Gasket_Kit-903923297.jpg",
+    "fits": [
       {
-        "partID": 1,
         "make": "honda",
-        "models": [
-          {
-            "partID": 1,
-            "model": "CR250R",
-            "series": [
-              {
-                "id": 1,
-                "partID": 1,
-                "number": "P400210850252",
-                "price": 40.85,
-                "image": "Athena_Complete_Gasket_Kit-903923297.jpg",
-                "year": [
-                  1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001
-                ]
-              }
-            ]
-          }
-        ]
+        "model": "CR250R",
+        "year": [1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
       }
     ]
   },
@@ -35,29 +20,16 @@
     "name": "Cometic Gasket Crankshaft Seals",
     "brand": "cometic",
     "category": "engine",
-    "partNumbers": ["C7655"],
-    "partFor": [
+    "partNumber": "C7655",
+    "price": 15.9,
+    "image": "Cometic_Gasket_Crank_Seal_Kit-902338797.jpg",
+    "fits": [
       {
-        "partID": 2,
         "make": "honda",
-        "models": [
-          {
-            "partID": 2,
-            "model": "CR250R",
-            "series": [
-              {
-                "id": 1,
-                "partID": 2,
-                "number": "C7655",
-                "price": 15.9,
-                "image": "Cometic_Gasket_Crank_Seal_Kit-902338797.jpg",
-                "year": [
-                  1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
-                  2002, 2003, 2004
-                ]
-              }
-            ]
-          }
+        "model": "CR250R",
+        "year": [
+          1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+          2003, 2004
         ]
       }
     ]
@@ -67,29 +39,15 @@
     "name": "Wiseco Piston Kits",
     "brand": "wiseco",
     "category": "engine",
-    "partNumbers": ["614M06640"],
-    "partFor": [
+    "partNumber": "614M06640",
+    "price": 128.28,
+    "image": "WISECO_PERFORMANCE_PRODUCTS_WISECO_PISTONS-901545756.jpg",
+    "fits": [
       {
-        "partID": 3,
         "make": "honda",
-        "models": [
-          {
-            "partID": 3,
-            "model": "CR250R",
-            "series": [
-              {
-                "id": 1,
-                "partID": 3,
-                "number": "614M06640",
-                "price": 128.28,
-                "image": "WISECO_PERFORMANCE_PRODUCTS_WISECO_PISTONS-901545756.jpg",
-                "year": [
-                  1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995,
-                  1996
-                ]
-              }
-            ]
-          }
+        "model": "CR250R",
+        "year": [
+          1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996
         ]
       }
     ]
@@ -99,29 +57,14 @@
     "name": "Pro-X Crankshaft",
     "brand": "prox",
     "category": "engine",
-    "partNumbers": ["10.1392"],
-    "partFor": [
+    "partNumber": "10.1392",
+    "price": 255.25,
+    "image": "ProX-New_PROX_COMPLETE_CRANKSHAFT_CR1259004-901997475.jpg",
+    "fits": [
       {
-        "partID": 4,
         "make": "honda",
-        "models": [
-          {
-            "partID": 4,
-            "model": "CR250R",
-            "series": [
-              {
-                "id": 1,
-                "partID": 4,
-                "number": "10.1392",
-                "price": 255.25,
-                "image": "ProX-New_PROX_COMPLETE_CRANKSHAFT_CR1259004-901997475.jpg",
-                "year": [
-                  1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001
-                ]
-              }
-            ]
-          }
-        ]
+        "model": "CR250R",
+        "year": [1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
       }
     ]
   }

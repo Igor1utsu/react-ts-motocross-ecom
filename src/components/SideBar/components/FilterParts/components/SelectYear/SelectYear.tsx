@@ -1,6 +1,6 @@
 import { Select } from "antd"
 import React, { useContext } from "react"
-import { FilterOptionsContext } from "../../../../../../comtext/FilterOptionsContext"
+import { FilterOptionsContext } from "../../../../../../context/FilterOptionsContext"
 import { filtersCookies } from "../../../../SideBar.const"
 
 export const SelectYear: React.FC = () => {
