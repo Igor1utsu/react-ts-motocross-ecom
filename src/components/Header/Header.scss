@@ -1,9 +1,26 @@
 .header {
-  padding: 7px 40px;
+  padding-left: 60px;
+  padding-right: 60px;
+  height: 42px;
   background: black;
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   &__title {
     font-size: 20px;
+  }
+
+  &__cart {
+    height: 100%;
+    padding: 10px;
+    span {
+      margin-right: 10px;
+    }
+
+    &:hover {
+      background: rgb(29, 29, 29);
+    }
   }
 }

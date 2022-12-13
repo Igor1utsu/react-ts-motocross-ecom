@@ -1,4 +1,4 @@
-.btn-addcart {
+.btn-cart {
   background: rgb(91, 255, 91);
   color: #fff;
   &:hover {
@@ -8,6 +8,7 @@
 
 .btn-cart--large {
   height: auto;
+  width: 100%;
   padding: 8px;
   flex: 1;
   text-transform: uppercase;
