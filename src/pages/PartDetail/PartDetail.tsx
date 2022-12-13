@@ -1,6 +1,6 @@
 import {
-  CheckOutlined,
-  InfoCircleOutlined,
+  CheckCircleOutlined,
+  ExclamationCircleOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons"
 import { Button, InputNumber } from "antd"
@@ -24,90 +24,80 @@ export const PartDetail = () => {
     (BRAND) => BRAND.name === part?.brand
   )?.imageName
 
+  const fitToBike = part?.fits.find(
+    (bike) =>
+      bike.make === make &&
+      bike.model === model &&
+      bike.year.find((YEAR) => YEAR === year)
+  )
+
   return (
-    <div className="rp">
-      <section className="rp__section">
-        <div className="rp__header">
-          <div className="rp__header__colum">
-            <h2>{part?.name}</h2>
-            <p># {part?.partNumber}</p>
+    <div className="product">
+      <section className="product-box">
+        <div className="product-container-img">
+          <img src={PATH_TO_PICTURE.parts + part?.image} alt="Repair Part" />
+        </div>
+
+        <div className="product-container-main">
+          <div className="product__header">
+            <h2 className="product__title">{part?.name}</h2>
+            <h3 className="product__number">{"# " + part?.partNumber}</h3>
           </div>
-          <div className="rp__header__colum">
+
+          <div className="product__row price">
+            {"$ " + part?.price}
             <div className="company-logo">
               <img src={PATH_TO_PICTURE.brand + brandLogo} alt={part?.brand} />
             </div>
           </div>
-        </div>
-        <div className="rp__img">
-          <img src={PATH_TO_PICTURE.parts + part?.image} alt="Repair Part" />
-        </div>
-        <div className="rp__content">
-          {part?.fits.find(
-            (data) =>
-              data.make === make &&
-              data.model === model &&
-              data.year.find((YEAR) => YEAR === year)
-          ) ? (
-            <div className="rp__content__item fits-model">
-              <div className="check-icon">
-                <CheckOutlined
-                  style={{ fontSize: "48px", color: "rgb(74, 247, 74)" }}
-                />
-              </div>
-              <div className="item-colum">
-                <div>This part fits:</div>
-                <div>{year + " " + make + " " + model}</div>
-              </div>
-            </div>
-          ) : (
-            <div className="rp__content__item fits-model">
-              <div className="check-icon">
-                <InfoCircleOutlined
-                  style={{ fontSize: "48px", color: "red" }}
-                />
-              </div>
-              <div className="item-colum">
-                <div>This part does not fit:</div>
-                <div>{year + " " + make + " " + model}</div>
-              </div>
-            </div>
-          )}
-          <div className="rp__content__item">
-            <div className="item-row">
-              <span className="item-row__span">Price:</span>
-              <span className="item-row__span">$</span>
-              {part?.price}
-            </div>
-            <div className="item-row">
-              <span className="item-row__span">QTY:</span>
+          <hr />
+          <br />
+          <div className="product__row">
+            <div className="product__qty">
+              <span>QTY:</span>
               <InputNumber
                 min={1}
                 defaultValue={1}
-                className="buy__input"
-                style={{ width: 60, marginRight: 5 }}
+                className="product__cart-input"
               />
-              <Button
-                className="btn-buy"
-                type="primary"
-                icon={<ShoppingCartOutlined />}
-              >
-                Add to Cart
-              </Button>
             </div>
+            <Button className="btn-addcart btn-cart--large" type="primary">
+              <ShoppingCartOutlined className="icon" />
+              Add to Cart
+            </Button>
           </div>
+          {make && model && year && (
+            <div
+              className={fitToBike ? "product__row fit" : "product__row fit no-fit"}
+            >
+              {fitToBike ? (
+                <CheckCircleOutlined className="icon" />
+              ) : (
+                <ExclamationCircleOutlined className="icon" />
+              )}
+              <span>
+                {fitToBike ? "This part fits:" : "This part does not fits:"}
+              </span>
+              <span>{year + " " + make + " " + model}</span>
+            </div>
+          )}
         </div>
       </section>
-      <section className="rp__section details">
+      <hr />
+      <section className="product-box details">
         <h3 className="details__title">Details:</h3>
-        <div className="rp__content__item details__content">
-          <p className="details__text">This item fits the following models:</p>
-          {part?.fits.map((data) =>
-            data.year.map((d) => {
-              return <div>{d + " " + data.make + " " + data.model}</div>
-            })
-          )}
-          {/* <a href="kkk">+ view complete vehicle fitment information</a> */}
-        </div>
+        <span className="details__fit-text">
+          This item fits the following models:
+        </span>
+        {part?.fits.map((data) =>
+          data.year.map((d) => {
+            return (
+              <span className="details__fit-item">
+                {d + " " + data.make + " " + data.model}
+              </span>
+            )
+          })
+        )}
       </section>
     </div>
   )

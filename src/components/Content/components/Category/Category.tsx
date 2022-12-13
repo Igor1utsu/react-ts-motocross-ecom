@@ -112,7 +112,7 @@ export const Category = ({ id, category, title }: CategoryProps) => {
       render: (quantity) => (
         <div className="item__buy">
           <InputNumber min={1} defaultValue={1} className="buy__input" />
-          <Button className="btn-buy" type="primary">
+          <Button className="btn-addcart" type="primary">
             <ShoppingCartOutlined />
           </Button>
         </div>

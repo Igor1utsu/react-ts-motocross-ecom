@@ -1,9 +1,16 @@
-.btn-buy {
+.btn-addcart {
   background: rgb(91, 255, 91);
   color: #fff;
   &:hover {
     background: rgb(74, 247, 74) !important;
   }
+}
+
+.btn-cart--large {
+  height: auto;
+  padding: 8px;
+  flex: 1;
+  text-transform: uppercase;
 }
 
 .btn-price {
