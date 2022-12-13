@@ -6,6 +6,7 @@ import { Header } from "../components/Header/Header"
 import { SideBar } from "../components/SideBar/SideBar"
 import { Breadcrumbs } from "../components/Content/components/Breadcrumb/Breadcrumb"
 import { FilterOptionsState } from "../context/FilterOptionsContext"
+import { Background } from "../components/Background/Background"
 
 export const MainLayouts = () => {
   const { pathname } = useLocation()
@@ -15,6 +16,7 @@ export const MainLayouts = () => {
       <Header />
       <FilterOptionsState>
         <main className="main">
+          {pathname === "/" && <Background />}
           {pathname === "/parts" && <SideBar />}
           <div className="content">
             <Breadcrumbs />
