@@ -1,33 +1,24 @@
-import { CloseCircleOutlined } from "@ant-design/icons"
-import { Button, InputNumber } from "antd"
-import { PATH_TO_PICTURE } from "../../data/data"
+import { Button } from "antd"
+import { useContext } from "react"
+import { CartItem } from "../../components/CartItem/CartItem"
+import { CartContext } from "../../context/CartContext"
 import "./Cart.scss"
 
 export const Cart = () => {
+  const { shoppingCart } = useContext(CartContext)
+
   return (
     <div className="container">
       <div className="cart">
         <div className="cart-list">
-          <div className="product">
-            <div className="product__img-wrapper">
-              <img
-                src={
-                  PATH_TO_PICTURE.parts +
-                  "WISECO_PERFORMANCE_PRODUCTS_WISECO_PISTONS-901545756.jpg"
-                }
-                alt="WISECO_PERFORMANCE_PRODUCTS_WISECO_PISTONS"
+          {shoppingCart.map((product) => {
+            return (
+              <CartItem
+                productNumber={product.productNumber}
+                qty={product.qty}
               />
-            </div>
-            <div className="product__content ">
-              <h3 className="product__title">Wiseco Piston Kits</h3>
-              <p className="product__description"># 614M06640</p>
-              <div className="product__price">Price: $ 66</div>
-            </div>
-            <div className="control">
-              <CloseCircleOutlined className="control__icon" />
-              <InputNumber min={1} defaultValue={1} />
-            </div>
-          </div>
+            )
+          })}
         </div>
         <div className="cart-order">
           <h2 className="cart-order__title">Total price</h2>

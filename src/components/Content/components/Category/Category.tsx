@@ -8,6 +8,7 @@ import { IDataParts } from "../../../../shared/model/IDataParts"
 import { PATH_TO_PICTURE } from "../../../../data/data"
 import { useContext, useMemo } from "react"
 import { FilterOptionsContext } from "../../../../context/FilterOptionsContext"
+import { CartContext } from "../../../../context/CartContext"
 
 interface CategoryProps {
   id: number
@@ -18,6 +19,7 @@ interface CategoryProps {
 export const Category = ({ id, category, title }: CategoryProps) => {
   const { make, model, year, checkedBrand, minPrice, maxPrice } =
     useContext(FilterOptionsContext)
+  const { addToCart } = useContext(CartContext)
 
   // фильтруем данные по категориям
   const dataByCategory = PARTS.filter((data) => data.category === category)
@@ -109,10 +111,14 @@ export const Category = ({ id, category, title }: CategoryProps) => {
       title: "Buy",
       dataIndex: "quantity",
       key: "quantity",
-      render: (quantity) => (
+      render: (quantity, data) => (
         <div className="item__buy">
           <InputNumber min={1} defaultValue={1} className="buy__input" />
-          <Button className="btn-addcart" type="primary">
+          <Button
+            className="btn-cart"
+            type="primary"
+            onClick={() => addToCart(data.partNumber)}
+          >
             <ShoppingCartOutlined />
           </Button>
         </div>
