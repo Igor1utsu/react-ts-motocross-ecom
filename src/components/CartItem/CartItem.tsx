@@ -1,6 +1,6 @@
 import PARTS from "../../data/PARTS.json"
-import { CloseCircleOutlined } from "@ant-design/icons"
-import { InputNumber } from "antd"
+import { CloseOutlined } from "@ant-design/icons"
+import { Button, InputNumber } from "antd"
 import { PATH_TO_PICTURE } from "../../data/data"
 import { IDataParts } from "../../shared/model/IDataParts"
 import { CartContext } from "../../context/CartContext"
@@ -24,26 +24,43 @@ export const CartItem = ({ id, qty }: CartItemProps) => {
   }
 
   return (
-    <div className="product">
-      <div className="product__img-wrapper">
-        <img src={PATH_TO_PICTURE.parts + product?.image} alt={product?.name} />
-      </div>
-      <div className="product__content ">
-        <h3 className="product__title">{product?.name}</h3>
-        <p className="product__description">{"# " + product?.partNumber}</p>
-        <div className="product__price">{"Price: $" + product?.price}</div>
-      </div>
-      <div className="control">
-        <CloseCircleOutlined
-          className="control__icon"
+    <>
+      <div className="cart-item">
+        {!product && <span>Product no longer available</span>}
+        {product && (
+          <>
+            <div className="cart-item__img-wrapper">
+              <img
+                src={PATH_TO_PICTURE.parts + product?.image}
+                alt={product?.name}
+              />
+            </div>
+            <div className="cart-item__content">
+              <h3 className="cart-item__title">{product?.name}</h3>
+              <p className="cart-item__description">
+                {"# " + product?.partNumber}
+              </p>
+              <div className="cart-item__price">
+                <span>{"Price: $" + product?.price}</span>
+                <div className="cart-item__qty">
+                  <span>QTY:</span>
+                  <InputNumber
+                    min={0}
+                    value={qty}
+                    onStep={(value) => handleStep(value)}
+                  />
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+        <Button
+          size="small"
+          icon={<CloseOutlined />}
           onClick={() => product && removeFromCart(product.id)}
-        />
-        <InputNumber
-          min={0}
-          value={qty}
-          onStep={(value) => handleStep(value)}
-        />
+          className="btn-remove-cart-item"
+        ></Button>
       </div>
-    </div>
+    </>
   )
 }
