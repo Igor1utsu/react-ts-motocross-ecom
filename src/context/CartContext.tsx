@@ -11,6 +11,7 @@ export const CartContext = createContext<ICartContext>({
   removeFromCart: () => {},
   setQTY: () => {},
   total: 0,
+  items: 0
 })
 
 export const CartContextState = ({
@@ -23,20 +24,26 @@ export const CartContextState = ({
   )
   const [shoppingCart, setShoppingCart] = useState(getCartStorage)
   const [total, setTotal] = useState(0)
+  const [items, setItems] = useState(0)
 
   useEffect(() => {
     let total = 0
+    let items = 0
 
     shoppingCart.forEach((product: IProduct) => {
       // на каждую итерацию ищем продукт в базе данных и приплюсоваем (price x qty) к total
       let currentProduct = PARTS.find((data) => data.id === product.id)
-
+      
       total = currentProduct
-        ? total + currentProduct.price * product.qty
-        : total
+      ? total + currentProduct.price * product.qty
+      : total
+      
+      // также высчитываем суммарное колличество товара
+      items = currentProduct ? items + product.qty : items
     })
-
+    
     setTotal(total)
+    setItems(items)
   }, [shoppingCart])
 
   const addToCart = (productID: number, value: number) => {
@@ -81,6 +88,7 @@ export const CartContextState = ({
         removeFromCart,
         setQTY,
         total,
+        items,
       }}
     >
       {children}

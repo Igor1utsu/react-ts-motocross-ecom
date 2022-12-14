@@ -7,4 +7,5 @@ export interface ICartContext {
   removeFromCart: (id: number) => void
   setQTY: (id: number, value: number) => void
   total: number
+  items: number
 }
