@@ -12,19 +12,21 @@ interface CartItemProps {
 }
 
 export const CartItem = ({ productNumber, qty }: CartItemProps) => {
-  const { removeFromCart } = useContext(CartContext)
+  const { removeFromCart, setQTY } = useContext(CartContext)
 
   const part: IDataParts | undefined = PARTS.find((part) =>
     productNumber ? part.partNumber === productNumber : false
   )
 
+  const handleStep = (value: number | null) => {
+    if (value) part && setQTY(value, part?.partNumber)
+    else part && removeFromCart(part?.partNumber)
+  }
+
   return (
     <div className="product">
       <div className="product__img-wrapper">
-        <img
-          src={PATH_TO_PICTURE.parts + part?.image}
-          alt={part?.name}
-        />
+        <img src={PATH_TO_PICTURE.parts + part?.image} alt={part?.name} />
       </div>
       <div className="product__content ">
         <h3 className="product__title">{part?.name}</h3>
@@ -32,8 +34,15 @@ export const CartItem = ({ productNumber, qty }: CartItemProps) => {
         <div className="product__price">{"Price: $" + part?.price}</div>
       </div>
       <div className="control">
-        <CloseCircleOutlined className="control__icon" onClick={() => part && removeFromCart(part?.partNumber)}/>
-        <InputNumber min={1} defaultValue={qty} />
+        <CloseCircleOutlined
+          className="control__icon"
+          onClick={() => part && removeFromCart(part?.partNumber)}
+        />
+        <InputNumber
+          min={0}
+          value={qty}
+          onStep={(value) => handleStep(value)}
+        />
       </div>
     </div>
   )

@@ -11,11 +11,12 @@ export const Cart = () => {
     <div className="container">
       <div className="cart">
         <div className="cart-list">
-          {shoppingCart.map((product) => {
+          {shoppingCart.map((product, index) => {
             return (
               <CartItem
                 productNumber={product.productNumber}
                 qty={product.qty}
+                key={index}
               />
             )
           })}

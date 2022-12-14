@@ -9,6 +9,7 @@ export const CartContext = createContext<ICartContext>({
   setShoppingCart: () => {},
   addToCart: (data) => {},
   removeFromCart: (data) => {},
+  setQTY: (value) => {},
   total: 0,
 })
 
@@ -64,6 +65,18 @@ export const CartContextState = ({
     setShoppingCart(updateCart)
   }
 
+  const setQTY = (value: number, productNum: string) => {
+    const cloneShoppingCart = [...getCartStorage]
+
+    const updateCart = cloneShoppingCart.map((product) => {
+      if (product.productNumber === productNum)
+        return { ...product, qty: value }
+      else return product
+    })
+    localStorage.setItem("shoppingCart", JSON.stringify(updateCart))
+    setShoppingCart(updateCart)
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -71,6 +84,7 @@ export const CartContextState = ({
         setShoppingCart,
         addToCart,
         removeFromCart,
+        setQTY,
         total,
       }}
     >
