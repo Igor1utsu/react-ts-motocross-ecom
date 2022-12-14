@@ -3,8 +3,8 @@ import { IProduct } from "./IProduct"
 export interface ICartContext {
   shoppingCart: IProduct[]
   setShoppingCart: (data: IProduct[]) => void
-  addToCart: (productNum: string) => void
-  removeFromCart: (productNum: string) => void
-  setQTY: (value: number, productNum: string) => void
+  addToCart: (id: number) => void
+  removeFromCart: (id: number) => void
+  setQTY: (id: number, value: number) => void
   total: number
 }

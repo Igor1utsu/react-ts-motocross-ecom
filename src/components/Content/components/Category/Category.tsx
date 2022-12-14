@@ -117,7 +117,7 @@ export const Category = ({ id, category, title }: CategoryProps) => {
           <Button
             className="btn-cart"
             type="primary"
-            onClick={() => addToCart(data.partNumber)}
+            onClick={() => addToCart(data.id)}
           >
             <ShoppingCartOutlined />
           </Button>

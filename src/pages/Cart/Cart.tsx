@@ -14,7 +14,7 @@ export const Cart = () => {
           {shoppingCart.map((product, index) => {
             return (
               <CartItem
-                productNumber={product.productNumber}
+                id={product.id}
                 qty={product.qty}
                 key={index}
               />

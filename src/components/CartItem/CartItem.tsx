@@ -7,36 +7,36 @@ import { CartContext } from "../../context/CartContext"
 import { useContext } from "react"
 
 interface CartItemProps {
-  productNumber: string
+  id: number
   qty: number
 }
 
-export const CartItem = ({ productNumber, qty }: CartItemProps) => {
+export const CartItem = ({ id, qty }: CartItemProps) => {
   const { removeFromCart, setQTY } = useContext(CartContext)
 
-  const part: IDataParts | undefined = PARTS.find((part) =>
-    productNumber ? part.partNumber === productNumber : false
+  const product: IDataParts | undefined = PARTS.find((data) =>
+    id ? data.id === id : null
   )
 
   const handleStep = (value: number | null) => {
-    if (value) part && setQTY(value, part?.partNumber)
-    else part && removeFromCart(part?.partNumber)
+    if (value) product && setQTY(product.id, value)
+    else product && removeFromCart(product.id)
   }
 
   return (
     <div className="product">
       <div className="product__img-wrapper">
-        <img src={PATH_TO_PICTURE.parts + part?.image} alt={part?.name} />
+        <img src={PATH_TO_PICTURE.parts + product?.image} alt={product?.name} />
       </div>
       <div className="product__content ">
-        <h3 className="product__title">{part?.name}</h3>
-        <p className="product__description">{"# " + part?.partNumber}</p>
-        <div className="product__price">{"Price: $" + part?.price}</div>
+        <h3 className="product__title">{product?.name}</h3>
+        <p className="product__description">{"# " + product?.partNumber}</p>
+        <div className="product__price">{"Price: $" + product?.price}</div>
       </div>
       <div className="control">
         <CloseCircleOutlined
           className="control__icon"
-          onClick={() => part && removeFromCart(part?.partNumber)}
+          onClick={() => product && removeFromCart(product.id)}
         />
         <InputNumber
           min={0}

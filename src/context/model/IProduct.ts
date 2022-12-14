@@ -1,4 +1,4 @@
 export interface IProduct {
-  productNumber: string
+  id: number
   qty: number
 }

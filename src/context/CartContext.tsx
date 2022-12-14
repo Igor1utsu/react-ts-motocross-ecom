@@ -7,9 +7,9 @@ import PARTS from "../data/PARTS.json"
 export const CartContext = createContext<ICartContext>({
   shoppingCart: [],
   setShoppingCart: () => {},
-  addToCart: (data) => {},
-  removeFromCart: (data) => {},
-  setQTY: (value) => {},
+  addToCart: () => {},
+  removeFromCart: () => {},
+  setQTY: () => {},
   total: 0,
 })
 
@@ -29,9 +29,7 @@ export const CartContextState = ({
 
     shoppingCart.forEach((product: IProduct) => {
       // на каждую итерацию ищем продукт в базе данных и приплюсоваем (price x qty) к total
-      let currentProduct = PARTS.find(
-        (part) => part.partNumber === product.productNumber
-      )
+      let currentProduct = PARTS.find((data) => data.id === product.id)
 
       total = currentProduct
         ? total + currentProduct.price * product.qty
@@ -41,36 +39,33 @@ export const CartContextState = ({
     setTotal(total)
   }, [shoppingCart])
 
-  const addToCart = (productNum: string) => {
-    const cloneShoppingCart = [...getCartStorage]
-    const updateCart = cloneShoppingCart.find(
-      (DATA) => DATA.productNumber === productNum
-    )
+  const addToCart = (productID: number) => {
+    const cloneShoppingCart: IProduct[] = [...getCartStorage]
+    const updateCart = cloneShoppingCart.find((data) => data.id === productID)
       ? cloneShoppingCart.map((product) => {
-          if (product.productNumber === productNum)
+          if (product.id === productID)
             return { ...product, qty: product.qty + 1 }
           else return product
         })
-      : [...cloneShoppingCart, { productNumber: productNum, qty: 1 }]
+      : [...cloneShoppingCart, { id: productID, qty: 1 }]
     setShoppingCart(updateCart)
     localStorage.setItem("shoppingCart", JSON.stringify(updateCart))
   }
 
-  const removeFromCart = (productNum: string) => {
-    const cloneShoppingCart = [...getCartStorage]
+  const removeFromCart = (productID: number) => {
+    const cloneShoppingCart: IProduct[] = [...getCartStorage]
     const updateCart = cloneShoppingCart.filter(
-      (product) => product.productNumber !== productNum
+      (product) => product.id !== productID
     )
     localStorage.setItem("shoppingCart", JSON.stringify(updateCart))
     setShoppingCart(updateCart)
   }
 
-  const setQTY = (value: number, productNum: string) => {
-    const cloneShoppingCart = [...getCartStorage]
+  const setQTY = (productID: number, value: number) => {
+    const cloneShoppingCart: IProduct[] = [...getCartStorage]
 
     const updateCart = cloneShoppingCart.map((product) => {
-      if (product.productNumber === productNum)
-        return { ...product, qty: value }
+      if (product.id === productID) return { ...product, qty: value }
       else return product
     })
     localStorage.setItem("shoppingCart", JSON.stringify(updateCart))
