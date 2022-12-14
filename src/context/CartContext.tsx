@@ -39,15 +39,15 @@ export const CartContextState = ({
     setTotal(total)
   }, [shoppingCart])
 
-  const addToCart = (productID: number) => {
+  const addToCart = (productID: number, value: number) => {
     const cloneShoppingCart: IProduct[] = [...getCartStorage]
     const updateCart = cloneShoppingCart.find((data) => data.id === productID)
       ? cloneShoppingCart.map((product) => {
           if (product.id === productID)
-            return { ...product, qty: product.qty + 1 }
+            return { ...product, qty: product.qty + value }
           else return product
         })
-      : [...cloneShoppingCart, { id: productID, qty: 1 }]
+      : [...cloneShoppingCart, { id: productID, qty: value }]
     setShoppingCart(updateCart)
     localStorage.setItem("shoppingCart", JSON.stringify(updateCart))
   }

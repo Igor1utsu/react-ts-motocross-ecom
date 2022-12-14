@@ -109,20 +109,28 @@ export const Category = ({ id, category, title }: CategoryProps) => {
     },
     {
       title: "Buy",
-      dataIndex: "quantity",
-      key: "quantity",
-      render: (quantity, data) => (
-        <div className="item__buy">
-          <InputNumber min={1} defaultValue={1} className="buy__input" />
-          <Button
-            className="btn-cart"
-            type="primary"
-            onClick={() => addToCart(data.id)}
-          >
-            <ShoppingCartOutlined />
-          </Button>
-        </div>
-      ),
+      dataIndex: "byy",
+      key: "buy",
+      render: (_, data) => {
+        let value: number = 1
+        return (
+          <div className="item__buy">
+            <InputNumber
+              defaultValue={1}
+              min={1}
+              onChange={(val) => (val ? (value = val) : null)}
+              className="buy__input"
+            />
+            <Button
+              className="btn-cart"
+              type="primary"
+              onClick={() => addToCart(data.id, value)}
+            >
+              <ShoppingCartOutlined />
+            </Button>
+          </div>
+        )
+      },
       width: 140,
       align: "center",
     },
