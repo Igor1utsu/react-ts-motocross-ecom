@@ -1,11 +1,15 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { createContext } from "react"
 import { ICartContext } from "./model/ICartContext.model"
+import { IProduct } from "../context/model/IProduct"
+import PARTS from "../data/PARTS.json"
 
 export const CartContext = createContext<ICartContext>({
   shoppingCart: [],
   setShoppingCart: () => {},
   addToCart: (data) => {},
+  removeFromCart: (data) => {},
+  total: 0,
 })
 
 export const CartContextState = ({
@@ -17,6 +21,24 @@ export const CartContextState = ({
     localStorage.getItem("shoppingCart") ?? "[]"
   )
   const [shoppingCart, setShoppingCart] = useState(getCartStorage)
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+    let total = 0
+
+    shoppingCart.forEach((product: IProduct) => {
+      // на каждую итерацию ищем продукт в базе данных и приплюсоваем (price x qty) к total
+      let currentProduct = PARTS.find(
+        (part) => part.partNumber === product.productNumber
+      )
+
+      total = currentProduct
+        ? total + currentProduct.price * product.qty
+        : total
+    })
+
+    setTotal(total)
+  }, [shoppingCart])
 
   const addToCart = (productNum: string) => {
     const cloneShoppingCart = [...getCartStorage]
@@ -33,12 +55,23 @@ export const CartContextState = ({
     localStorage.setItem("shoppingCart", JSON.stringify(updateCart))
   }
 
+  const removeFromCart = (productNum: string) => {
+    const cloneShoppingCart = [...getCartStorage]
+    const updateCart = cloneShoppingCart.filter(
+      (product) => product.productNumber !== productNum
+    )
+    localStorage.setItem("shoppingCart", JSON.stringify(updateCart))
+    setShoppingCart(updateCart)
+  }
+
   return (
     <CartContext.Provider
       value={{
         shoppingCart,
         setShoppingCart,
         addToCart,
+        removeFromCart,
+        total,
       }}
     >
       {children}

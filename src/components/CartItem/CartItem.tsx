@@ -3,6 +3,8 @@ import { CloseCircleOutlined } from "@ant-design/icons"
 import { InputNumber } from "antd"
 import { PATH_TO_PICTURE } from "../../data/data"
 import { IDataParts } from "../../shared/model/IDataParts"
+import { CartContext } from "../../context/CartContext"
+import { useContext } from "react"
 
 interface CartItemProps {
   productNumber: string
@@ -10,6 +12,7 @@ interface CartItemProps {
 }
 
 export const CartItem = ({ productNumber, qty }: CartItemProps) => {
+  const { removeFromCart } = useContext(CartContext)
 
   const part: IDataParts | undefined = PARTS.find((part) =>
     productNumber ? part.partNumber === productNumber : false
@@ -29,7 +32,7 @@ export const CartItem = ({ productNumber, qty }: CartItemProps) => {
         <div className="product__price">{"Price: $" + part?.price}</div>
       </div>
       <div className="control">
-        <CloseCircleOutlined className="control__icon" />
+        <CloseCircleOutlined className="control__icon" onClick={() => part && removeFromCart(part?.partNumber)}/>
         <InputNumber min={1} defaultValue={qty} />
       </div>
     </div>
