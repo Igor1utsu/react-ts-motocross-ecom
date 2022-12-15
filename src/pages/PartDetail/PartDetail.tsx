@@ -119,9 +119,9 @@ export const PartDetail = () => {
           This item fits the following models:
         </span>
         {part?.fits.map((data) =>
-          data.year.map((d) => {
+          data.year.map((d, index) => {
             return (
-              <span className="details__fit-item">
+              <span className="details__fit-item" key={index}>
                 {d + " " + data.make + " " + data.model}
               </span>
             )
