@@ -7,6 +7,10 @@
   justify-content: space-between;
   flex-wrap: wrap;
 
+  &__messege {
+    text-align: center;
+  }
+
   &-list {
     flex: 1;
     margin-right: 20px;
