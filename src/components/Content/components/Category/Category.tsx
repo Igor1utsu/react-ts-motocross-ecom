@@ -9,6 +9,7 @@ import { PATH_TO_PICTURE } from "../../../../data/data"
 import { useContext, useMemo } from "react"
 import { FilterOptionsContext } from "../../../../context/FilterOptionsContext"
 import { CartContext } from "../../../../context/CartContext"
+import { useNotification } from "../../../../utils/hooks"
 
 interface CategoryProps {
   id: number
@@ -20,6 +21,7 @@ export const Category = ({ id, category, title }: CategoryProps) => {
   const { make, model, year, checkedBrand, minPrice, maxPrice } =
     useContext(FilterOptionsContext)
   const { addToCart } = useContext(CartContext)
+  const { openNotification, contextHolder } = useNotification()
 
   // фильтруем данные по категориям
   const dataByCategory = PARTS.filter((data) => data.category === category)
@@ -113,6 +115,11 @@ export const Category = ({ id, category, title }: CategoryProps) => {
       key: "buy",
       render: (_, data) => {
         let value: number = 1
+        const handleAddToCart = () => {
+          openNotification("bottomRight", data)
+          addToCart(data.id, value)
+        }
+
         return (
           <div className="item__buy">
             <InputNumber
@@ -124,7 +131,7 @@ export const Category = ({ id, category, title }: CategoryProps) => {
             <Button
               className="btn-cart"
               type="primary"
-              onClick={() => addToCart(data.id, value)}
+              onClick={() => handleAddToCart()}
             >
               <ShoppingCartOutlined />
             </Button>
@@ -139,6 +146,7 @@ export const Category = ({ id, category, title }: CategoryProps) => {
   return (
     <div className="category">
       <div className="category__header">{title}</div>
+      {contextHolder}
       <Table
         columns={columns}
         dataSource={PartsDataArray}
