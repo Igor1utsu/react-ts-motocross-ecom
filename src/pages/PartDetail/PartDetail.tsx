@@ -11,12 +11,16 @@ import { useParams } from "react-router-dom"
 import { ParamsType } from "./model"
 import { PATH_TO_PICTURE } from "../../data/data"
 import { IDataParts } from "../../shared/model/IDataParts"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { FilterOptionsContext } from "../../context/FilterOptionsContext"
+import { CartContext } from "../../context/CartContext"
 
 export const PartDetail = () => {
   const { make, model, year } = useContext(FilterOptionsContext)
   const params = useParams<ParamsType>()
+  const { addToCart } = useContext(CartContext)
+  const [qtyInput, setQtyInput] = useState<number>(1)
+
   const part: IDataParts | undefined = PARTS.find((part) =>
     params.number ? part.partNumber === params.number : false
   )
@@ -30,6 +34,11 @@ export const PartDetail = () => {
       bike.model === model &&
       bike.year.find((YEAR) => YEAR === year)
   )
+
+  const handleAddToCart = () => {
+    part && addToCart(part.id, qtyInput)
+    setQtyInput(1)
+  }
 
   return (
     <div className="product">
@@ -57,18 +66,25 @@ export const PartDetail = () => {
               <span>QTY:</span>
               <InputNumber
                 min={1}
-                defaultValue={1}
+                value={qtyInput}
                 className="product__cart-input"
+                onChange={(val) => val && setQtyInput(val)}
               />
             </div>
-            <Button className="btn-addcart btn-cart--large" type="primary">
+            <Button
+              className="btn-cart btn-cart--large"
+              type="primary"
+              onClick={() => handleAddToCart()}
+            >
               <ShoppingCartOutlined className="icon" />
               Add to Cart
             </Button>
           </div>
           {make && model && year && (
             <div
-              className={fitToBike ? "product__row fit" : "product__row fit no-fit"}
+              className={
+                fitToBike ? "product__row fit" : "product__row fit no-fit"
+              }
             >
               {fitToBike ? (
                 <CheckCircleOutlined className="icon" />
