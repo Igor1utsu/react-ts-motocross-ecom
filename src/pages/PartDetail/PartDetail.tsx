@@ -7,7 +7,7 @@ import { Button, InputNumber } from "antd"
 import "./PartDetail.scss"
 import PARTS from "../../data/PARTS.json"
 import BRANDS from "../../data/BRANDS.json"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { ParamsType } from "./model"
 import { PATH_TO_PICTURE } from "../../data/data"
 import { IDataParts } from "../../shared/model/IDataParts"
@@ -18,8 +18,9 @@ import { CartContext } from "../../context/CartContext"
 export const PartDetail = () => {
   const { make, model, year } = useContext(FilterOptionsContext)
   const params = useParams<ParamsType>()
-  const { addToCart } = useContext(CartContext)
+  const { shoppingCart, addToCart } = useContext(CartContext)
   const [qtyInput, setQtyInput] = useState<number>(1)
+  const history = useNavigate()
 
   const part: IDataParts | undefined = PARTS.find((part) =>
     params.number ? part.partNumber === params.number : false
@@ -39,6 +40,8 @@ export const PartDetail = () => {
     part && addToCart(part.id, qtyInput)
     setQtyInput(1)
   }
+
+  const isAdded = shoppingCart.find((data) => data.id === part?.id)
 
   return (
     <div className="product">
@@ -71,14 +74,24 @@ export const PartDetail = () => {
                 onChange={(val) => val && setQtyInput(val)}
               />
             </div>
-            <Button
-              className="btn-cart btn-cart--large"
-              type="primary"
-              onClick={() => handleAddToCart()}
-            >
-              <ShoppingCartOutlined className="icon" />
-              Add to Cart
-            </Button>
+            {!isAdded ? (
+              <Button
+                className="btn-cart btn-cart--large"
+                type="primary"
+                onClick={() => handleAddToCart()}
+              >
+                <ShoppingCartOutlined className="icon" />
+                Add to Cart
+              </Button>
+            ) : (
+              <Button
+                className="btn-cart btn-cart--large"
+                type="primary"
+                onClick={() => history("/shopcart")}
+              >
+                View in cart
+              </Button>
+            )}
           </div>
           {make && model && year && (
             <div
