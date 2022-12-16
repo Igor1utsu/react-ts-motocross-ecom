@@ -12,21 +12,8 @@
     font-size: 20px;
   }
 
-  .cart-link {
-    height: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-    &:hover {
-      background: rgb(29, 29, 29);
-    }
-    
-    &__icon {
-      font-size: 28px;
-      color: white;
-    }
+  .cart-link-icon {
+    font-size: 28px;
+    color: white;
   }
 }

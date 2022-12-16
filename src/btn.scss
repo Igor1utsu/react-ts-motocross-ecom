@@ -6,7 +6,17 @@
   }
 }
 
-.btn-cart--large {
+.btn-show-drawer {
+  height: 48px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: inherit;
+  &:hover {
+    background: rgb(29, 29, 29);
+  }
+}
+
+.btn--large {
   height: auto;
   width: 100%;
   padding: 8px;

@@ -76,7 +76,7 @@ export const PartDetail = () => {
             </div>
             {!isAdded ? (
               <Button
-                className="btn-cart btn-cart--large"
+                className="btn-cart btn--large"
                 type="primary"
                 onClick={() => handleAddToCart()}
               >
@@ -85,7 +85,7 @@ export const PartDetail = () => {
               </Button>
             ) : (
               <Button
-                className="btn-cart btn-cart--large"
+                className="btn-cart btn--large"
                 type="primary"
                 onClick={() => history("/shopcart")}
               >

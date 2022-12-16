@@ -1,0 +1,29 @@
+.drawer {
+  &__text {
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      font-size: 22px;
+    }
+  }
+
+  .cart-item {
+    font-size: 12px;
+
+    &:nth-of-type(2) {
+      margin-top: 20px;
+    }
+
+    &__title {
+      font-size: 14px;
+    }
+
+    &__img-wrapper {
+      width: 64px;
+      height: 64px;
+    }
+  }
+}
