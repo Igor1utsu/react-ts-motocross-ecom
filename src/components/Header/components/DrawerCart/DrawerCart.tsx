@@ -21,6 +21,7 @@ export const DrawerCart = ({ open, onClose }: IDrawerCartProps) => {
       onClose={onClose}
       open={open}
       className="drawer"
+      headerStyle={{ textAlign: "center" }}
     >
       <div className="drawer__text">
         Total:<span>{`${total} $`}</span>
