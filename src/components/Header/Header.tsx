@@ -1,8 +1,8 @@
 import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Badge } from "antd"
 import { useContext, useState } from "react"
-import { Link } from "react-router-dom"
 import { CartContext } from "../../context/CartContext"
+import { Logo } from "../Logo/Logo"
 import { DrawerCart } from "./components/DrawerCart/DrawerCart"
 import "./Header.scss"
 
@@ -21,9 +21,7 @@ export const Header = () => {
   return (
     <>
       <header className="header">
-        <Link to="/">
-          <h1 className="header__title">TypeScript React App</h1>
-        </Link>
+        <Logo />
         <button className="btn-show-drawer" onClick={showDrawer}>
           <Badge size="small" count={items}>
             <ShoppingCartOutlined className="cart-link-icon" />
