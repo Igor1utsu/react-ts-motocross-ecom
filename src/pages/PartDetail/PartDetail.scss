@@ -1,4 +1,10 @@
+@import "../../styles/imports/variables";
+
 .product {
+  @extend %window-style;
+  margin-bottom: 40px;
+  padding: 40px;
+
   .product-box {
     display: flex;
     flex-wrap: wrap;

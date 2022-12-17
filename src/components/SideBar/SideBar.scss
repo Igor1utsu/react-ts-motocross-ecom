@@ -1,9 +1,12 @@
+@import "../../styles/imports/variables";
+
 .sidebar {
+  padding-top: 42px;
   width: 250px;
   padding-left: 15px;
 
   &__menu {
-    height: 100%;
+    @extend %window-style;
 
     .menu__select {
       display: flex;
@@ -30,7 +33,7 @@
       border-radius: 0;
       width: 100%;
     }
-    
+
     .ant-menu-submenu-title:hover {
       background: #e9e9e9 !important;
     }

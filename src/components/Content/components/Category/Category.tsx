@@ -144,8 +144,8 @@ export const Category = ({ id, category, title }: CategoryProps) => {
   ]
 
   return (
-    <div className="category">
-      <div className="category__header">{title}</div>
+    <li className="category">
+      <h2 className="category__header">{title}</h2>
       {contextHolder}
       <Table
         columns={columns}
@@ -153,6 +153,6 @@ export const Category = ({ id, category, title }: CategoryProps) => {
         pagination={false}
         showHeader={id === 1 && true}
       />
-    </div>
+    </li>
   )
 }
