@@ -1,16 +1,14 @@
-.btn-cart {
-  background: rgb(91, 255, 91);
+.btn--gree {
+  background: rgb(74, 247, 74);
   color: #fff;
   &:hover {
-    background: rgb(74, 247, 74) !important;
+    background: rgb(91, 255, 91);
   }
 }
 
-.btn-show-drawer {
+.btn--show-drawer {
   height: 48px;
-  padding-left: 10px;
-  padding-right: 10px;
-  background: inherit;
+  border-radius: 0;
   &:hover {
     background: rgb(29, 29, 29);
   }
@@ -21,23 +19,13 @@
   width: 100%;
   padding: 8px;
   flex: 1;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
-.btn-price {
-  padding-left: 8px;
-  padding-right: 8px;
-  border-radius: 50%;
-}
-
-.btn-remove-cart-item {
+.btn--remove-cart-item {
   position: absolute;
   top: 7px;
   right: 7px;
   color: red;
-  border: 0;
-  &:hover {
-    color: red !important;
-    border: 0;
-  }
 }

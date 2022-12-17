@@ -1,5 +1,5 @@
 import { ShoppingCartOutlined } from "@ant-design/icons"
-import { Badge } from "antd"
+import { Badge, Button } from "antd"
 import { useContext, useState } from "react"
 import { CartContext } from "../../context/CartContext"
 import { Logo } from "../Logo/Logo"
@@ -22,11 +22,11 @@ export const Header = () => {
     <>
       <header className="header">
         <Logo />
-        <button className="btn-show-drawer" onClick={showDrawer}>
+        <Button type="ghost" onClick={showDrawer} className="btn--show-drawer">
           <Badge size="small" count={items}>
             <ShoppingCartOutlined className="cart-link-icon" />
           </Badge>
-        </button>
+        </Button>
       </header>
       <DrawerCart open={openDrawer} onClose={onCloseDrawer} />
     </>

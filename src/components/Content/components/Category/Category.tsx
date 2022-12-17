@@ -129,9 +129,9 @@ export const Category = ({ id, category, title }: CategoryProps) => {
               className="buy__input"
             />
             <Button
-              className="btn-cart"
-              type="primary"
+              type="ghost"
               onClick={() => handleAddToCart()}
+              className="btn--gree"
             >
               <ShoppingCartOutlined />
             </Button>

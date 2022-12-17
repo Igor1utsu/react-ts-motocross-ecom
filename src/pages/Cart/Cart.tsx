@@ -31,7 +31,7 @@ export const Cart = () => {
               <span>{"Items ( " + items + " )"}</span>
               <span className="total__price">{total + " $"}</span>
             </div>
-            <Button className="btn-cart btn-cart--large" type="primary">
+            <Button type="ghost" className="btn--gree btn--large">
               Buy
             </Button>
           </div>

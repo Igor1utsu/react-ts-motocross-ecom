@@ -37,7 +37,7 @@ export const FilterByPrice: React.FC = () => {
         type="number"
         className="input-price"
       ></Input>
-      <Button htmlType="submit" className="btn-price">
+      <Button htmlType="submit" style={{ paddingLeft: 10, paddingRight: 10 }}>
         <ArrowRightOutlined />
       </Button>
     </form>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Checkbox, MenuProps } from "antd"
+import { Button, Checkbox, MenuProps } from "antd"
 import { Menu } from "antd"
 import BRANDS from "../../../../data/BRANDS.json"
 import { SelectMake } from "./components/SelectMake/SelectMake"
@@ -81,7 +81,13 @@ export const FilterParts: React.FC = () => {
       <div className="menu__select">
         <span>Select to Bike</span>
         {make && model && year && (
-          <a onClick={() => clearSelectBike()}>remove</a>
+          <Button
+            type="link"
+            onClick={() => clearSelectBike()}
+            style={{ padding: 0, lineHeight: "150%", height: 22 }}
+          >
+            remove
+          </Button>
         )}
       </div>,
       "bike",

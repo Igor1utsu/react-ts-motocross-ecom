@@ -56,10 +56,11 @@ export const CartItem = ({ id, qty }: CartItemProps) => {
           </>
         )}
         <Button
+          type="ghost"
           size="small"
           icon={<CloseOutlined />}
           onClick={() => product && removeFromCart(product.id)}
-          className="btn-remove-cart-item"
+          className="btn--remove-cart-item"
         ></Button>
       </li>
     </>

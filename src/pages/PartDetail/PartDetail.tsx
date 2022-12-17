@@ -76,18 +76,18 @@ export const PartDetail = () => {
             </div>
             {!isAdded ? (
               <Button
-                className="btn-cart btn--large"
-                type="primary"
+                type="ghost"
                 onClick={() => handleAddToCart()}
+                className="btn--gree btn--large"
               >
                 <ShoppingCartOutlined className="icon" />
                 Add to Cart
               </Button>
             ) : (
               <Button
-                className="btn-cart btn--large"
-                type="primary"
+                type="ghost"
                 onClick={() => history("/shopcart")}
+                className="btn--gree btn--large"
               >
                 View in cart
               </Button>
