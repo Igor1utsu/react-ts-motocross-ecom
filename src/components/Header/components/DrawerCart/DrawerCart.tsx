@@ -24,13 +24,14 @@ export const DrawerCart = ({ open, onClose }: IDrawerCartProps) => {
       headerStyle={{ textAlign: "center" }}
     >
       <div className="drawer__text">
-        Total:<span>{`${total} $`}</span>
+        Total:<span className="total-price">{`${total} $`}</span>
       </div>
       {shoppingCart.length ? (
         <Button
           type="primary"
           className="btn--large"
           onClick={() => history("/shopcart")}
+          style={{ marginBottom: 20 }}
         >
           Сheckout
         </Button>

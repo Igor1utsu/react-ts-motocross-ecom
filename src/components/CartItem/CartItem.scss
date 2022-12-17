@@ -1,0 +1,65 @@
+@import "../../styles/imports/variables";
+
+.cart-item {
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    @extend %window-style;
+  
+    &__title {
+      width: calc(100% - 30px);
+      font-size: 22px;
+      text-transform: uppercase;
+    }
+  
+    &__description {
+      padding-top: 5px;
+      color: rgb(116, 116, 116);
+    }
+  
+    &__img-wrapper {
+      width: 96px;
+      height: 96px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px rgb(220, 220, 220) solid;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  
+    &__content {
+      padding-left: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+    }
+  
+    &__price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+  
+      & > span {
+        padding-top: 5px;
+      }
+    }
+  
+    &__qty {
+      padding-left: 10px;
+      display: flex;
+      align-items: center;
+      color: rgb(116, 116, 116);
+  
+      span {
+        padding-right: 5px;
+      }
+    }
+  }

@@ -1,3 +1,4 @@
+import "./CartItem.scss"
 import PARTS from "../../data/PARTS.json"
 import { CloseOutlined } from "@ant-design/icons"
 import { Button, InputNumber } from "antd"
@@ -25,7 +26,7 @@ export const CartItem = ({ id, qty }: CartItemProps) => {
 
   return (
     <>
-      <div className="cart-item">
+      <li className="cart-item">
         {!product && <span>Product no longer available</span>}
         {product && (
           <>
@@ -60,7 +61,7 @@ export const CartItem = ({ id, qty }: CartItemProps) => {
           onClick={() => product && removeFromCart(product.id)}
           className="btn-remove-cart-item"
         ></Button>
-      </div>
+      </li>
     </>
   )
 }
