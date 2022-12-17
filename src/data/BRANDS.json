@@ -25,7 +25,7 @@
     },
     {
         "id": 5,
-        "name": "pro-Circuit",
+        "name": "pro-circuit",
         "title": "Pro-Circuit",
         "imageName": "Pro-Circuit.png"
     },
@@ -46,5 +46,41 @@
         "name": "wiseco",
         "title": "Wiseco",
         "imageName": "Wiseco.png"
+    },
+    {
+        "id": 9,
+        "name": "moose",
+        "title": "Moose",
+        "imageName": "Moose.jpg"
+    },
+    {
+        "id": 10,
+        "name": "ebc",
+        "title": "EBC",
+        "imageName": "EBC.jpg"
+    },
+    {
+        "id": 11,
+        "name": "maxima",
+        "title": "Maxima",
+        "imageName": "Maxima.jpg"
+    },
+    {
+        "id": 12,
+        "name": "boyesen",
+        "title": "Boyesen",
+        "imageName": "Boyesen.jpg"
+    },
+    {
+        "id": 13,
+        "name": "renthal",
+        "title": "Renthal",
+        "imageName": "Renthal.gif"
+    },
+    {
+        "id": 13,
+        "name": "motion-pro",
+        "title": "Motion  Pro",
+        "imageName": "Motion-pro.png"
     }
 ]

@@ -67,5 +67,319 @@
         "year": [1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
       }
     ]
+  },
+  {
+    "id": 5,
+    "name": "Pro Circuit Platinum Pipe",
+    "brand": "pro-circuit",
+    "category": "exhaust",
+    "partNumber": "PH92250P",
+    "price": 273.22,
+    "image": "Pro_Circuit_Platinum_2_Pipe-902888911.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1992, 1993, 1994]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Pro Circuit Factory 304 Silencer - 2-Stroke",
+    "brand": "pro-circuit",
+    "category": "exhaust",
+    "partNumber": "SH92250-SE",
+    "price": 145.36,
+    "image": "Pro_Circuit_304_Factory_Sound_Silencer-902888917.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1992, 1993, 1994, 1995, 1996]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "FMF Gnarly 2-Stroke Pipe",
+    "brand": "fmf",
+    "category": "exhaust",
+    "partNumber": "020027",
+    "price": 292.49,
+    "image": "FMF_Racing-New_GNARLY_PIPE_CR250_9296-905465781.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1992, 1993, 1994, 1995, 1996]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "FMF Powercore 2 Muffler",
+    "brand": "fmf",
+    "category": "exhaust",
+    "partNumber": "020207",
+    "price": 161.99,
+    "image": "FMF_Racing-New_FMF_PWRCORE_II_CR250_926-905465007.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1992, 1993, 1994, 1995, 1996]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Moose Qualifier Brake Pads Front",
+    "brand": "moose",
+    "category": "brakes",
+    "partNumber": "M814-ORG",
+    "price": 18.95,
+    "image": "Moose_Qualifier_Brake_Pads-904173857.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "C125R",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994]
+      },
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994]
+      },
+      {
+        "make": "honda",
+        "model": "CR500",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Moose Qualifier Brake Pads Rear",
+    "brand": "moose",
+    "category": "brakes",
+    "partNumber": "M815-ORG",
+    "price": 18.95,
+    "image": "Moose_Qualifier_Brake_Pads-904173857.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "C125R",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      },
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      },
+      {
+        "make": "honda",
+        "model": "CR500",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Moose Brake Caliper Rebuild Kit Front",
+    "brand": "moose",
+    "category": "brakes",
+    "partNumber": "1702-0267",
+    "price": 27.95,
+    "image": "Moose_Brake_Caliper_Rebuild_Kits-905749193.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "C125R",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+        2003, 2004, 2005, 2006, 2007]
+      },
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+        2003, 2004, 2005, 2006, 2007]
+      },
+      {
+        "make": "honda",
+        "model": "CR500",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "EBC Standard Brake Rotor Front",
+    "brand": "ebc",
+    "category": "brakes",
+    "partNumber": "MD6001D",
+    "price": 76.00,
+    "image": "EBC_Standard_Brake_Rotor-903997869.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "C125R",
+        "year": [1992, 1993, 1994]
+      },
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1992, 1993, 1994]
+      },
+      {
+        "make": "honda",
+        "model": "CR500",
+        "year": [1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "EBC Standard Brake Rotor Rear",
+    "brand": "ebc",
+    "category": "brakes",
+    "partNumber": "MD6002D",
+    "price": 76.00,
+    "image": "EBC_Replacement_Brake_Rotors-900724061.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "C125R",
+        "year": [1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997]
+      },
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996]
+      },
+      {
+        "make": "honda",
+        "model": "CR500",
+        "year": [1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Maxima Racing Oils ProFilter Premium Air Filter",
+    "brand": "maxima",
+    "category": "fuel&air",
+    "partNumber": "MTX-1001-00",
+    "price": 23.38,
+    "image": "Maxima_Premium_Air_Filter-903019409.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "C125R",
+        "year": [1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      },
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      },
+      {
+        "make": "honda",
+        "model": "CR500",
+        "year": [1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Moose Precision Pre-Oiled Air Filter",
+    "brand": "moose",
+    "category": "fuel&air",
+    "partNumber": "P1-20-43",
+    "price": 31.95 ,
+    "image": "Moose_Precision_PreOiled_Air_Filter-908347115.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "C125R",
+        "year": [1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      },
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      },
+      {
+        "make": "honda",
+        "model": "CR500",
+        "year": [1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Boyesen Reed Valves",
+    "brand": "boyesen",
+    "category": "fuel&air",
+    "partNumber": "RL-02",
+    "price": 40.94,
+    "image": "Boyesen_Replacement_Power_Reeds_for_Rad_Valve-904391445.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Renthal 7/8in. Handlebar",
+    "brand": "renthal",
+    "category": "controls",
+    "partNumber": "97108RD01185",
+    "price": 98.94,
+    "image": "Renthal-902952889.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "C125R",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+        2003, 2004, 2005, 2006, 2007]
+      },
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+        2003, 2004, 2005, 2006, 2007]
+      },
+      {
+        "make": "honda",
+        "model": "CR500",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001]
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Motion Pro Throttle Cable",
+    "brand": "motion-pro",
+    "category": "controls",
+    "partNumber": "02-0247",
+    "price": 5.99 ,
+    "image": "Motion_Pro_MotocrossOffRoad_Throttle_Cable-904309631.jpg",
+    "fits": [
+      {
+        "make": "honda",
+        "model": "C125R",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+      },
+      {
+        "make": "honda",
+        "model": "CR250R",
+        "year": [1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+        2003]
+      }
+    ]
   }
 ]
