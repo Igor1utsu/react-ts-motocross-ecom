@@ -1,1 +1,1 @@
-export type ParamsType = "number"
+export type IParams = "number"

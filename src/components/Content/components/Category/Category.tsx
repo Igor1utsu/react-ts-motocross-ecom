@@ -11,13 +11,13 @@ import { FilterOptionsContext } from "../../../../context/FilterOptionsContext"
 import { CartContext } from "../../../../context/CartContext"
 import { useNotification } from "../../../../utils/hooks"
 
-interface CategoryProps {
+interface ICategoryProps {
   id: number
   category: string
   title: string
 }
 
-export const Category = ({ id, category, title }: CategoryProps) => {
+export const Category = ({ id, category, title }: ICategoryProps) => {
   const { make, model, year, checkedBrand, minPrice, maxPrice } =
     useContext(FilterOptionsContext)
   const { addToCart } = useContext(CartContext)

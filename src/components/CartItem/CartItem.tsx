@@ -7,12 +7,12 @@ import { IDataParts } from "../../shared/model/IDataParts"
 import { CartContext } from "../../context/CartContext"
 import { useContext } from "react"
 
-interface CartItemProps {
+interface ICartItemProps {
   id: number
   qty: number
 }
 
-export const CartItem = ({ id, qty }: CartItemProps) => {
+export const CartItem = ({ id, qty }: ICartItemProps) => {
   const { removeFromCart, setQTY } = useContext(CartContext)
 
   const product: IDataParts | undefined = PARTS.find((data) =>

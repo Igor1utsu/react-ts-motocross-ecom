@@ -8,7 +8,7 @@ import { SelectYear } from "./components/SelectYear/SelectYear"
 import { FilterByPrice } from "./components/FilterByPrice/FilterByPrice"
 import { FilterOptionsContext } from "../../../../context/FilterOptionsContext"
 
-interface BrandType {
+interface IBrand {
   id: number
   name: string
   title: string
@@ -38,7 +38,7 @@ export const FilterParts: React.FC = () => {
     useContext(FilterOptionsContext)
 
   const brandList = BRANDS.map((brand) => {
-    const changeHandler = (brand: BrandType) => {
+    const changeHandler = (brand: IBrand) => {
       // проверем useState на наличие брендов, затем обновляем данные
       if (checkedBrand.includes(brand.name)) {
         const updateCheckedBrand = checkedBrand.filter(

@@ -2,7 +2,7 @@ import "./Parts.scss"
 import CATEGORIES from "../../data/CATEGORIES.json"
 import { Category } from "../../components/Content/components/Category/Category"
 
-interface CategoriesType {
+interface ICategories {
   id: number
   category: string
   title: string
@@ -11,7 +11,7 @@ interface CategoriesType {
 export const Parts = () => {
   return (
     <ul className="parts">
-      {CATEGORIES.map((data: CategoriesType) => (
+      {CATEGORIES.map((data: ICategories) => (
         <Category
           id={data.id}
           category={data.category}

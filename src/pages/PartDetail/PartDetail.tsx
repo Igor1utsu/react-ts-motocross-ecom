@@ -8,7 +8,7 @@ import "./PartDetail.scss"
 import PARTS from "../../data/PARTS.json"
 import BRANDS from "../../data/BRANDS.json"
 import { useNavigate, useParams } from "react-router-dom"
-import { ParamsType } from "./model"
+import { IParams } from "./model"
 import { PATH_TO_PICTURE } from "../../data/data"
 import { IDataParts } from "../../shared/model/IDataParts"
 import { useContext, useState } from "react"
@@ -17,7 +17,7 @@ import { CartContext } from "../../context/CartContext"
 
 export const PartDetail = () => {
   const { make, model, year } = useContext(FilterOptionsContext)
-  const params = useParams<ParamsType>()
+  const params = useParams<IParams>()
   const { shoppingCart, addToCart } = useContext(CartContext)
   const [qtyInput, setQtyInput] = useState<number>(1)
   const history = useNavigate()
