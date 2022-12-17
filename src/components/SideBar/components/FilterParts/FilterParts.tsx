@@ -34,8 +34,13 @@ function getItem(
 }
 
 export const FilterParts: React.FC = () => {
-  const { make, model, year, clearSelectBike, checkedBrand, setChekedBrand } =
-    useContext(FilterOptionsContext)
+  const {
+    isSelectBike,
+    setIsSelectBike,
+    clearSelectBike,
+    checkedBrand,
+    setChekedBrand,
+  } = useContext(FilterOptionsContext)
 
   const brandList = BRANDS.map((brand) => {
     const changeHandler = (brand: IBrand) => {
@@ -76,25 +81,29 @@ export const FilterParts: React.FC = () => {
     getItem(<SelectYear />, "year", null),
   ]
 
-  const items: MenuProps["items"] = [
+  const itemsSelectBike: MenuProps["items"] = [
     getItem(
-      <div className="menu__select">
+      <h3 className="menu__select">
         <span>Select to Bike</span>
-        {make && model && year && (
-          <Button
-            type="link"
-            onClick={() => clearSelectBike()}
-            style={{ padding: 0, lineHeight: "150%", height: 22 }}
-          >
-            remove
-          </Button>
-        )}
-      </div>,
+        <Button
+          type="link"
+          onClick={() => {
+            clearSelectBike()
+            setIsSelectBike(false)
+          }}
+          style={{ padding: 0, lineHeight: "150%", height: 22 }}
+        >
+          remove
+        </Button>
+      </h3>,
       "bike",
       null,
       selectBike,
       "group"
     ),
+  ]
+  
+  const itemsOther: MenuProps["items"] = [
     getItem("Brand", "brand", null, brandList),
     getItem("Price: $", "price", null, [
       getItem(<FilterByPrice />, "filterByPrice", null),
@@ -102,11 +111,19 @@ export const FilterParts: React.FC = () => {
   ]
 
   return (
-    <Menu
-      defaultOpenKeys={["brand"]}
-      mode="inline"
-      items={items}
-      className="sidebar__menu"
-    />
+    <>
+      <Menu
+        mode="inline"
+        items={itemsSelectBike}
+        className="sidebar__menu select-to-bike-group"
+      />
+      <Menu
+        defaultOpenKeys={["brand"]}
+        mode="inline"
+        items={itemsOther}
+        className="sidebar__menu"
+      />
+      {isSelectBike && <div className="overlay"></div>}
+    </>
   )
 }

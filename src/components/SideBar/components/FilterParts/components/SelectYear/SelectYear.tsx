@@ -4,10 +4,12 @@ import { FilterOptionsContext } from "../../../../../../context/FilterOptionsCon
 import { filtersCookies } from "../../../../SideBar.const"
 
 export const SelectYear: React.FC = () => {
-  const { make, model, year, setYear, bikeYearArray } = useContext(FilterOptionsContext)
+  const { make, model, year, setYear, setIsSelectBike, bikeYearArray } = useContext(FilterOptionsContext)
 
   const changeHandler = (value: number) => {
     setYear(value)
+    setIsSelectBike(false)
+
     // добавляем выбранный мотоцикл в куки
     document.cookie = `${filtersCookies.make}=${make}`
     document.cookie = `${filtersCookies.model}=${model}`

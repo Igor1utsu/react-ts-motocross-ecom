@@ -3,11 +3,12 @@ import { useContext } from "react"
 import { FilterOptionsContext } from "../../../../../../context/FilterOptionsContext"
 
 export const SelectModel: React.FC = () => {
-  const { make, model, setModel, setYear, bikeModelArray } = useContext(FilterOptionsContext)
+  const { make, model, setModel, setYear, setIsSelectBike, bikeModelArray } = useContext(FilterOptionsContext)
   
   const onChange = (value: string) => {
     setYear(null)
     setModel(value)
+    setIsSelectBike(true)
   }
 
   return (

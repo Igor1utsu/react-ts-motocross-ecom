@@ -9,9 +9,11 @@ export const FilterOptionsContext = createContext<IFilterOptions>({
   make: null,
   model: null,
   year: null,
+  isSelectBike: false,
   setMake: () => {},
   setModel: () => {},
   setYear: () => {},
+  setIsSelectBike: () => {},
   clearSelectBike: () => {},
   checkedBrand: [""],
   setChekedBrand: () => {},
@@ -30,6 +32,7 @@ export const FilterOptionsState = ({
   const [make, setMake] = useState<string | null>(cookies._make || null)
   const [model, setModel] = useState<string | null>(cookies._model || null)
   const [year, setYear] = useState<number | null>(Number(cookies._year) || null)
+  const [isSelectBike, setIsSelectBike] = useState(false)
   const [checkedBrand, setChekedBrand] = useState(
     JSON.parse(sessionStorage.getItem("checkedBrand") ?? "[]")
   )
@@ -65,6 +68,8 @@ export const FilterOptionsState = ({
         setMake,
         setModel,
         setYear,
+        isSelectBike,
+        setIsSelectBike,
         bikeModelArray,
         bikeYearArray,
         clearSelectBike,

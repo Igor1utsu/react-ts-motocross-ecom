@@ -4,9 +4,11 @@ export interface IFilterOptions {
   make: string | null
   model: string | null
   year: number | null
+  isSelectBike: boolean
   setMake: (value: string) => void
   setModel: (value: string | null) => void
   setYear: (value: number | null) => void
+  setIsSelectBike: (value: boolean) => void
   clearSelectBike: () => void
   bikeModelArray?: IBikeModel[]
   bikeYearArray?: number[]

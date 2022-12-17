@@ -7,6 +7,7 @@
 
   &__menu {
     @extend %window-style;
+    margin-bottom: 10px;
 
     .menu__select {
       display: flex;
@@ -41,5 +42,10 @@
 
   &__select {
     width: 100%;
+  }
+
+  .select-to-bike-group {
+    position: relative;
+    z-index: 99;
   }
 }
