@@ -24,7 +24,7 @@ export const DrawerCart = ({ open, onClose }: IDrawerCartProps) => {
       headerStyle={{ textAlign: "center" }}
     >
       <div className="drawer__text">
-        Total:<span className="total-price">{`${total} $`}</span>
+        Total:<span className="total-price">{`${total.toFixed(2)} $`}</span>
       </div>
       {shoppingCart.length ? (
         <Button

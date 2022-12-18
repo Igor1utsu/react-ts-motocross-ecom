@@ -29,7 +29,7 @@ export const Cart = () => {
             <h2 className="order__title">Total price</h2>
             <div className="order__content total">
               <span>{"Items ( " + items + " )"}</span>
-              <span className="total__price">{total + " $"}</span>
+              <span className="total__price">{total.toFixed(2) + " $"}</span>
             </div>
             <Button type="ghost" className="btn--gree btn--large">
               Buy
