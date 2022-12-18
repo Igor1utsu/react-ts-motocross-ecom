@@ -2,7 +2,7 @@ import "./DrawerCart.scss"
 import { Button, Drawer } from "antd"
 import { useContext } from "react"
 import { CartContext } from "../../../../context/CartContext"
-import { CartItem } from "../../../CartItem/CartItem"
+import { CartItem, TypeEnum } from "../../../CartItem/CartItem"
 import { useNavigate } from "react-router-dom"
 
 interface IDrawerCartProps {
@@ -23,24 +23,36 @@ export const DrawerCart = ({ open, onClose }: IDrawerCartProps) => {
       className="drawer"
       headerStyle={{ textAlign: "center" }}
     >
-      <div className="drawer__text">
-        Total:<span className="total-price">{`${total.toFixed(2)} $`}</span>
+      <div className="drawer__content total">
+        <span className="total__text">Total:</span>
+        <span className="total__price">{`${total.toFixed(2)} $`}</span>
       </div>
       {shoppingCart.length ? (
-        <Button
-          type="primary"
-          className="btn--large"
-          onClick={() => history("/shopcart")}
-          style={{ marginBottom: 20 }}
-        >
-          Сheckout
-        </Button>
+        <>
+          <Button
+            type="primary"
+            className="btn--large"
+            onClick={() => history("/shopcart")}
+          >
+            Сheckout
+          </Button>
+
+          <ul className="drawer__list">
+            {shoppingCart.map((product, index) => {
+              return (
+                <CartItem
+                  id={product.id}
+                  qty={product.qty}
+                  key={index}
+                  type={TypeEnum.Drawer}
+                />
+              )
+            })}
+          </ul>
+        </>
       ) : (
         <span>There are no items in your cart.</span>
       )}
-      {shoppingCart.map((product, index) => {
-        return <CartItem id={product.id} qty={product.qty} key={index} />
-      })}
     </Drawer>
   )
 }

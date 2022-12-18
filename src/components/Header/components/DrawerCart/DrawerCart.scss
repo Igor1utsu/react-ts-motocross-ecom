@@ -1,25 +1,18 @@
 .drawer {
-  &__text {
+  &__content {
     font-weight: 500;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
 
-    .total-price {
-      font-size: 16px;
+    .total {
+      &__price {
+        font-size: 16px;
+      }
     }
   }
 
-  .cart-item {
-    font-size: 12px;
-
-    &__title {
-      font-size: 14px;
-    }
-
-    &__img-wrapper {
-      width: 64px;
-      height: 64px;
-    }
+  &__list {
+    margin-top: 20px;
   }
 }

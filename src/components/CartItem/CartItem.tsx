@@ -7,12 +7,18 @@ import { IDataParts } from "../../shared/model/IDataParts"
 import { CartContext } from "../../context/CartContext"
 import { useContext } from "react"
 
+export enum TypeEnum {
+  Drawer = "item-drawer",
+  Other = "other",
+}
+
 interface ICartItemProps {
   id: number
   qty: number
+  type?: TypeEnum
 }
 
-export const CartItem = ({ id, qty }: ICartItemProps) => {
+export const CartItem = ({ id, qty, type }: ICartItemProps) => {
   const { removeFromCart, setQTY } = useContext(CartContext)
 
   const product: IDataParts | undefined = PARTS.find((data) =>
@@ -26,7 +32,7 @@ export const CartItem = ({ id, qty }: ICartItemProps) => {
 
   return (
     <>
-      <li className="cart-item">
+      <li className={type ? `cart-item ${type}` : "cart-item"}>
         {!product && <span>Product no longer available</span>}
         {product && (
           <>
