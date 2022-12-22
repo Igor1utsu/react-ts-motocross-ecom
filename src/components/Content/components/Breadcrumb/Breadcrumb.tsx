@@ -7,12 +7,14 @@ export const Breadcrumbs: React.FC = () => {
   const location = useLocation()
 
   const detailLink: string[] = location.pathname.split("/") // разбиваем адресную строку на элементы
-  const detailText = detailLink[detailLink.length - 1] // получаем последний элемент
+  const detailTextList = detailLink
+    .filter((i, index) => index !== 0 && i)
+    .map((link) => link.charAt(0).toUpperCase() + link.slice(1))  // возводим первый симбвол в UpperCase
 
-  const breadcrumbNameMap: IBreadCrumbNameMap[] = [
-    { path: "/parts", text: "Parts" },
-    { path: location.pathname, text: detailText },
-  ]
+  const breadcrumbNameMap: IBreadCrumbNameMap[] = detailTextList.map((link) => ({
+    path: location.pathname,
+    text: link,
+  }))
 
   const pathSnippets = location.pathname.split("/").filter((i) => i)
 
