@@ -7,6 +7,7 @@ import { SideBar } from "../components/SideBar/SideBar"
 import { Breadcrumbs } from "../components/Content/components/Breadcrumb/Breadcrumb"
 import { FilterOptionsState } from "../context/FilterOptionsContext"
 import { Background } from "../components/Background/Background"
+import { PageNotFound } from "../pages/PageNotFound/PageNotFound"
 
 export const MainLayouts = () => {
   const { pathname } = useLocation()
@@ -21,9 +22,10 @@ export const MainLayouts = () => {
           <div className="content">
             <Breadcrumbs />
             <Routes>
-              <Route path="/*" element={<Content />}></Route>
+              <Route path="/" element={<Content />}></Route>
               <Route path="parts/*" element={<Parts />}></Route>
               <Route path="parts/:number" element={<PartDetail />}></Route>
+              <Route path="*" element={<PageNotFound/>}></Route>
             </Routes>
           </div>
         </main>

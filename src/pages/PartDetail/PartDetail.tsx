@@ -14,6 +14,7 @@ import { IDataParts } from "../../shared/model/IDataParts"
 import { useContext, useState } from "react"
 import { FilterOptionsContext } from "../../context/FilterOptionsContext"
 import { CartContext } from "../../context/CartContext"
+import { PageNotFound } from "../PageNotFound/PageNotFound"
 
 export const PartDetail = () => {
   const { make, model, year } = useContext(FilterOptionsContext)
@@ -43,7 +44,9 @@ export const PartDetail = () => {
 
   const isAdded = shoppingCart.find((data) => data.id === part?.id)
 
-  return (
+  return !part ? (
+    <PageNotFound />
+  ) : (
     <div className="product">
       <section className="product-box">
         <div className="product-container-img">
