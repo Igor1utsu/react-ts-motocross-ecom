@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "equipment",
+    "title": "Equipment",
+    "image": "equipment.jpg",
+    "text": ["Fly"]
+  },
+  {
+    "id": 2,
+    "name": "parts",
+    "title": "Parts",
+    "image": "parts.jpg",
+    "text": ["Honda", "KTM", "Yamaha", "Kawasaki", "Suzuki"]
+  },
+  {
+    "id": 3,
+    "name": "tires",
+    "title": "Tires",
+    "image": "tires.jpg",
+    "text": ["Dunlop", "Mitas", "Michelin"]
+  },
+  {
+    "id": 4,
+    "name": "oils&fluids",
+    "title": "Oils & Fluids",
+    "image": "oil.jpg"
+  }
+]
