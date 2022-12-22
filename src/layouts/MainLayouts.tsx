@@ -23,7 +23,7 @@ export const MainLayouts = () => {
             <Breadcrumbs />
             <Routes>
               <Route path="/" element={<Content />}></Route>
-              <Route path="parts/*" element={<Parts />}></Route>
+              <Route path="parts/" element={<Parts />}></Route>
               <Route path="parts/:number" element={<PartDetail />}></Route>
               <Route path="*" element={<PageNotFound/>}></Route>
             </Routes>
