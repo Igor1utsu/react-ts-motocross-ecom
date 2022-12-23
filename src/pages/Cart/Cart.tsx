@@ -1,12 +1,17 @@
 import { Button } from "antd"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { CartItem } from "../../components/CartItem/CartItem"
 import { Logo } from "../../components/Logo/Logo"
+import { Maps } from "../../components/Maps/Maps"
 import { CartContext } from "../../context/CartContext"
+import { PointEnum } from "../../shared/model/PointEnum.model"
 import "./Cart.scss"
 
 export const Cart = () => {
   const { shoppingCart, total, items } = useContext(CartContext)
+  const [selectedStore, setSelectedStore] = useState<PointEnum>(
+    PointEnum.kuznetskyMost
+  )
 
   return (
     <div className="cart-container">
@@ -36,6 +41,15 @@ export const Cart = () => {
             </Button>
           </div>
         </main>
+
+        <div className="select-point">
+          <span>Pickup point: </span>
+          <b>{selectedStore}</b>
+        </div>
+        <Maps
+          selectedStore={selectedStore}
+          setSelectedStore={setSelectedStore}
+        />
       </div>
     </div>
   )

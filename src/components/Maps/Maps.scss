@@ -1,0 +1,13 @@
+@import "../../styles/imports/variables";
+
+.maps {
+  width: 640px;
+  height: 480px;
+  padding: 20px;
+  @extend %window-style;
+}
+
+.ymaps-2-1-79-balloon__content > * {
+  width: 128px !important;
+  height: 64px !important;
+}
