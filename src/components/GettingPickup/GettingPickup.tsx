@@ -3,7 +3,7 @@ import { Modal } from "antd"
 import { useState } from "react"
 import { YMaps, Map, Button, Placemark } from "react-yandex-maps"
 import { Maps } from "../Maps/Maps"
-import { storeTitle } from "../../utils/helpers"
+import { storeTitle, storeCoordinates } from "../../utils/helpers"
 
 export const GettingPickup = () => {
   const [selectedStore, setSelectedStore] = useState<number>(
@@ -29,8 +29,8 @@ export const GettingPickup = () => {
         </div>
         <YMaps>
           <Map
-            defaultState={{
-              center: [55.792933, 37.582331],
+            state={{
+              center: storeCoordinates(selectedStore) || [55.760641, 37.621031],
               zoom: 17,
               behaviors: ["disable('scrollZoom')"],
             }}
@@ -42,8 +42,7 @@ export const GettingPickup = () => {
               geometry={
                 {
                   type: "Point",
-                  coordinates: [55.792933, 37.582331],
-                  // савеловская
+                  coordinates: storeCoordinates(selectedStore),
                 } as any
               }
             />
