@@ -1,15 +1,18 @@
 import "./GettingPickup.scss"
-import { Modal } from "antd"
+import { Button, Modal } from "antd"
 import { useState } from "react"
-import { YMaps, Map, Button, Placemark } from "react-yandex-maps"
+import { YMaps, Map, Placemark } from "react-yandex-maps"
 import { Maps } from "../Maps/Maps"
 import { storeTitle, storeCoordinates } from "../../utils/helpers"
+import { useGetAddress } from "../../utils/hooks"
 
 export const GettingPickup = () => {
   const [selectedStore, setSelectedStore] = useState<number>(
     Number(localStorage.getItem("Store")) || 1
   )
   const [openMaps, setOpenMaps] = useState(false)
+  const coordinates = storeCoordinates(selectedStore)
+  const address = useGetAddress(coordinates)
 
   const showModal = () => {
     setOpenMaps(true)
@@ -25,12 +28,13 @@ export const GettingPickup = () => {
         <div className="getting-pickup__info">
           <span>Pickup point: </span>
           <b>{storeTitle(selectedStore)}</b>
-          {/* <Button onClick={showModal}>Change</Button> */}
+          <span style={{ fontSize: 13 }}>{address}</span>
+          <Button onClick={showModal}>Change</Button>
         </div>
         <YMaps>
           <Map
             state={{
-              center: storeCoordinates(selectedStore) || [55.760641, 37.621031],
+              center: coordinates || [55.760641, 37.621031],
               zoom: 17,
               behaviors: ["disable('scrollZoom')"],
             }}
@@ -42,7 +46,7 @@ export const GettingPickup = () => {
               geometry={
                 {
                   type: "Point",
-                  coordinates: storeCoordinates(selectedStore),
+                  coordinates: coordinates,
                 } as any
               }
             />
