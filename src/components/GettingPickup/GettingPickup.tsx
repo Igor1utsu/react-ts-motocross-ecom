@@ -3,7 +3,7 @@ import { Modal } from "antd"
 import { useState } from "react"
 import { YMaps, Map, Button, Placemark } from "react-yandex-maps"
 import { Maps } from "../Maps/Maps"
-import PICKUP_POINT from "../../data/PICKUP-POINT.json"
+import { storeTitle } from "../../utils/helpers"
 
 export const GettingPickup = () => {
   const [selectedStore, setSelectedStore] = useState<number>(
@@ -24,7 +24,7 @@ export const GettingPickup = () => {
       <div className="getting-pickup">
         <div className="getting-pickup__info">
           <span>Pickup point: </span>
-          <b>{PICKUP_POINT.find((data) => data.id === selectedStore)?.title}</b>
+          <b>{storeTitle(selectedStore)}</b>
           {/* <Button onClick={showModal}>Change</Button> */}
         </div>
         <YMaps>

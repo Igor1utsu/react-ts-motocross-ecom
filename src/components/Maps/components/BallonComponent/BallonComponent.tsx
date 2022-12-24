@@ -1,5 +1,5 @@
 import { Button } from "antd"
-import PICKUP_POINT from "../../../../data/PICKUP-POINT.json"
+import { storeTitle } from "../../../../utils/helpers"
 
 interface IBallonComponentProps {
   point: number | null
@@ -16,7 +16,7 @@ export const BallonComponent = ({
 }: IBallonComponentProps) => {
   return (
     <>
-      <h3>{PICKUP_POINT.find((data) => data.id === point)?.title}</h3>
+      <h3>{point && storeTitle(point)}</h3>
       <Button
         type={point === selectedStore ? "primary" : "default"}
         onClick={() => point && handleStore(point)}
