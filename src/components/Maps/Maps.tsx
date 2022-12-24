@@ -15,6 +15,11 @@ export const Maps = ({ selectedStore, setSelectedStore }: IMapsProps) => {
   const [activePortal, setActivePortal] = useState(false)
   const [point, setPoint] = useState<number | null>(null)
 
+  const handleStore = (id: number) => {
+    localStorage.setItem("Store", id.toString())
+    setSelectedStore(id)
+  }
+
   return (
     <div className="modal-maps">
       <ul className="modal-maps__list">
@@ -23,7 +28,7 @@ export const Maps = ({ selectedStore, setSelectedStore }: IMapsProps) => {
             <h3 className="item__title">{data.title}</h3>
             <Button
               type={data.id === selectedStore ? "primary" : "default"}
-              onClick={() => setSelectedStore(data.id)}
+              onClick={() => handleStore(data.id)}
             >
               {data.id === selectedStore ? "Selected" : "Select"}
             </Button>
@@ -56,6 +61,7 @@ export const Maps = ({ selectedStore, setSelectedStore }: IMapsProps) => {
                   setActivePortal(true)
                 }, 0)
               }}
+              key={data.id}
             />
           ))}
 
@@ -67,6 +73,7 @@ export const Maps = ({ selectedStore, setSelectedStore }: IMapsProps) => {
                 point={point}
                 selectedStore={selectedStore}
                 setSelectedStore={setSelectedStore}
+                handleStore={handleStore}
               />
             </Portal>
           )}
