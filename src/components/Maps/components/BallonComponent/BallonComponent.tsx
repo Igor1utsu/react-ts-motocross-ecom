@@ -1,19 +1,23 @@
 import { Button } from "antd"
-import { PointEnum } from "../../../../shared/model/PointEnum.model"
+import PICKUP_POINT from "../../../../data/PICKUP-POINT.json"
 
 interface IBallonComponentProps {
-    point: PointEnum | null
-    selectedStore: PointEnum | null
-    setSelectedStore: (arg0: PointEnum) => void
+  point: number | null
+  selectedStore: number
+  setSelectedStore: (arg0: number) => void
 }
 
-export const BallonComponent = ({point, selectedStore, setSelectedStore}: IBallonComponentProps) => {
+export const BallonComponent = ({
+  point,
+  selectedStore,
+  setSelectedStore,
+}: IBallonComponentProps) => {
   return (
     <>
-      <h3>{point}</h3>
+      <h3>{PICKUP_POINT.find((data) => data.id === point)?.title}</h3>
       <Button
         type={point === selectedStore ? "primary" : "default"}
-        onClick={() => setSelectedStore(PointEnum.taganskaya)}
+        onClick={() => point && setSelectedStore(point)}
       >
         {point === selectedStore ? "Selected" : "Select"}
       </Button>

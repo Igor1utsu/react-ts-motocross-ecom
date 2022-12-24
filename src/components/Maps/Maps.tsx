@@ -3,64 +3,61 @@ import { useState } from "react"
 import { YMaps, Map, Placemark } from "react-yandex-maps"
 import { Portal } from "./components/Portal/Portal"
 import { BallonComponent } from "./components/BallonComponent/BallonComponent"
-import { PointEnum } from "../../shared/model/PointEnum.model"
+import { Button } from "antd"
+import PICKUP_POINT from "../../data/PICKUP-POINT.json"
 
 interface IMapsProps {
-  selectedStore: PointEnum | null
-  setSelectedStore: (arg0: PointEnum) => void
+  selectedStore: number
+  setSelectedStore: (arg0: number) => void
 }
 
 export const Maps = ({ selectedStore, setSelectedStore }: IMapsProps) => {
   const [activePortal, setActivePortal] = useState(false)
-  const [point, setPoint] = useState<PointEnum | null>(null)
+  const [point, setPoint] = useState<number | null>(null)
 
   return (
-    <>
+    <div className="modal-maps">
+      <ul className="modal-maps__list">
+        {PICKUP_POINT.map((data) => (
+          <li className="item" key={data.id}>
+            <h3 className="item__title">{data.title}</h3>
+            <Button
+              type={data.id === selectedStore ? "primary" : "default"}
+              onClick={() => setSelectedStore(data.id)}
+            >
+              {data.id === selectedStore ? "Selected" : "Select"}
+            </Button>
+          </li>
+        ))}
+      </ul>
       <YMaps>
         <Map
-          defaultState={{ center: [55.75, 37.57], zoom: 9 }}
+          defaultState={{ center: [55.760641, 37.621031], zoom: 12 }}
           modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
           className="maps"
         >
-          <Placemark
-            geometry={
-              {
-                type: "Point",
-                coordinates: [55.735221, 37.650352],
-                // таганская
-              } as any
-            }
-            properties={{
-              hintContent: "Stack Overflow",
-              balloonContent:
-                '<div id="driver-2" className="driver-card"></div>',
-            }}
-            onClick={() => {
-              // ставим в очередь промисов, чтобы сработало после отрисовки балуна
-              setTimeout(() => {
-                setPoint(PointEnum.taganskaya)
-                setActivePortal(true)
-              }, 0)
-            }}
-          />
-          {/* <Placemark
-            geometry={
-              {
-                type: "Point",
-                coordinates: [55.792933, 37.582331],
-                // савеловская
-              } as any
-            }
-          /> */}
-          {/* <Placemark
-            geometry={
-              {
-                type: "Point",
-                coordinates: [55.760641, 37.621031],
-                // кузнецкий мост
-              } as any
-            }
-          /> */}
+          {PICKUP_POINT.map((data) => (
+            <Placemark
+              geometry={
+                {
+                  type: "Point",
+                  coordinates: data.coordinates,
+                } as any
+              }
+              properties={{
+                hintContent: data.title,
+                balloonContent:
+                  '<div id="driver-2" className="driver-card"></div>',
+              }}
+              onClick={() => {
+                // ставим в очередь промисов, чтобы сработало после отрисовки балуна
+                setTimeout(() => {
+                  setPoint(data.id)
+                  setActivePortal(true)
+                }, 0)
+              }}
+            />
+          ))}
 
           {/* здесь мы активируем портал */}
           {activePortal && (
@@ -75,6 +72,6 @@ export const Maps = ({ selectedStore, setSelectedStore }: IMapsProps) => {
           )}
         </Map>
       </YMaps>
-    </>
+    </div>
   )
 }

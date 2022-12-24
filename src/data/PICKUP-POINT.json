@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Shop on Taganskaya",
+    "coordinates": [55.735221, 37.650352]
+  },
+  {
+    "id": 2,
+    "title": "Shop on Savelovskaya",
+    "coordinates": [55.792933, 37.582331]
+  },
+  {
+    "id": 3,
+    "title": "Shop on the Kuznetsky bridge",
+    "coordinates": [55.760641, 37.621031]
+  }
+]

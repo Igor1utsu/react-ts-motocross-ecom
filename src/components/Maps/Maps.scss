@@ -1,13 +1,31 @@
 @import "../../styles/imports/variables";
 
-.maps {
-  width: 640px;
-  height: 480px;
-  padding: 20px;
-  @extend %window-style;
-}
+.modal-maps {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
 
-.ymaps-2-1-79-balloon__content > * {
-  width: 128px !important;
-  height: 64px !important;
+  &__list {
+    width: 196px;
+    margin-right: 20px;
+
+    .item {
+      padding: 5px;
+      margin-bottom: 10px;
+      @extend %window-style;
+
+      &__title {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .maps {
+    flex: 1;
+
+    .ymaps-2-1-79-balloon__content > * {
+      width: 128px !important;
+      height: 96px !important;
+    }
+  }
 }

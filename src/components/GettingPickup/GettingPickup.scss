@@ -1,0 +1,17 @@
+@import "../../styles/imports/variables";
+
+.getting-pickup {
+  @extend %window-style;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    & > * {
+      margin-bottom: 15px;
+    }
+  }
+}

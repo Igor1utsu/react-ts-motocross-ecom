@@ -14,11 +14,18 @@
       padding: 0 20px;
     }
 
-    &__main {
-      padding: 20px;
+    &__section {
+      margin-bottom: 20px;
+    }
+    
+    &__section.cart-product {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+    }
+
+    &__main {
+      padding: 20px;
     }
 
     &__message {
