@@ -1,0 +1,12 @@
+.maps {
+  .ballon {
+    &__address {
+      font-size: 12px;
+    }
+  }
+
+  .ymaps-2-1-79-balloon__content > * {
+    width: 200px !important;
+    height: min-content !important;
+  }
+}

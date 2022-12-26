@@ -3,8 +3,8 @@ import { useState } from "react"
 import { YMaps, Map, Placemark } from "react-yandex-maps"
 import { Portal } from "./components/Portal/Portal"
 import { BallonComponent } from "./components/BallonComponent/BallonComponent"
-import { Button } from "antd"
 import PICKUP_POINT from "../../data/PICKUP-POINT.json"
+import { PickPointItem } from "./components/PickupPointItem/PickupPointItem"
 
 interface IMapsProps {
   selectedStore: number
@@ -24,15 +24,12 @@ export const Maps = ({ selectedStore, setSelectedStore }: IMapsProps) => {
     <div className="modal-maps">
       <ul className="modal-maps__list">
         {PICKUP_POINT.map((data) => (
-          <li className="item" key={data.id}>
-            <h3 className="item__title">{data.title}</h3>
-            <Button
-              type={data.id === selectedStore ? "primary" : "default"}
-              onClick={() => handleStore(data.id)}
-            >
-              {data.id === selectedStore ? "Selected" : "Select"}
-            </Button>
-          </li>
+          <PickPointItem
+            point={data}
+            selectedStore={selectedStore}
+            handleStore={handleStore}
+            key={data.id}
+          />
         ))}
       </ul>
       <YMaps>
@@ -66,7 +63,7 @@ export const Maps = ({ selectedStore, setSelectedStore }: IMapsProps) => {
           ))}
 
           {/* здесь мы активируем портал */}
-          {activePortal && (
+          {activePortal && point && (
             <Portal getHTMLElementId={"driver-2"}>
               {/* ставим свой компонент */}
               <BallonComponent

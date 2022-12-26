@@ -1,8 +1,10 @@
 import { Button } from "antd"
-import { storeTitle } from "../../../../utils/helpers"
+import { storeCoordinates, storeTitle } from "../../../../utils/helpers"
+import { useGetAddress } from "../../../../utils/hooks"
+import "./BallonComponent.scss"
 
 interface IBallonComponentProps {
-  point: number | null
+  point: number
   selectedStore: number
   setSelectedStore: (arg0: number) => void
   handleStore: (arg0: number) => void
@@ -14,15 +16,18 @@ export const BallonComponent = ({
   setSelectedStore,
   handleStore,
 }: IBallonComponentProps) => {
+  const address = useGetAddress(storeCoordinates(point))
+
   return (
-    <>
+    <div className="ballon">
       <h3>{point && storeTitle(point)}</h3>
+      <div className="ballon__address">{address}</div>
       <Button
         type={point === selectedStore ? "primary" : "default"}
         onClick={() => point && handleStore(point)}
       >
         {point === selectedStore ? "Selected" : "Select"}
       </Button>
-    </>
+    </div>
   )
 }
