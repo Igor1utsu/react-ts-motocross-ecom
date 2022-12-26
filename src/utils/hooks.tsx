@@ -30,7 +30,7 @@ export const useGetAddress = (coordinates: number[] | undefined) => {
     // преобразуем координаты в строковое значение
     const geocode = coordinates[1].toString() + "," + coordinates[0].toString()
 
-    const url = `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=${process.env.REACT_APP_YANDEX_API_KEY}&geocode=${geocode}`
+    const url = `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=${process.env.REACT_APP_YANDEX_API_KEY}&geocode=${geocode}&lang=en_US`
 
     const response = await axios.get(url) // отправляем запросс
 
@@ -44,7 +44,7 @@ export const useGetAddress = (coordinates: number[] | undefined) => {
     )
     // преобразование адресса в строку
     const address =
-      geocoderMetaData.GeoObject.description +
+    (geocoderMetaData.GeoObject.description.split(","))[0] +
       ", " +
       geocoderMetaData.GeoObject.name
 
