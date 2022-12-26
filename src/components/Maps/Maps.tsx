@@ -21,7 +21,7 @@ export const Maps = ({ selectedStore, setSelectedStore }: IMapsProps) => {
   }
 
   return (
-    <div className="modal-maps">
+    <div className="modal-maps__body">
       <ul className="modal-maps__list">
         {PICKUP_POINT.map((data) => (
           <PickPointItem

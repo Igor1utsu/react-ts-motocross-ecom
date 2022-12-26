@@ -1,16 +1,29 @@
 @import "../../styles/imports/variables";
 
 .modal-maps {
-  display: flex;
-  height: 100%;
-  justify-content: space-between;
+  &__head {
+    padding: 15px;
+    background: rgb(244 244 244);
+  }
+
+  .modal-maps__body {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+
+    .maps {
+      flex: 1;
+    }
+  }
 
   &__list {
     width: 260px;
-    margin-right: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
   }
 
-  .maps {
-    flex: 1;
+  .ant-modal-content {
+    overflow: hidden;
+    padding: 0 !important;
   }
 }

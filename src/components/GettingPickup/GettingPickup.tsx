@@ -56,12 +56,13 @@ export const GettingPickup = () => {
 
       <Modal
         open={openMaps}
-        title="Moskow"
+        title={<h3 className="modal-maps__head">Moskow</h3>}
         onCancel={handleCancel}
         footer={[]}
         width={"90vw"}
         bodyStyle={{ height: "80vh", marginTop: 20 }}
         centered={true}
+        className="modal-maps"
       >
         <Maps
           selectedStore={selectedStore}
