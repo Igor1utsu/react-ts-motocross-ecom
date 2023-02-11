@@ -2,30 +2,27 @@ import {
   CheckCircleOutlined,
   ExclamationCircleOutlined,
   ShoppingCartOutlined,
-} from "@ant-design/icons"
-import { Button, InputNumber } from "antd"
-import "./PartDetail.scss"
-import PARTS from "../../data/PARTS.json"
-import BRANDS from "../../data/BRANDS.json"
-import { useNavigate, useParams } from "react-router-dom"
-import { IParams } from "./model"
-import { PATH_TO_PICTURE } from "../../data/data"
-import { IDataParts } from "../../shared/model/IDataParts"
-import { useContext, useState } from "react"
-import { FilterOptionsContext } from "../../context/FilterOptionsContext"
-import { CartContext } from "../../context/CartContext"
-import { PageNotFound } from "../PageNotFound/PageNotFound"
+} from '@ant-design/icons'
+import { Button, InputNumber } from 'antd'
+import './PartDetail.scss'
+import BRANDS from '../../data/BRANDS.json'
+import { useNavigate, useParams } from 'react-router-dom'
+import { IParams } from './model'
+import { PATH_TO_PICTURE } from '../../data/data'
+import { useContext, useState } from 'react'
+import { FilterOptionsContext } from '../../context/FilterOptionsContext'
+import { CartContext } from '../../context/CartContext'
+import { PageNotFound } from '../PageNotFound/PageNotFound'
+import { getProduct } from '../../utils/helpers'
 
 export const PartDetail = () => {
   const { make, model, year } = useContext(FilterOptionsContext)
   const params = useParams<IParams>()
+  const part = getProduct(params.number)
   const { shoppingCart, addToCart } = useContext(CartContext)
   const [qtyInput, setQtyInput] = useState<number>(1)
   const history = useNavigate()
 
-  const part: IDataParts | undefined = PARTS.find((part) =>
-    params.number ? part.partNumber === params.number : false
-  )
   const brandLogo = BRANDS.find(
     (BRAND) => BRAND.name === part?.brand
   )?.imageName
@@ -56,11 +53,11 @@ export const PartDetail = () => {
         <div className="product-container-main">
           <div className="product__header">
             <h2 className="product__title">{part?.name}</h2>
-            <h3 className="product__number">{"# " + part?.partNumber}</h3>
+            <h3 className="product__number">{'# ' + part?.partNumber}</h3>
           </div>
 
           <div className="product__row price">
-            {"$ " + part?.price}
+            {'$ ' + part?.price}
             <div className="company-logo">
               <img src={PATH_TO_PICTURE.brand + brandLogo} alt={part?.brand} />
             </div>
@@ -89,7 +86,7 @@ export const PartDetail = () => {
             ) : (
               <Button
                 type="ghost"
-                onClick={() => history("/shopcart")}
+                onClick={() => history('/shopcart')}
                 className="btn--gree btn--large"
               >
                 View in cart
@@ -99,7 +96,7 @@ export const PartDetail = () => {
           {make && model && year && (
             <div
               className={
-                fitToBike ? "product__row fit" : "product__row fit no-fit"
+                fitToBike ? 'product__row fit' : 'product__row fit no-fit'
               }
             >
               {fitToBike ? (
@@ -108,9 +105,9 @@ export const PartDetail = () => {
                 <ExclamationCircleOutlined className="icon" />
               )}
               <span>
-                {fitToBike ? "This part fits:" : "This part does not fits:"}
+                {fitToBike ? 'This part fits:' : 'This part does not fits:'}
               </span>
-              <span>{year + " " + make + " " + model}</span>
+              <span>{year + ' ' + make + ' ' + model}</span>
             </div>
           )}
         </div>
@@ -125,7 +122,7 @@ export const PartDetail = () => {
           data.year.map((d, index) => {
             return (
               <span className="details__fit-item" key={index}>
-                {d + " " + data.make + " " + data.model}
+                {d + ' ' + data.make + ' ' + data.model}
               </span>
             )
           })
