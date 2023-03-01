@@ -4,10 +4,13 @@ import { CartItem } from "../../components/CartItem/CartItem"
 import { GettingPickup } from "../../components/GettingPickup/GettingPickup"
 import { Logo } from "../../components/Logo/Logo"
 import { CartContext } from "../../context/CartContext"
+import { CART_PAGE_TITLE } from "../../shared/constants/Page.constants"
+import { usePageTitle } from "../../shared/hooks/usePageTitle"
 import "./Cart.scss"
 
 export const Cart = () => {
   const { shoppingCart, total, items } = useContext(CartContext)
+  usePageTitle(CART_PAGE_TITLE)
 
   return (
     <>

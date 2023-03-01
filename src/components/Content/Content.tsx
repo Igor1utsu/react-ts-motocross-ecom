@@ -3,8 +3,11 @@ import { Link } from "react-router-dom"
 import CONTENT from "../../data/CONTENT.json"
 import { Card } from "antd"
 import { PATH_TO_PICTURE } from "../../data/data"
+import { usePageTitle } from "../../shared/hooks/usePageTitle"
 
 export const Content = () => {
+  usePageTitle()
+
   return (
     <div className="content">
       <div className="products">
