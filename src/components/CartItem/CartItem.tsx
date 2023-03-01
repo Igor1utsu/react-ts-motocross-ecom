@@ -2,7 +2,7 @@ import "./CartItem.scss"
 import { CloseOutlined } from "@ant-design/icons"
 import { Button, InputNumber } from "antd"
 import { CartContext } from "../../context/CartContext"
-import { useContext, useMemo } from "react"
+import { FC, memo, useContext, useMemo } from "react"
 import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
 import { getProduct } from "../../shared/utils/GetProduct.utils"
 
@@ -17,8 +17,11 @@ interface ICartItemProps {
   type?: TypeEnum
 }
 
-export const CartItem = ({ id, qty, type }: ICartItemProps) => {
+export const CartItem: FC<ICartItemProps> = memo((props) => {
+  const { id, qty, type } = props
+
   const { removeFromCart, setQTY } = useContext(CartContext)
+
   const product = useMemo(() => getProduct(id), [id])
 
   const handleStep = (value: number | null) => {
@@ -67,4 +70,4 @@ export const CartItem = ({ id, qty, type }: ICartItemProps) => {
       </li>
     </>
   )
-}
+})

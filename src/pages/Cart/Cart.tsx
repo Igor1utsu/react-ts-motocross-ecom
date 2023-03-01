@@ -1,5 +1,5 @@
 import { Button } from "antd"
-import { useContext } from "react"
+import { FC, memo, useContext } from "react"
 import { CartItem } from "../../components/CartItem/CartItem"
 import { GettingPickup } from "../../components/GettingPickup/GettingPickup"
 import { Logo } from "../../components/Logo/Logo"
@@ -8,8 +8,9 @@ import { CART_PAGE_TITLE } from "../../shared/constants/Page.constants"
 import { usePageTitle } from "../../shared/hooks/usePageTitle"
 import "./Cart.scss"
 
-export const Cart = () => {
+export const Cart: FC = memo(() => {
   const { shoppingCart, total, items } = useContext(CartContext)
+
   usePageTitle(CART_PAGE_TITLE)
 
   return (
@@ -54,4 +55,4 @@ export const Cart = () => {
       </div>
     </>
   )
-}
+})

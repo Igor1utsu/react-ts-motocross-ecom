@@ -1,7 +1,8 @@
 import "./Logo.scss"
 import { Link } from "react-router-dom"
+import { FC, memo } from "react"
 
-export const Logo: React.FC = () => {
+export const Logo: FC = memo(() => {
   return (
     <Link to="/" style={{ width: 208 }}>
       <h1 className="mx-logo">
@@ -13,4 +14,4 @@ export const Logo: React.FC = () => {
       </h1>
     </Link>
   )
-}
+})

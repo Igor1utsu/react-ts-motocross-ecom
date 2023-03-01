@@ -1,5 +1,5 @@
 import "./Maps.scss"
-import { useState } from "react"
+import { FC, memo, useState } from "react"
 import { YMaps, Map, Placemark } from "react-yandex-maps"
 import { Portal } from "./components/Portal/Portal"
 import { BallonComponent } from "./components/BallonComponent/BallonComponent"
@@ -11,7 +11,9 @@ interface IMapsProps {
   setSelectedStore: (arg0: number) => void
 }
 
-export const Maps = ({ selectedStore, setSelectedStore }: IMapsProps) => {
+export const Maps: FC<IMapsProps> = memo((props) => {
+  const { selectedStore, setSelectedStore } = props
+
   const [activePortal, setActivePortal] = useState(false)
   const [point, setPoint] = useState<number | null>(null)
 
@@ -78,4 +80,4 @@ export const Maps = ({ selectedStore, setSelectedStore }: IMapsProps) => {
       </YMaps>
     </div>
   )
-}
+})

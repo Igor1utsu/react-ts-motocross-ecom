@@ -2,18 +2,17 @@ import "./PickupPointItem.scss"
 import { Button } from "antd"
 import { IPoint } from "./model/IPoint.model"
 import { useGetAddress } from "../../../../shared/hooks/useGetAddress"
+import { FC, memo } from "react"
 
-interface IPickPointItem {
+interface IPickPointItemProps {
   point: IPoint
   selectedStore: number
   handleStore: (pointId: number) => void
 }
 
-export const PickPointItem = ({
-  point,
-  selectedStore,
-  handleStore,
-}: IPickPointItem) => {
+export const PickPointItem: FC<IPickPointItemProps> = memo((props) => {
+  const { point, selectedStore, handleStore } = props
+
   const address = useGetAddress(point.coordinates)
 
   return (
@@ -28,4 +27,4 @@ export const PickPointItem = ({
       </Button>
     </li>
   )
-}
+})

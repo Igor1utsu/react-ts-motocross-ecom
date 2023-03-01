@@ -1,12 +1,14 @@
-import React, { useEffect } from "react"
+import React, { FC, useEffect } from "react"
 import { createPortal } from "react-dom"
 
 interface IPortalProps {
-    children: any
-    getHTMLElementId: string
+  children: any
+  getHTMLElementId: string
 }
 
-export const Portal = ({ children, getHTMLElementId }: IPortalProps) => {
+export const Portal: FC<IPortalProps> = (props) => {
+  const { children, getHTMLElementId } = props
+
   // находим искомый HTML по id
   const mount = document.getElementById(getHTMLElementId)
   // создаём свой div
@@ -23,6 +25,7 @@ export const Portal = ({ children, getHTMLElementId }: IPortalProps) => {
 
   // отменяем отрисовку при отсутствии искомого элемента
   if (!mount) return null
+
   // собственно, пририсовываем React-элемент в div к искомому HTML
   return createPortal(children, el)
 }

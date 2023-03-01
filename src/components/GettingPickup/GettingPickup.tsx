@@ -1,18 +1,18 @@
 import "./GettingPickup.scss"
 import { Button, Modal } from "antd"
-import { useState } from "react"
+import { FC, memo, useState } from "react"
 import { YMaps, Map, Placemark } from "react-yandex-maps"
 import { Maps } from "../Maps/Maps"
 import { useGetAddress } from "../../shared/hooks/useGetAddress"
 import { useGetStoreData } from "../../shared/hooks/useGetStoreData"
 
-export const GettingPickup = () => {
+export const GettingPickup: FC = memo(() => {
   const [selectedStore, setSelectedStore] = useState<number>(
     Number(localStorage.getItem("Store")) || 1
   )
-  const [openMaps, setOpenMaps] = useState(false)
-  const {title, coordinates} = useGetStoreData(selectedStore)
+  const { title, coordinates } = useGetStoreData(selectedStore)
   const address = useGetAddress(coordinates)
+  const [openMaps, setOpenMaps] = useState(false)
 
   const showModal = () => {
     setOpenMaps(true)
@@ -71,4 +71,4 @@ export const GettingPickup = () => {
       </Modal>
     </>
   )
-}
+})

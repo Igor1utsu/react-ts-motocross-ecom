@@ -1,4 +1,5 @@
 import { Button } from "antd"
+import { FC, memo } from "react"
 import { useGetAddress } from "../../../../shared/hooks/useGetAddress"
 import { useGetStoreData } from "../../../../shared/hooks/useGetStoreData"
 import "./BallonComponent.scss"
@@ -10,12 +11,9 @@ interface IBallonComponentProps {
   handleStore: (arg0: number) => void
 }
 
-export const BallonComponent = ({
-  point,
-  selectedStore,
-  setSelectedStore,
-  handleStore,
-}: IBallonComponentProps) => {
+export const BallonComponent: FC<IBallonComponentProps> = memo((props) => {
+  const { point, selectedStore, setSelectedStore, handleStore } = props
+
   const { title, coordinates } = useGetStoreData(point)
   const address = useGetAddress(coordinates)
 
@@ -31,4 +29,4 @@ export const BallonComponent = ({
       </Button>
     </div>
   )
-}
+})
