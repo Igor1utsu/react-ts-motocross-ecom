@@ -4,7 +4,7 @@ import type { ColumnsType } from "antd/es/table"
 import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom"
 import { IDataParts } from "../../../../shared/model/IDataParts"
-import { useContext } from "react"
+import { FC, useContext } from "react"
 import { FilterOptionsContext } from "../../../../context/FilterOptionsContext"
 import { CartContext } from "../../../../context/CartContext"
 import { useGetProductList } from "../../../../shared/hooks/useGetProductList"
@@ -17,10 +17,13 @@ interface ICategoryProps {
   title: string
 }
 
-export const Category = ({ id, category, title }: ICategoryProps) => {
+export const Category: FC<ICategoryProps> = (props) => {
+  const { id, category, title } = props
+
   const { make, model, year, checkedBrand, minPrice, maxPrice } =
     useContext(FilterOptionsContext)
   const { addToCart } = useContext(CartContext)
+  
   const { openNotification, contextHolder } = useNotification()
   const PartsDataArray = useGetProductList(
     make,

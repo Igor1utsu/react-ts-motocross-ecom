@@ -1,6 +1,6 @@
 import "./DrawerCart.scss"
 import { Button, Drawer } from "antd"
-import { useContext } from "react"
+import { FC, useContext } from "react"
 import { CartContext } from "../../../../context/CartContext"
 import { CartItem, TypeEnum } from "../../../CartItem/CartItem"
 import { useNavigate } from "react-router-dom"
@@ -10,9 +10,11 @@ interface IDrawerCartProps {
   onClose: () => void
 }
 
-export const DrawerCart = ({ open, onClose }: IDrawerCartProps) => {
-  const { shoppingCart, items, total } = useContext(CartContext)
+export const DrawerCart: FC<IDrawerCartProps> = (props) => {
+  const { open, onClose } = props
   const history = useNavigate()
+
+  const { shoppingCart, items, total } = useContext(CartContext)
 
   return (
     <Drawer

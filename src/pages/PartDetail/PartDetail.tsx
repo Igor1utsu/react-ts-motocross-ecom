@@ -8,7 +8,7 @@ import "./PartDetail.scss"
 import BRANDS from "../../data/BRANDS.json"
 import { useNavigate, useParams } from "react-router-dom"
 import { IParams } from "./model"
-import { useContext, useMemo, useState } from "react"
+import { FC, memo, useContext, useMemo, useState } from "react"
 import { FilterOptionsContext } from "../../context/FilterOptionsContext"
 import { CartContext } from "../../context/CartContext"
 import { PageNotFound } from "../PageNotFound/PageNotFound"
@@ -17,13 +17,14 @@ import { PAGE_404_TITLE } from "../../shared/constants/Page.constants"
 import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
 import { getProduct } from "../../shared/utils/GetProduct.utils"
 
-export const PartDetail = () => {
+export const PartDetail: FC = memo(() => {
   const params = useParams<IParams>()
   const history = useNavigate()
 
   const { make, model, year } = useContext(FilterOptionsContext)
-  const part = useMemo(() => getProduct(params.number), [params.number])
   const { shoppingCart, addToCart } = useContext(CartContext)
+  
+  const part = useMemo(() => getProduct(params.number), [params.number])
   const [qtyInput, setQtyInput] = useState<number>(1)
   usePageTitle(part ? part.name : PAGE_404_TITLE)
 
@@ -134,4 +135,4 @@ export const PartDetail = () => {
       </section>
     </div>
   )
-}
+})

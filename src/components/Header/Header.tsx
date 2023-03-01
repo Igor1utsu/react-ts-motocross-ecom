@@ -1,13 +1,14 @@
 import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Badge, Button } from "antd"
-import { useContext, useState } from "react"
+import { FC, memo, useContext, useState } from "react"
 import { CartContext } from "../../context/CartContext"
 import { Logo } from "../Logo/Logo"
 import { DrawerCart } from "./components/DrawerCart/DrawerCart"
 import "./Header.scss"
 
-export const Header = () => {
+export const Header: FC = memo(() => {
   const { items } = useContext(CartContext)
+  
   const [openDrawer, setOpenDrawer] = useState(false)
 
   const showDrawer = () => {
@@ -31,4 +32,4 @@ export const Header = () => {
       <DrawerCart open={openDrawer} onClose={onCloseDrawer} />
     </>
   )
-}
+})

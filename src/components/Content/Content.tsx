@@ -4,8 +4,9 @@ import CONTENT from "../../data/CONTENT.json"
 import { Card } from "antd"
 import { usePageTitle } from "../../shared/hooks/usePageTitle"
 import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
+import { FC, memo } from "react"
 
-export const Content = () => {
+export const Content: FC = memo(() => {
   usePageTitle()
 
   return (
@@ -40,4 +41,4 @@ export const Content = () => {
       </div>
     </div>
   )
-}
+})

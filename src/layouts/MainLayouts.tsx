@@ -8,8 +8,9 @@ import { Breadcrumbs } from "../components/Content/components/Breadcrumb/Breadcr
 import { FilterOptionsState } from "../context/FilterOptionsContext"
 import { Background } from "../components/Background/Background"
 import { PageNotFound } from "../pages/PageNotFound/PageNotFound"
+import { FC, memo } from "react"
 
-export const MainLayouts = () => {
+export const MainLayouts: FC = memo(() => {
   const { pathname } = useLocation()
 
   return (
@@ -25,11 +26,11 @@ export const MainLayouts = () => {
               <Route path="/" element={<Content />}></Route>
               <Route path="parts/" element={<Parts />}></Route>
               <Route path="parts/:number" element={<PartDetail />}></Route>
-              <Route path="*" element={<PageNotFound/>}></Route>
+              <Route path="*" element={<PageNotFound />}></Route>
             </Routes>
           </div>
         </main>
       </FilterOptionsState>
     </>
   )
-}
+})
