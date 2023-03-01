@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-export const useGetAddress = (coordinates: number[] | undefined) => {
+export const useGetAddress = (coordinates: number[] | undefined | null) => {
   const [address, setAddress] = useState("")
 
   const getAddress = async (coordinates: number[]) => {

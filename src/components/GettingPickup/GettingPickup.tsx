@@ -3,15 +3,15 @@ import { Button, Modal } from "antd"
 import { useState } from "react"
 import { YMaps, Map, Placemark } from "react-yandex-maps"
 import { Maps } from "../Maps/Maps"
-import { storeTitle, storeCoordinates } from "../../utils/helpers"
 import { useGetAddress } from "../../shared/hooks/useGetAddress"
+import { useGetStoreData } from "../../shared/hooks/useGetStoreData"
 
 export const GettingPickup = () => {
   const [selectedStore, setSelectedStore] = useState<number>(
     Number(localStorage.getItem("Store")) || 1
   )
   const [openMaps, setOpenMaps] = useState(false)
-  const coordinates = storeCoordinates(selectedStore)
+  const {title, coordinates} = useGetStoreData(selectedStore)
   const address = useGetAddress(coordinates)
 
   const showModal = () => {
@@ -27,7 +27,7 @@ export const GettingPickup = () => {
       <div className="getting-pickup">
         <div className="getting-pickup__info">
           <span>Pickup point: </span>
-          <b>{storeTitle(selectedStore)}</b>
+          <b>{title}</b>
           <span style={{ fontSize: 13 }}>{address}</span>
           <Button onClick={showModal}>Change</Button>
         </div>
