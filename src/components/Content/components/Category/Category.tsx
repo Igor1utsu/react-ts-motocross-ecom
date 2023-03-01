@@ -1,14 +1,15 @@
-import './Category.scss'
-import { Button, Image, InputNumber, Table } from 'antd'
-import type { ColumnsType } from 'antd/es/table'
-import { ShoppingCartOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
-import { IDataParts } from '../../../../shared/model/IDataParts'
-import { PATH_TO_PICTURE } from '../../../../data/data'
-import { useContext } from 'react'
-import { FilterOptionsContext } from '../../../../context/FilterOptionsContext'
-import { CartContext } from '../../../../context/CartContext'
-import { useGetProductList, useNotification } from '../../../../utils/hooks'
+import "./Category.scss"
+import { Button, Image, InputNumber, Table } from "antd"
+import type { ColumnsType } from "antd/es/table"
+import { ShoppingCartOutlined } from "@ant-design/icons"
+import { Link } from "react-router-dom"
+import { IDataParts } from "../../../../shared/model/IDataParts"
+import { PATH_TO_PICTURE } from "../../../../data/data"
+import { useContext } from "react"
+import { FilterOptionsContext } from "../../../../context/FilterOptionsContext"
+import { CartContext } from "../../../../context/CartContext"
+import { useGetProductList } from "../../../../shared/hooks/useGetProductList"
+import { useNotification } from "../../../../shared/hooks/useNotification"
 
 interface ICategoryProps {
   id: number
@@ -33,38 +34,38 @@ export const Category = ({ id, category, title }: ICategoryProps) => {
 
   const columns: ColumnsType<IDataParts> = [
     {
-      title: 'Image',
-      dataIndex: 'image',
-      key: 'image',
+      title: "Image",
+      dataIndex: "image",
+      key: "image",
       render: (image) => <Image src={PATH_TO_PICTURE.parts + image} />,
       width: 64,
-      align: 'center',
+      align: "center",
     },
     {
-      title: 'Part Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Part Name",
+      dataIndex: "name",
+      key: "name",
       render: (name, data) => (
         <Link to={`${data.partNumber}`}>
           {name}
-          {' for '}
+          {" for "}
           {data.fits.map(
             (data) =>
               data.make +
-              ' ' +
+              " " +
               data.model +
-              ' ' +
+              " " +
               (data.year.length > 2
-                ? data.year[0] + ' - ' + data.year[data.year.length - 1] + ' '
-                : data.year[0] + ' ' + data.year[1] + ' ')
+                ? data.year[0] + " - " + data.year[data.year.length - 1] + " "
+                : data.year[0] + " " + data.year[1] + " ")
           )}
         </Link>
       ),
     },
     {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
       render: (price) => (
         <>
           <span>$</span>
@@ -72,16 +73,16 @@ export const Category = ({ id, category, title }: ICategoryProps) => {
         </>
       ),
       width: 64,
-      align: 'center',
+      align: "center",
     },
     {
-      title: 'Buy',
-      dataIndex: 'byy',
-      key: 'buy',
+      title: "Buy",
+      dataIndex: "byy",
+      key: "buy",
       render: (_, data) => {
         let value: number = 1
         const handleAddToCart = () => {
-          openNotification('bottomRight', data)
+          openNotification("bottomRight", data)
           addToCart(data.id, value)
         }
 
@@ -104,7 +105,7 @@ export const Category = ({ id, category, title }: ICategoryProps) => {
         )
       },
       width: 140,
-      align: 'center',
+      align: "center",
     },
   ]
 

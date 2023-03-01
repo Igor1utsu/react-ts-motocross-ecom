@@ -1,7 +1,7 @@
 import "./PickupPointItem.scss"
 import { Button } from "antd"
-import { useGetAddress } from "../../../../utils/hooks"
 import { IPoint } from "./model/IPoint.model"
+import { useGetAddress } from "../../../../shared/hooks/useGetAddress"
 
 interface IPickPointItem {
   point: IPoint

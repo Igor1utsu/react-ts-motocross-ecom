@@ -4,7 +4,7 @@ import { useState } from "react"
 import { YMaps, Map, Placemark } from "react-yandex-maps"
 import { Maps } from "../Maps/Maps"
 import { storeTitle, storeCoordinates } from "../../utils/helpers"
-import { useGetAddress } from "../../utils/hooks"
+import { useGetAddress } from "../../shared/hooks/useGetAddress"
 
 export const GettingPickup = () => {
   const [selectedStore, setSelectedStore] = useState<number>(

@@ -1,6 +1,6 @@
 import { Button } from "antd"
+import { useGetAddress } from "../../../../shared/hooks/useGetAddress"
 import { storeCoordinates, storeTitle } from "../../../../utils/helpers"
-import { useGetAddress } from "../../../../utils/hooks"
 import "./BallonComponent.scss"
 
 interface IBallonComponentProps {
