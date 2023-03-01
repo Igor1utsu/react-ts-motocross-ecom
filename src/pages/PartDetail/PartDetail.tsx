@@ -8,21 +8,21 @@ import "./PartDetail.scss"
 import BRANDS from "../../data/BRANDS.json"
 import { useNavigate, useParams } from "react-router-dom"
 import { IParams } from "./model"
-import { useContext, useState } from "react"
+import { useContext, useMemo, useState } from "react"
 import { FilterOptionsContext } from "../../context/FilterOptionsContext"
 import { CartContext } from "../../context/CartContext"
 import { PageNotFound } from "../PageNotFound/PageNotFound"
-import { getProduct } from "../../utils/helpers"
 import { usePageTitle } from "../../shared/hooks/usePageTitle"
 import { PAGE_404_TITLE } from "../../shared/constants/Page.constants"
 import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
+import { getProduct } from "../../shared/utils/GetProduct.utils"
 
 export const PartDetail = () => {
   const params = useParams<IParams>()
   const history = useNavigate()
 
   const { make, model, year } = useContext(FilterOptionsContext)
-  const part = getProduct(params.number)
+  const part = useMemo(() => getProduct(params.number), [params.number])
   const { shoppingCart, addToCart } = useContext(CartContext)
   const [qtyInput, setQtyInput] = useState<number>(1)
   usePageTitle(part ? part.name : PAGE_404_TITLE)

@@ -1,14 +1,14 @@
-import './CartItem.scss'
-import { CloseOutlined } from '@ant-design/icons'
-import { Button, InputNumber } from 'antd'
-import { CartContext } from '../../context/CartContext'
-import { useContext } from 'react'
-import { getProduct } from '../../utils/helpers'
-import { PATH_TO_PICTURE } from '../../shared/constants/Path.constants'
+import "./CartItem.scss"
+import { CloseOutlined } from "@ant-design/icons"
+import { Button, InputNumber } from "antd"
+import { CartContext } from "../../context/CartContext"
+import { useContext, useMemo } from "react"
+import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
+import { getProduct } from "../../shared/utils/GetProduct.utils"
 
 export enum TypeEnum {
-  Drawer = 'item-drawer',
-  Other = 'other',
+  Drawer = "item-drawer",
+  Other = "other",
 }
 
 interface ICartItemProps {
@@ -19,7 +19,7 @@ interface ICartItemProps {
 
 export const CartItem = ({ id, qty, type }: ICartItemProps) => {
   const { removeFromCart, setQTY } = useContext(CartContext)
-  const product = getProduct(id)
+  const product = useMemo(() => getProduct(id), [id])
 
   const handleStep = (value: number | null) => {
     if (value) product && setQTY(product.id, value)
@@ -28,7 +28,7 @@ export const CartItem = ({ id, qty, type }: ICartItemProps) => {
 
   return (
     <>
-      <li className={type ? `cart-item ${type}` : 'cart-item'}>
+      <li className={type ? `cart-item ${type}` : "cart-item"}>
         {!product && <span>Product no longer available</span>}
         {product && (
           <>
@@ -41,10 +41,10 @@ export const CartItem = ({ id, qty, type }: ICartItemProps) => {
             <div className="cart-item__content">
               <h3 className="cart-item__title">{product?.name}</h3>
               <p className="cart-item__description">
-                {'# ' + product?.partNumber}
+                {"# " + product?.partNumber}
               </p>
               <div className="cart-item__price">
-                <span>{'Price: $' + product?.price}</span>
+                <span>{"Price: $" + product?.price}</span>
                 <div className="cart-item__qty">
                   <span>QTY:</span>
                   <InputNumber

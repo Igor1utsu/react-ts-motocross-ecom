@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { createContext } from 'react'
 import { ICartContext } from './model/ICartContext.model'
 import { IProduct } from '../shared/model/IProduct'
-import { calculateTotalProducts } from '../utils/helpers'
+import { calculateTotalProducts } from '../shared/utils/CalculateTotalProduct.utils'
 
 export const CartContext = createContext<ICartContext>({
   shoppingCart: [],
