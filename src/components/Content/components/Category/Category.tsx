@@ -4,12 +4,12 @@ import type { ColumnsType } from "antd/es/table"
 import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom"
 import { IDataParts } from "../../../../shared/model/IDataParts"
-import { PATH_TO_PICTURE } from "../../../../data/data"
 import { useContext } from "react"
 import { FilterOptionsContext } from "../../../../context/FilterOptionsContext"
 import { CartContext } from "../../../../context/CartContext"
 import { useGetProductList } from "../../../../shared/hooks/useGetProductList"
 import { useNotification } from "../../../../shared/hooks/useNotification"
+import { PATH_TO_PICTURE } from "../../../../shared/constants/Path.constants"
 
 interface ICategoryProps {
   id: number
@@ -37,7 +37,7 @@ export const Category = ({ id, category, title }: ICategoryProps) => {
       title: "Image",
       dataIndex: "image",
       key: "image",
-      render: (image) => <Image src={PATH_TO_PICTURE.parts + image} />,
+      render: (image) => <Image src={PATH_TO_PICTURE.PARTS + image} />,
       width: 64,
       align: "center",
     },

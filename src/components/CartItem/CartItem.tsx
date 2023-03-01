@@ -1,10 +1,10 @@
 import './CartItem.scss'
 import { CloseOutlined } from '@ant-design/icons'
 import { Button, InputNumber } from 'antd'
-import { PATH_TO_PICTURE } from '../../data/data'
 import { CartContext } from '../../context/CartContext'
 import { useContext } from 'react'
 import { getProduct } from '../../utils/helpers'
+import { PATH_TO_PICTURE } from '../../shared/constants/Path.constants'
 
 export enum TypeEnum {
   Drawer = 'item-drawer',
@@ -34,7 +34,7 @@ export const CartItem = ({ id, qty, type }: ICartItemProps) => {
           <>
             <div className="cart-item__img-wrapper">
               <img
-                src={PATH_TO_PICTURE.parts + product?.image}
+                src={PATH_TO_PICTURE.PARTS + product?.image}
                 alt={product?.name}
               />
             </div>

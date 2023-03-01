@@ -2,8 +2,8 @@ import "./Content.scss"
 import { Link } from "react-router-dom"
 import CONTENT from "../../data/CONTENT.json"
 import { Card } from "antd"
-import { PATH_TO_PICTURE } from "../../data/data"
 import { usePageTitle } from "../../shared/hooks/usePageTitle"
+import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
 
 export const Content = () => {
   usePageTitle()
@@ -23,7 +23,7 @@ export const Content = () => {
               className="products__item"
             >
               <img
-                src={PATH_TO_PICTURE.img + data.image}
+                src={PATH_TO_PICTURE.IMG + data.image}
                 alt={data.title}
                 style={{ width: "100%", marginBottom: 10 }}
               />

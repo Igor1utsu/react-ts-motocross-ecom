@@ -1,6 +1,6 @@
 import { Image, notification } from "antd"
 import { NotificationPlacement } from "antd/es/notification/interface"
-import { PATH_TO_PICTURE } from "../../data/data"
+import { PATH_TO_PICTURE } from "../constants/Path.constants"
 import { IDataParts } from "../model/IDataParts"
 
 export const useNotification = () => {
@@ -12,7 +12,7 @@ export const useNotification = () => {
     api.success({
       message: `${data.name} added to cart`,
       description: (
-        <Image src={PATH_TO_PICTURE.parts + data.image} width={50} />
+        <Image src={PATH_TO_PICTURE.PARTS + data.image} width={50} />
       ),
       placement,
     })

@@ -8,7 +8,6 @@ import "./PartDetail.scss"
 import BRANDS from "../../data/BRANDS.json"
 import { useNavigate, useParams } from "react-router-dom"
 import { IParams } from "./model"
-import { PATH_TO_PICTURE } from "../../data/data"
 import { useContext, useState } from "react"
 import { FilterOptionsContext } from "../../context/FilterOptionsContext"
 import { CartContext } from "../../context/CartContext"
@@ -16,6 +15,7 @@ import { PageNotFound } from "../PageNotFound/PageNotFound"
 import { getProduct } from "../../utils/helpers"
 import { usePageTitle } from "../../shared/hooks/usePageTitle"
 import { PAGE_404_TITLE } from "../../shared/constants/Page.constants"
+import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
 
 export const PartDetail = () => {
   const params = useParams<IParams>()
@@ -51,7 +51,7 @@ export const PartDetail = () => {
     <div className="product">
       <section className="product-box">
         <div className="product-container-img">
-          <img src={PATH_TO_PICTURE.parts + part?.image} alt="Repair Part" />
+          <img src={PATH_TO_PICTURE.PARTS + part?.image} alt="Repair Part" />
         </div>
 
         <div className="product-container-main">
@@ -63,7 +63,7 @@ export const PartDetail = () => {
           <div className="product__row price">
             {"$ " + part?.price}
             <div className="company-logo">
-              <img src={PATH_TO_PICTURE.brand + brandLogo} alt={part?.brand} />
+              <img src={PATH_TO_PICTURE.BRAND + brandLogo} alt={part?.brand} />
             </div>
           </div>
           <hr />
