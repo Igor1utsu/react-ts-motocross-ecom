@@ -1,10 +1,10 @@
 import "./CartItem.scss"
 import { CloseOutlined } from "@ant-design/icons"
 import { Button, InputNumber } from "antd"
-import { CartContext } from "../../context/CartContext"
+import { CartContext } from "../../../context/CartContext"
 import { FC, memo, useContext, useMemo } from "react"
-import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
-import { getProduct } from "../../shared/utils/GetProduct.utils"
+import { PATH_TO_PICTURE } from "../../constants/Path.constants"
+import { getProduct } from "../../utils/GetProduct.utils"
 
 export enum TypeEnum {
   Drawer = "item-drawer",

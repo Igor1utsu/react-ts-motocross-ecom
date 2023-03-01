@@ -2,7 +2,7 @@ import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Badge, Button } from "antd"
 import { FC, memo, useContext, useState } from "react"
 import { CartContext } from "../../context/CartContext"
-import { Logo } from "../Logo/Logo"
+import { Logo } from "../../shared/components/Logo/Logo"
 import { DrawerCart } from "./components/DrawerCart/DrawerCart"
 import "./Header.scss"
 

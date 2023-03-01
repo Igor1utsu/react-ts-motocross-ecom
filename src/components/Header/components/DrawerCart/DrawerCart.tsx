@@ -2,7 +2,7 @@ import "./DrawerCart.scss"
 import { Button, Drawer } from "antd"
 import { FC, useContext } from "react"
 import { CartContext } from "../../../../context/CartContext"
-import { CartItem, TypeEnum } from "../../../CartItem/CartItem"
+import { CartItem, TypeEnum } from "../../../../shared/components/CartItem/CartItem"
 import { useNavigate } from "react-router-dom"
 
 interface IDrawerCartProps {
