@@ -57,7 +57,7 @@ export const useGetProductList = (
         })
         .map((part, index) => ({ ...part, key: index }))
     )
-  }, [minPrice, maxPrice])
+  }, [checkedBrand, minPrice, maxPrice])
 
   return partsDataArray
 }
