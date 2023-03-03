@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react"
+import React, { FC, memo, useContext, useState } from "react"
 import { ArrowRightOutlined } from "@ant-design/icons"
 import { Button, Input } from "antd"
 import { FilterOptionsContext } from "../../../../../../context/FilterOptionsContext"
 
-export const FilterByPrice: React.FC = () => {
+export const FilterByPrice: FC = memo(() => {
   const { minPrice, maxPrice, setMinPrice, setMaxPrice } =
     useContext(FilterOptionsContext)
   const [min, setMin] = useState<number>(0 || minPrice)
@@ -42,4 +42,4 @@ export const FilterByPrice: React.FC = () => {
       </Button>
     </form>
   )
-}
+})

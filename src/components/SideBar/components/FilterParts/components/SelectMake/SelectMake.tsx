@@ -1,10 +1,11 @@
 import MAKE from "../../../../../../data/MAKE.json"
 import { Select } from "antd"
-import { useContext } from "react"
+import { FC, memo, useContext } from "react"
 import { FilterOptionsContext } from "../../../../../../context/FilterOptionsContext"
 
-export const SelectMake: React.FC = () => {
-  const { make, setMake, setModel, setYear, setIsSelectBike } = useContext(FilterOptionsContext)
+export const SelectMake: FC = memo(() => {
+  const { make, setMake, setModel, setYear, setIsSelectBike } =
+    useContext(FilterOptionsContext)
 
   const onChange = (value: string) => {
     setMake(value)
@@ -27,4 +28,4 @@ export const SelectMake: React.FC = () => {
       })}
     />
   )
-}
+})

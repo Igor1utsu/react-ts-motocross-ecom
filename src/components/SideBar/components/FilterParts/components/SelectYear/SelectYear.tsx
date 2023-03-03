@@ -1,10 +1,11 @@
 import { Select } from "antd"
-import React, { useContext } from "react"
+import { FC, memo, useContext } from "react"
 import { FilterOptionsContext } from "../../../../../../context/FilterOptionsContext"
 import { filtersCookies } from "../../../../SideBar.const"
 
-export const SelectYear: React.FC = () => {
-  const { make, model, year, setYear, setIsSelectBike, bikeYearArray } = useContext(FilterOptionsContext)
+export const SelectYear: FC = memo(() => {
+  const { make, model, year, setYear, setIsSelectBike, bikeYearArray } =
+    useContext(FilterOptionsContext)
 
   const changeHandler = (value: number) => {
     setYear(value)
@@ -31,4 +32,4 @@ export const SelectYear: React.FC = () => {
       })}
     />
   )
-}
+})

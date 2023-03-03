@@ -1,10 +1,11 @@
 import { Select } from "antd"
-import { useContext } from "react"
+import { FC, memo, useContext } from "react"
 import { FilterOptionsContext } from "../../../../../../context/FilterOptionsContext"
 
-export const SelectModel: React.FC = () => {
-  const { make, model, setModel, setYear, setIsSelectBike, bikeModelArray } = useContext(FilterOptionsContext)
-  
+export const SelectModel: FC = memo(() => {
+  const { make, model, setModel, setYear, setIsSelectBike, bikeModelArray } =
+    useContext(FilterOptionsContext)
+
   const onChange = (value: string) => {
     setYear(null)
     setModel(value)
@@ -26,4 +27,4 @@ export const SelectModel: React.FC = () => {
       })}
     />
   )
-}
+})
