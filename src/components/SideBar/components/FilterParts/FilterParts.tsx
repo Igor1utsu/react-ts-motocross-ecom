@@ -1,6 +1,5 @@
 import { FC, memo, useContext, useMemo } from "react"
-import { Button, MenuProps } from "antd"
-import { Menu } from "antd"
+import { Button, Menu, MenuProps } from "antd"
 import { SelectMake } from "./components/SelectMake/SelectMake"
 import { SelectModel } from "./components/selectModel/selectModel"
 import { SelectYear } from "./components/SelectYear/SelectYear"
@@ -22,13 +21,13 @@ export const FilterParts: FC = memo(() => {
     return GetBrandList(checkedBrand, setChekedBrand)
   }, [checkedBrand])
 
-  const selectBike = [
+  const formSelectBike = [
     getItem(<SelectMake />, "make", null),
     getItem(<SelectModel />, "model", null),
     getItem(<SelectYear />, "year", null),
   ]
 
-  const itemsSelectBike: MenuProps["items"] = [
+  const menuSelectBike: MenuProps["items"] = [
     getItem(
       <h3 className="menu__select">
         <span>Select to Bike</span>
@@ -45,12 +44,12 @@ export const FilterParts: FC = memo(() => {
       </h3>,
       "bike",
       null,
-      selectBike,
+      formSelectBike,
       "group"
     ),
   ]
 
-  const itemsOther: MenuProps["items"] = [
+  const menuOther: MenuProps["items"] = [
     getItem("Brand", "brand", null, brandList),
     getItem("Price: $", "price", null, [
       getItem(<FilterByPrice />, "filterByPrice", null),
@@ -61,13 +60,13 @@ export const FilterParts: FC = memo(() => {
     <>
       <Menu
         mode="inline"
-        items={itemsSelectBike}
+        items={menuSelectBike}
         className="sidebar__menu select-to-bike-group"
       />
       <Menu
         defaultOpenKeys={["brand"]}
         mode="inline"
-        items={itemsOther}
+        items={menuOther}
         className="sidebar__menu"
       />
       {isSelectBike && <div className="overlay"></div>}
