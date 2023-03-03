@@ -1,39 +1,15 @@
-import React, { useContext } from "react"
-import { Button, Checkbox, MenuProps } from "antd"
+import { FC, memo, useContext, useMemo } from "react"
+import { Button, MenuProps } from "antd"
 import { Menu } from "antd"
-import BRANDS from "../../../../data/BRANDS.json"
 import { SelectMake } from "./components/SelectMake/SelectMake"
 import { SelectModel } from "./components/selectModel/selectModel"
 import { SelectYear } from "./components/SelectYear/SelectYear"
 import { FilterByPrice } from "./components/FilterByPrice/FilterByPrice"
 import { FilterOptionsContext } from "../../../../context/FilterOptionsContext"
+import { getItem } from "../../../../shared/utils/GetItemMenu"
+import { GetBrandList } from "../../../../shared/utils/GetBrandList"
 
-interface IBrand {
-  id: number
-  name: string
-  title: string
-  imageName: string
-}
-
-type MenuItem = Required<MenuProps>["items"][number]
-
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[],
-  type?: "group"
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  } as MenuItem
-}
-
-export const FilterParts: React.FC = () => {
+export const FilterParts: FC = memo(() => {
   const {
     isSelectBike,
     setIsSelectBike,
@@ -42,38 +18,9 @@ export const FilterParts: React.FC = () => {
     setChekedBrand,
   } = useContext(FilterOptionsContext)
 
-  const brandList = BRANDS.map((brand) => {
-    const changeHandler = (brand: IBrand) => {
-      // проверем useState на наличие брендов, затем обновляем данные
-      if (checkedBrand.includes(brand.name)) {
-        const updateCheckedBrand = checkedBrand.filter(
-          (checked) => checked !== brand.name
-        )
-        setChekedBrand(updateCheckedBrand)
-        sessionStorage.setItem(
-          "checkedBrand",
-          JSON.stringify(updateCheckedBrand)
-        )
-      } else {
-        const updateCheckedBrand = [...checkedBrand, brand.name]
-        setChekedBrand(updateCheckedBrand)
-        sessionStorage.setItem(
-          "checkedBrand",
-          JSON.stringify(updateCheckedBrand)
-        )
-      }
-    }
-
-    return getItem(
-      <Checkbox
-        checked={checkedBrand.includes(brand.name)}
-        onChange={() => changeHandler(brand)}
-      >
-        {brand.title}
-      </Checkbox>,
-      brand.id
-    )
-  })
+  const brandList = useMemo(() => {
+    return GetBrandList(checkedBrand, setChekedBrand)
+  }, [checkedBrand])
 
   const selectBike = [
     getItem(<SelectMake />, "make", null),
@@ -102,7 +49,7 @@ export const FilterParts: React.FC = () => {
       "group"
     ),
   ]
-  
+
   const itemsOther: MenuProps["items"] = [
     getItem("Brand", "brand", null, brandList),
     getItem("Price: $", "price", null, [
@@ -126,4 +73,4 @@ export const FilterParts: React.FC = () => {
       {isSelectBike && <div className="overlay"></div>}
     </>
   )
-}
+})
