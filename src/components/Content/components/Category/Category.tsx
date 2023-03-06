@@ -23,7 +23,7 @@ export const Category: FC<ICategoryProps> = (props) => {
   const { make, model, year, checkedBrand, minPrice, maxPrice } =
     useContext(FilterOptionsContext)
   const { addToCart } = useContext(CartContext)
-  
+
   const { openNotification, contextHolder } = useNotification()
   const PartsDataArray = useGetProductList(
     make,
@@ -51,17 +51,7 @@ export const Category: FC<ICategoryProps> = (props) => {
       render: (name, data) => (
         <Link to={`${data.partNumber}`}>
           {name}
-          {" for "}
-          {data.fits.map(
-            (data) =>
-              data.make +
-              " " +
-              data.model +
-              " " +
-              (data.year.length > 2
-                ? data.year[0] + " - " + data.year[data.year.length - 1] + " "
-                : data.year[0] + " " + data.year[1] + " ")
-          )}
+          <span className="part-number">{` #${data.partNumber}`}</span>
         </Link>
       ),
     },

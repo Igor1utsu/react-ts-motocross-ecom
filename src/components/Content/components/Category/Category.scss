@@ -6,6 +6,12 @@
     font-size: 18px;
   }
 
+  .part-number {
+    font-size: 12px;
+    color: rgb(116, 116, 116);
+    padding-left: 10px;
+  }
+
   .item {
     &__buy {
       display: flex;
