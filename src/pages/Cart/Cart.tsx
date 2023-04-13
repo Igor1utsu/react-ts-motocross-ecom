@@ -1,12 +1,13 @@
 import { Button } from "antd"
 import { FC, memo, useContext } from "react"
+import { ReactComponent as Logo } from "../../assets/logo.svg"
 import { CartItem } from "../../shared/components/CartItem/CartItem"
 import { GettingPickup } from "../../components/GettingPickup/GettingPickup"
-import { Logo } from "../../shared/components/Logo/Logo"
 import { CartContext } from "../../context/CartContext"
 import { CART_PAGE_TITLE } from "../../shared/constants/Page.constants"
 import { usePageTitle } from "../../shared/hooks/usePageTitle"
 import "./Cart.scss"
+import { Link } from "react-router-dom"
 
 export const Cart: FC = memo(() => {
   const { shoppingCart, total, items } = useContext(CartContext)
@@ -18,7 +19,9 @@ export const Cart: FC = memo(() => {
       <div className="cart-container">
         <div className="cart">
           <header className="cart__header">
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
           </header>
           <main className="cart__main">
             <section className="cart__section cart-product">
