@@ -7,6 +7,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 2;
 
   .cart-link-icon {
     font-size: 30px;
