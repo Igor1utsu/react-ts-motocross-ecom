@@ -1,4 +1,4 @@
-import "./Content.scss"
+import "./ProductNavigation.scss"
 import { Link } from "react-router-dom"
 import CONTENT from "../../data/CONTENT.json"
 import { Card } from "antd"
@@ -6,14 +6,14 @@ import { usePageTitle } from "../../shared/hooks/usePageTitle"
 import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
 import { FC, memo } from "react"
 
-export const Content: FC = memo(() => {
+export const ProductNavigation: FC = memo(() => {
   usePageTitle()
 
   return (
-    <div className="content">
-      <div className="products">
-        {CONTENT.map((data, index) => (
-          <Link to={data.name} key={index}>
+    <div className="bg">
+      <div className="products-nav">
+        {CONTENT.map((data) => (
+          <Link to={data.name} key={data.id}>
             <Card
               title={data.title}
               headStyle={{
@@ -21,16 +21,16 @@ export const Content: FC = memo(() => {
                 textTransform: "uppercase",
                 fontSize: 18,
               }}
-              className="products__item"
+              className="product-nav__item i-product"
             >
               <img
                 src={PATH_TO_PICTURE.IMG + data.image}
                 alt={data.title}
                 style={{ width: "100%", marginBottom: 10 }}
               />
-              <ul className="product__text">
+              <ul className="i-product__content">
                 {data.text?.map((item, index) => (
-                  <li className="text__item" key={index}>
+                  <li className="i-product__element" key={index}>
                     {item}
                   </li>
                 ))}

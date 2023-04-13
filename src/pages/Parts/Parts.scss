@@ -1,5 +1,10 @@
 @import "../../styles/imports/variables";
 
-.parts {
-  @extend %window-style;
+.content {
+  flex: 1;
+  margin-left: 20px;
+
+  .parts-table {
+    @extend %window-style;
+  }
 }

@@ -38,27 +38,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-#root {
-  min-height: 100vh;
-}
-
-.main {
-  padding-top: 20px;
-  display: flex;
-}
-
-.container {
-  padding-left: 60px;
-  padding-right: 60px;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba($color: #000000, $alpha: 0.6);
-  z-index: 3;
-}

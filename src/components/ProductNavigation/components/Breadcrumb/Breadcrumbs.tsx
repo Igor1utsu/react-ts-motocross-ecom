@@ -2,6 +2,7 @@ import { FC, memo } from "react"
 import { Breadcrumb } from "antd"
 import { Link, useLocation } from "react-router-dom"
 import { IBreadCrumbNameMap } from "./model/IBreadCrumbNameMap.model"
+import "./Breadcrumds.scss"
 
 export const Breadcrumbs: FC = memo(() => {
   const location = useLocation()
@@ -39,7 +40,5 @@ export const Breadcrumbs: FC = memo(() => {
     </Breadcrumb.Item>,
   ].concat(extraBreadcrumbItems)
 
-  return (
-    <Breadcrumb className="content__bread-crumbs">{breadcrumbItems}</Breadcrumb>
-  )
+  return <Breadcrumb className="bread-crumbs">{breadcrumbItems}</Breadcrumb>
 })

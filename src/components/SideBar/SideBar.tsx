@@ -4,8 +4,8 @@ import "./SideBar.scss"
 
 export const SideBar: FC = memo(() => {
   return (
-    <div className="sidebar">
+    <aside className="sidebar">
       <FilterParts />
-    </div>
+    </aside>
   )
 })

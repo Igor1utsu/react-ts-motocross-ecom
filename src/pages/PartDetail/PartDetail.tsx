@@ -16,6 +16,7 @@ import { usePageTitle } from "../../shared/hooks/usePageTitle"
 import { PAGE_404_TITLE } from "../../shared/constants/Page.constants"
 import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
 import { getProduct } from "../../shared/utils/GetProduct.utils"
+import { Breadcrumbs } from "../../components/ProductNavigation/components/Breadcrumb/Breadcrumbs"
 
 export const PartDetail: FC = memo(() => {
   const params = useParams<IParams>()
@@ -23,7 +24,7 @@ export const PartDetail: FC = memo(() => {
 
   const { make, model, year } = useContext(FilterOptionsContext)
   const { shoppingCart, addToCart } = useContext(CartContext)
-  
+
   const part = useMemo(() => getProduct(params.number), [params.number])
   const [qtyInput, setQtyInput] = useState<number>(1)
   usePageTitle(part ? part.name : PAGE_404_TITLE)
@@ -49,90 +50,96 @@ export const PartDetail: FC = memo(() => {
   return !part ? (
     <PageNotFound />
   ) : (
-    <div className="product">
-      <section className="product-box">
-        <div className="product-container-img">
-          <img src={PATH_TO_PICTURE.PARTS + part?.image} alt="Repair Part" />
-        </div>
-
-        <div className="product-container-main">
-          <div className="product__header">
-            <h2 className="product__title">{part?.name}</h2>
-            <h3 className="product__number">{"# " + part?.partNumber}</h3>
+    <div className="main-container wrapper-row">
+      <Breadcrumbs />
+      <div className="product">
+        <section className="product-box">
+          <div className="product-container-img">
+            <img src={PATH_TO_PICTURE.PARTS + part?.image} alt="Repair Part" />
           </div>
 
-          <div className="product__row price">
-            {"$ " + part?.price}
-            <div className="company-logo">
-              <img src={PATH_TO_PICTURE.BRAND + brandLogo} alt={part?.brand} />
+          <div className="product-container-main">
+            <div className="product__header">
+              <h2 className="product__title">{part?.name}</h2>
+              <h3 className="product__number">{"# " + part?.partNumber}</h3>
             </div>
-          </div>
-          <hr />
-          <br />
-          <div className="product__row">
-            <div className="product__qty">
-              <span>QTY:</span>
-              <InputNumber
-                min={1}
-                value={qtyInput}
-                className="product__cart-input"
-                onChange={(val) => val && setQtyInput(val)}
-              />
+
+            <div className="product__row price">
+              {"$ " + part?.price}
+              <div className="company-logo">
+                <img
+                  src={PATH_TO_PICTURE.BRAND + brandLogo}
+                  alt={part?.brand}
+                />
+              </div>
             </div>
-            {!isAdded ? (
-              <Button
-                type="ghost"
-                onClick={() => handleAddToCart()}
-                className="btn--gree btn--large"
+            <hr />
+            <br />
+            <div className="product__row">
+              <div className="product__qty">
+                <span>QTY:</span>
+                <InputNumber
+                  min={1}
+                  value={qtyInput}
+                  className="product__cart-input"
+                  onChange={(val) => val && setQtyInput(val)}
+                />
+              </div>
+              {!isAdded ? (
+                <Button
+                  type="ghost"
+                  onClick={() => handleAddToCart()}
+                  className="btn--gree btn--large"
+                >
+                  <ShoppingCartOutlined className="icon" />
+                  Add to Cart
+                </Button>
+              ) : (
+                <Button
+                  type="ghost"
+                  onClick={() => history("/shopcart")}
+                  className="btn--gree btn--large"
+                >
+                  View in cart
+                </Button>
+              )}
+            </div>
+            {make && model && year && (
+              <div
+                className={
+                  fitToBike ? "product__row fit" : "product__row fit no-fit"
+                }
               >
-                <ShoppingCartOutlined className="icon" />
-                Add to Cart
-              </Button>
-            ) : (
-              <Button
-                type="ghost"
-                onClick={() => history("/shopcart")}
-                className="btn--gree btn--large"
-              >
-                View in cart
-              </Button>
+                {fitToBike ? (
+                  <CheckCircleOutlined className="icon" />
+                ) : (
+                  <ExclamationCircleOutlined className="icon" />
+                )}
+                <span>
+                  {fitToBike ? "This part fits:" : "This part does not fits:"}
+                </span>
+                <span>{year + " " + make + " " + model}</span>
+              </div>
             )}
           </div>
-          {make && model && year && (
-            <div
-              className={
-                fitToBike ? "product__row fit" : "product__row fit no-fit"
-              }
-            >
-              {fitToBike ? (
-                <CheckCircleOutlined className="icon" />
-              ) : (
-                <ExclamationCircleOutlined className="icon" />
-              )}
-              <span>
-                {fitToBike ? "This part fits:" : "This part does not fits:"}
-              </span>
-              <span>{year + " " + make + " " + model}</span>
-            </div>
+        </section>
+        <hr />
+        <section className="product-box details">
+          <h3 className="details__title">Details:</h3>
+          <span className="details__fit-text">
+            This item fits the following models:
+          </span>
+          {part?.fits.map((data) =>
+            data.year.map((d, index) => {
+              return (
+                <span className="details__fit-item" key={index}>
+                  {d + " " + data.make + " " + data.model}
+                </span>
+              )
+            })
           )}
-        </div>
-      </section>
-      <hr />
-      <section className="product-box details">
-        <h3 className="details__title">Details:</h3>
-        <span className="details__fit-text">
-          This item fits the following models:
-        </span>
-        {part?.fits.map((data) =>
-          data.year.map((d, index) => {
-            return (
-              <span className="details__fit-item" key={index}>
-                {d + " " + data.make + " " + data.model}
-              </span>
-            )
-          })
-        )}
-      </section>
+        </section>
+      </div>
     </div>
   )
 })
