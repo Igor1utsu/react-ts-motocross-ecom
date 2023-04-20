@@ -1,0 +1,49 @@
+@import "../../../../styles/imports/variables";
+
+.bg {
+  width: 100vw;
+  height: calc(100vh - 192px);
+  position: relative;
+  top: 96px;
+  background: orange no-repeat url("../../../../../public/img/background.jpg");
+  background-size: cover;
+
+  .products-nav {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translateX(-50%) translateY(calc(-50% - 96px));
+
+    .i-product {
+      width: 240px;
+      height: 100%;
+      margin: 5px;
+      cursor: pointer;
+      @extend %window-style;
+
+      &__content {
+        max-height: 80px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      &__element {
+        padding: 2px 10px;
+        text-align: center;
+      }
+    }
+
+    .ant-card-body {
+      padding: 10px;
+    }
+
+    .ant-card-head-title {
+      padding: 5px;
+    }
+  }
+}

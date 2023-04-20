@@ -3,8 +3,8 @@ import { Button, Modal } from "antd"
 import { FC, memo, useState } from "react"
 import { YMaps, Map, Placemark } from "react-yandex-maps"
 import { Maps } from "../Maps/Maps"
-import { useGetAddress } from "../../../../shared/hooks/useGetAddress"
-import { useGetStoreData } from "../../../../shared/hooks/useGetStoreData"
+import { useGetAddress } from "../../hooks/useGetAddress"
+import { useGetStoreData } from "../../hooks/useGetStoreData"
 
 export const GettingPickup: FC = memo(() => {
   const [selectedStore, setSelectedStore] = useState<number>(

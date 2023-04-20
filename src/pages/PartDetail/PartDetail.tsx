@@ -16,7 +16,7 @@ import { usePageTitle } from "../../shared/hooks/usePageTitle"
 import { PAGE_404_TITLE } from "../../shared/constants/Page.constants"
 import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
 import { getProduct } from "../../shared/utils/GetProduct.utils"
-import { Breadcrumbs } from "../../components/ProductNavigation/components/Breadcrumb/Breadcrumbs"
+import { Breadcrumbs } from "../../layouts/MainLayouts/components/ProductNavigation/components/Breadcrumb/Breadcrumbs"
 
 export const PartDetail: FC = memo(() => {
   const params = useParams<IParams>()

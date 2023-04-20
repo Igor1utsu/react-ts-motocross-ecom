@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react"
 import { useCookies } from "react-cookie"
 import { createContext } from "react"
 import MAKE from "../data/MAKE.json"
-import { filtersCookies } from "../components/SideBar/SideBar.const"
+import { filtersCookies } from "../layouts/MainLayouts/components/SideBar/SideBar.const"
 import { IFilterOptions } from "./model/IFilterOptions.model"
 
 export const FilterOptionsContext = createContext<IFilterOptions>({
