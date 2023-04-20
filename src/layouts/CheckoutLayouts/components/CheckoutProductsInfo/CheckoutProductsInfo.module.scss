@@ -1,0 +1,21 @@
+@import "../../../../styles/imports/variables";
+
+.CheckoutProductsInfo {
+  grid-row-start: span 2;
+  @extend %window-style;
+
+  &__title {
+    padding: 20px;
+  }
+
+  &__list {
+    padding: 10px 20px;
+    border-top: 1px #e9e9e9 solid;
+    border-bottom: 1px #e9e9e9 solid;
+  }
+
+  &__order {
+    padding: 20px;
+    font-size: 18px;
+  }
+}

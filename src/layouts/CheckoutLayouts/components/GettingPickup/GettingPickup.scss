@@ -1,11 +1,11 @@
-@import "../../styles/imports/variables";
+@import "../../../../styles/imports/variables";
 
 .getting-pickup {
   @extend %window-style;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 20px;
 
   &__info {
     display: flex;

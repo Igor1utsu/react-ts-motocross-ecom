@@ -1,13 +1,21 @@
-.main-container {
-  padding: 48px 40px;
+.container {
+  max-width: 1280px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin: auto;
 }
 
-.wrapper-row {
+.content-wrapper {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.wrapper-colum {
   display: flex;
   flex-direction: column;
 }
 
-.wrapper-colum {
+.wrapper-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

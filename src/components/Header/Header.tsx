@@ -22,7 +22,7 @@ export const Header: FC = memo(() => {
 
   return (
     <>
-      <header className="header wrapper-colum">
+      <header className="header container wrapper-row">
         <Link to="/">
           <Logo />
         </Link>

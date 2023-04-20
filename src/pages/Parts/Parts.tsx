@@ -12,7 +12,7 @@ export const Parts: FC = memo(() => {
   usePageTitle(PARTS_PAGE_TITLE)
 
   return (
-    <div className="main-container wrapper-colum">
+    <div className="container content-wrapper wrapper-row">
       <SideBar />
       <div className="content">
         <Breadcrumbs />

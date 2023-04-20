@@ -2,7 +2,6 @@ import { Button } from "antd"
 import { FC, memo, useContext } from "react"
 import { ReactComponent as Logo } from "../../assets/logo.svg"
 import { CartItem } from "../../shared/components/CartItem/CartItem"
-import { GettingPickup } from "../../components/GettingPickup/GettingPickup"
 import { CartContext } from "../../context/CartContext"
 import { CART_PAGE_TITLE } from "../../shared/constants/Page.constants"
 import { usePageTitle } from "../../shared/hooks/usePageTitle"
@@ -45,13 +44,12 @@ export const Cart: FC = memo(() => {
                     {total.toFixed(2) + " $"}
                   </span>
                 </div>
-                <Button type="ghost" className="btn--gree btn--large">
-                  Buy
-                </Button>
+                <Link to="/checkout">
+                  <Button type="ghost" className="btn--gree btn--large">
+                    Buy
+                  </Button>
+                </Link>
               </div>
-            </section>
-            <section className="cart__section">
-              <GettingPickup />
             </section>
           </main>
         </div>

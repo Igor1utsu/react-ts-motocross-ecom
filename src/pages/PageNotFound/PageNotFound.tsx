@@ -7,7 +7,7 @@ export const PageNotFound: FC = memo(() => {
   usePageTitle(PAGE_404_TITLE)
 
   return (
-    <div className="main-container">
+    <div className="container">
       <h2 className="page-not-found-message">{PAGE_404_TITLE}</h2>
     </div>
   )

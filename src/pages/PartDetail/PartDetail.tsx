@@ -50,7 +50,7 @@ export const PartDetail: FC = memo(() => {
   return !part ? (
     <PageNotFound />
   ) : (
-    <div className="main-container wrapper-row">
+    <div className="container content-wrapper wrapper-colum">
       <Breadcrumbs />
       <div className="product">
         <section className="product-box">

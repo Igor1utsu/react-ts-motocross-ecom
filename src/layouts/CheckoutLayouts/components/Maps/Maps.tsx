@@ -3,7 +3,7 @@ import { FC, memo, useState } from "react"
 import { YMaps, Map, Placemark } from "react-yandex-maps"
 import { Portal } from "./components/Portal/Portal"
 import { BallonComponent } from "./components/BallonComponent/BallonComponent"
-import PICKUP_POINT from "../../data/PICKUP-POINT.json"
+import PICKUP_POINT from "../../../../data/PICKUP-POINT.json"
 import { PickPointItem } from "./components/PickupPointItem/PickupPointItem"
 
 interface IMapsProps {
