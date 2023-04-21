@@ -3,7 +3,7 @@ import clsx from "clsx"
 import { Button, Drawer } from "antd"
 import { FC, useContext } from "react"
 import { CartContext } from "../../../../context/CartContext"
-import { CartItem } from "./components/CartItem/CartItem"
+import { Product } from "./components/Product/Product"
 import { useNavigate } from "react-router-dom"
 
 interface IDrawerWrapperProps {
@@ -34,7 +34,7 @@ export const DrawerWrapper: FC<IDrawerWrapperProps> = (props) => {
             <>
               {shoppingCart.map((product) => {
                 return (
-                  <CartItem
+                  <Product
                     id={product.id}
                     qty={product.qty}
                     key={product.id}

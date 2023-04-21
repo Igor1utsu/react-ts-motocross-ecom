@@ -18,14 +18,13 @@
   height: auto;
   width: 100%;
   padding: 8px;
-  flex: 1;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.btn--remove-cart-item {
+.btn--remove-product {
   position: absolute;
-  top: 7px;
-  right: 7px;
+  top: calc(50% - 8px);
+  right: 2px;
   color: red;
 }
