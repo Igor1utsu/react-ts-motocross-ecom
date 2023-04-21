@@ -1,0 +1,16 @@
+.DrawerWrapper {
+  &__body {
+    height: 100%;
+  }
+
+  &__list {
+    margin-bottom: 20px;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  &__total {
+    padding-top: 20px;
+    font-size: 18px;
+  }
+}

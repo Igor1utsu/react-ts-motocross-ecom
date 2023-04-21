@@ -4,7 +4,7 @@ import { FC, memo, useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { ReactComponent as Logo } from "../../../../assets/logo.svg"
 import { CartContext } from "../../../../context/CartContext"
-import { DrawerCart } from "../DrawerCart/DrawerCart"
+import { DrawerWrapper } from "../DrawerWrapper/DrawerWrapper"
 import "./Header.scss"
 
 export const Header: FC = memo(() => {
@@ -39,7 +39,7 @@ export const Header: FC = memo(() => {
           </Button>
         </div>
       </header>
-      <DrawerCart open={openDrawer} onClose={onCloseDrawer} />
+      <DrawerWrapper open={openDrawer} onClose={onCloseDrawer} />
     </>
   )
 })
