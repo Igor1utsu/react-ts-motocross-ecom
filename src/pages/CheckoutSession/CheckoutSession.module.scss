@@ -1,16 +1,17 @@
 @import "../../styles/imports/variables";
 
 .CheckoutSession {
+  padding-bottom: 48px;
+
   &__title {
     padding: 15px 0;
   }
 
   &__grid {
+    max-height: 80vh;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
     gap: 20px;
   }
 }
-
-
