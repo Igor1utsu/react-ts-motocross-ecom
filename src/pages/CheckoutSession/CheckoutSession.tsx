@@ -2,7 +2,7 @@ import styles from "./CheckoutSession.module.scss"
 import { FC, memo } from "react"
 import { GettingPickup } from "../../layouts/CheckoutLayouts/components/GettingPickup/GettingPickup"
 import { UserContactForm } from "../../layouts/CheckoutLayouts/components/UserContactForm/UserContactForm"
-import { CheckoutProductsInfo } from "../../layouts/CheckoutLayouts/components/CheckoutProductsInfo/CheckoutProductsInfo"
+import { ProductsInfo } from "../../layouts/CheckoutLayouts/components/ProductsInfo/ProductsInfo"
 
 export const CheckoutSession: FC = memo(() => {
   return (
@@ -10,7 +10,7 @@ export const CheckoutSession: FC = memo(() => {
       <h1 className={styles["CheckoutSession__title"]}>Checkout</h1>
       <div className={styles["CheckoutSession__grid"]}>
         <GettingPickup />
-        <CheckoutProductsInfo />
+        <ProductsInfo />
         <UserContactForm />
       </div>
     </div>
