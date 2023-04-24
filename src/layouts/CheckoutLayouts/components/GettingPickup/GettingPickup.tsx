@@ -24,7 +24,7 @@ export const GettingPickup: FC = memo(() => {
 
   return (
     <>
-      <div className="getting-pickup">
+      <section className="getting-pickup">
         <div className="getting-pickup__info">
           <span>Pickup point: </span>
           <b>{title}</b>
@@ -52,7 +52,7 @@ export const GettingPickup: FC = memo(() => {
             />
           </Map>
         </YMaps>
-      </div>
+      </section>
 
       <Modal
         open={openMaps}

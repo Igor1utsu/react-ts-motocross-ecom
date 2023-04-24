@@ -10,7 +10,7 @@ export const ProductsInfo: FC = memo(() => {
   const totalPrice = `$ ${total.toFixed(2)}`
 
   return (
-    <div className={clsx(styles["ProductsInfo"], "wrapper-colum")}>
+    <section className={clsx(styles["ProductsInfo"], "wrapper-colum")}>
       <h3 className={styles["ProductsInfo__title"]}>Products:</h3>
       <ul className={styles["ProductsInfo__list"]}>
         {shoppingCart.map((product) => {
@@ -23,6 +23,6 @@ export const ProductsInfo: FC = memo(() => {
         <span>Total:</span>
         <span>{totalPrice}</span>
       </div>
-    </div>
+    </section>
   )
 })
