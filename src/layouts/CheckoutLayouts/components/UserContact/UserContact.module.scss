@@ -1,0 +1,14 @@
+@import "../../../../styles/imports/variables";
+
+.UserContact {
+  padding: 20px;
+  @extend %window-style;
+
+  &__title {
+    margin: 0 auto;
+  }
+
+  &__for-m {
+    padding-top: 20px;
+  }
+}
