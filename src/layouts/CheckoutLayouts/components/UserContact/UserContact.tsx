@@ -1,9 +1,20 @@
 import styles from "./UserContact.module.scss"
-import { FC, memo } from "react"
-import { Button, Form, Input } from "antd"
 import clsx from "clsx"
+import { FC, memo, useContext } from "react"
+import { Button, Form, Input } from "antd"
+import { CartContext } from "../../../../context/CartContext"
+import { sendOrder } from "../../utils/SendOrder.utils"
+import { IUserContact } from "../../model/IUserContact.model"
 
-export const UserContact: FC = memo(() => {
+interface IUserContactProps {
+  selectedStore: number
+}
+
+export const UserContact: FC<IUserContactProps> = memo((props) => {
+  const { selectedStore } = props
+
+  const { shoppingCart } = useContext(CartContext)
+
   const [form] = Form.useForm()
 
   const formItemLayout = {
@@ -14,8 +25,15 @@ export const UserContact: FC = memo(() => {
     },
   }
 
-  const onSubmit = (values: any) => {
-    console.log("Received values of form: ", values)
+  const onSubmit = (values: IUserContact) => {
+    const order = {
+      date: Date.now,
+      products: shoppingCart,
+      user: values,
+      shopId: selectedStore,
+    }
+
+    sendOrder(order)
   }
 
   return (
@@ -30,7 +48,7 @@ export const UserContact: FC = memo(() => {
         <Form.Item label="First Name">
           <Form.Item
             noStyle
-            name={["user", "firstName"]}
+            name={["firstName"]}
             rules={[
               { required: true, message: "Please input your first name!" },
             ]}
@@ -42,7 +60,7 @@ export const UserContact: FC = memo(() => {
         <Form.Item label="Last Name">
           <Form.Item
             noStyle
-            name={["user", "lastName"]}
+            name={["lastName"]}
             rules={[
               { required: true, message: "Please input your last name!" },
             ]}
@@ -54,7 +72,7 @@ export const UserContact: FC = memo(() => {
         <Form.Item label="Phone Number">
           <Form.Item
             noStyle
-            name={["user", "phone"]}
+            name={["phone"]}
             rules={[
               { required: true, message: "Please input your phone number!" },
             ]}
@@ -66,7 +84,7 @@ export const UserContact: FC = memo(() => {
         <Form.Item label="Email">
           <Form.Item
             noStyle
-            name={["user", "email"]}
+            name={["email"]}
             rules={[
               {
                 required: true,

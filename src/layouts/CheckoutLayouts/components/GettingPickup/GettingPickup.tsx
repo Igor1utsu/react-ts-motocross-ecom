@@ -6,10 +6,14 @@ import { Maps } from "../Maps/Maps"
 import { useGetAddress } from "../../hooks/useGetAddress"
 import { useGetStoreData } from "../../hooks/useGetStoreData"
 
-export const GettingPickup: FC = memo(() => {
-  const [selectedStore, setSelectedStore] = useState<number>(
-    Number(localStorage.getItem("Store")) || 1
-  )
+interface IGettingPickupProps {
+  selectedStore: number
+  setSelectedStore: React.Dispatch<React.SetStateAction<number>>
+}
+
+export const GettingPickup: FC<IGettingPickupProps> = memo((props) => {
+  const { selectedStore, setSelectedStore } = props
+
   const { title, coordinates } = useGetStoreData(selectedStore)
   const address = useGetAddress(coordinates)
   const [openMaps, setOpenMaps] = useState(false)
