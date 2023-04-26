@@ -5,6 +5,7 @@ export interface ICartContext {
   setShoppingCart: (data: IProduct[]) => void
   addToCart: (id: number, value: number) => void
   removeFromCart: (id: number) => void
+  clearCart: () => void
   setQTY: (id: number, value: number) => void
   total: number
   items: number
