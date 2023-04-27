@@ -13,7 +13,7 @@ interface IUserContactProps {
 export const UserContact: FC<IUserContactProps> = memo((props) => {
   const { selectedStore } = props
 
-  const { shoppingCart } = useContext(CartContext)
+  const { shoppingCart, clearCart } = useContext(CartContext)
 
   const [form] = Form.useForm()
 
@@ -25,7 +25,7 @@ export const UserContact: FC<IUserContactProps> = memo((props) => {
     },
   }
 
-  const onSubmit = (values: IUserContact) => {
+  const onSubmit = async (values: IUserContact) => {
     const order = {
       date: Date.now,
       products: shoppingCart,
@@ -33,7 +33,12 @@ export const UserContact: FC<IUserContactProps> = memo((props) => {
       shopId: selectedStore,
     }
 
-    sendOrder(order)
+    const response = await sendOrder(order)
+
+    if (response) {
+      clearCart()
+      form.resetFields(["firstName", "lastName", "phone", "email"])
+    }
   }
 
   return (

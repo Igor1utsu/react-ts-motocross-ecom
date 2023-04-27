@@ -7,10 +7,12 @@ import { IOrder } from "../model/IOrder.model"
 
 export const sendOrder = async (order: IOrder) => {
   try {
-    await API.createOrder(order)
+    const response = await API.createOrder(order)
     showSuccessModal("Order successfully completed")
+    return response
   } catch (e: any) {
     console.error("Ошибка оформления заказа:", e)
     showErrorModal(e)
+    throw e
   }
 }
