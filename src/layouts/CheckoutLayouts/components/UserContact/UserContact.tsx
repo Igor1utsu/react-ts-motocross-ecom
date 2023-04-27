@@ -103,7 +103,11 @@ export const UserContact: FC<IUserContactProps> = memo((props) => {
         </Form.Item>
 
         <Form.Item {...formItemLayout}>
-          <Button type="ghost" className="btn--gree" htmlType="submit">
+          <Button
+            disabled={!shoppingCart.length}
+            type='primary'
+            htmlType="submit"
+          >
             Buy
           </Button>
         </Form.Item>

@@ -13,13 +13,12 @@ export const ProductsInfo: FC = memo(() => {
     <section className={clsx(styles["ProductsInfo"], "wrapper-colum")}>
       <h3 className={styles["ProductsInfo__title"]}>Products:</h3>
       <ul className={styles["ProductsInfo__list"]}>
-        {shoppingCart.map((product) => {
+        {!shoppingCart.length && <li>There are no items in your cart.</li>}
+        {shoppingCart?.map((product) => {
           return <Product id={product.id} qty={product.qty} key={product.id} />
         })}
       </ul>
-      <div
-        className={clsx(styles["ProductsInfo__footer"], "wrapper-row")}
-      >
+      <div className={clsx(styles["ProductsInfo__footer"], "wrapper-row")}>
         <span>Total:</span>
         <span>{totalPrice}</span>
       </div>
