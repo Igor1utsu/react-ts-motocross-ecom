@@ -1,8 +1,8 @@
-@import "../../../../styles/imports/variables";
+@import "src/styles/imports/templates";
 
 .UserContact {
   padding: 20px;
-  @extend %window-style;
+  @extend %window;
 
   &__title {
     margin: 0 auto;

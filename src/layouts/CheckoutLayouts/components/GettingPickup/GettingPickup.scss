@@ -1,7 +1,7 @@
-@import "../../../../styles/imports/variables";
+@import "src/styles/imports/templates";
 
 .getting-pickup {
-  @extend %window-style;
+  @extend %window;
   width: 100%;
   display: flex;
   justify-content: space-between;

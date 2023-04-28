@@ -1,9 +1,9 @@
-@import "../../../../../../styles/imports/variables";
+@import "src/styles/imports/templates";
 
 .point-item {
   padding: 10px 5px;
   margin-bottom: 10px;
-  @extend %window-style;
+  @extend %window;
 
   &__address {
     padding: 5px 0;

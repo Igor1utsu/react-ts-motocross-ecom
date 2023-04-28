@@ -1,3 +1,5 @@
+@import "src/styles/imports/variables";
+
 .btn--gree {
   background: rgb(74, 247, 74);
   color: #fff;
@@ -10,7 +12,7 @@
   height: 48px;
   border-radius: 0;
   &:hover {
-    background: rgb(29, 29, 29);
+    background: $color-gray-9;
   }
 }
 
@@ -26,5 +28,5 @@
   position: absolute;
   top: calc(50% - 8px);
   right: 2px;
-  color: red;
+  color: $color-red;
 }

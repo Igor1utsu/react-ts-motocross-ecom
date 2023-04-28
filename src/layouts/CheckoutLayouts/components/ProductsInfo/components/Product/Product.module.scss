@@ -1,4 +1,4 @@
-@import "../../../../../../styles/imports/variables";
+@import "src/styles/imports/variables";
 
 .Product {
   padding: 10px 0;
@@ -18,7 +18,7 @@
 
   &__description {
     font-size: 12px;
-    color: rgb(116, 116, 116);
+    color: $color-gray-4;
   }
 
   &__price {
@@ -46,8 +46,8 @@
     align-items: center;
     line-height: 16px;
     font-size: 16px;
-    border: 1px #d1d1d1 solid;
-    border-radius: 6px;
+    border: $border;
+    border-radius: $border-radius;
     overflow: hidden;
 
     span {

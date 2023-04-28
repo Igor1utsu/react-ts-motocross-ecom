@@ -1,11 +1,11 @@
-@import "../../../../../../styles/imports/variables";
+@import "src/styles/imports/variables";
 
 .Product {
   padding: 20px 25px 20px 20px;
   align-items: center;
   position: relative;
   font-size: 13px;
-  border-bottom: 1px #e9e9e9 solid;
+  border-bottom: $border;
 
   &:last-child {
     border-bottom: 0;
@@ -23,7 +23,7 @@
 
   &__description {
     padding: 4px 0;
-    color: rgb(116, 116, 116);
+    color: $color-gray-4;
   }
 
   &__img-wrapper {

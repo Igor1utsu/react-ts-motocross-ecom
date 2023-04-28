@@ -1,9 +1,9 @@
-@import "../../../../styles/imports/variables";
+@import "src/styles/imports/variables";
 
 .modal-maps {
   &__head {
     padding: 15px;
-    background: rgb(244 244 244);
+    background: $color-gray-1;
   }
 
   .modal-maps__body {

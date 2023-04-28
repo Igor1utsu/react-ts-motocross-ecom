@@ -1,5 +1,7 @@
+@import "src/styles/imports/variables";
+
 .Header {
   height: 48px;
-  background: black;
+  background: $color-black;
   color: white;
 }

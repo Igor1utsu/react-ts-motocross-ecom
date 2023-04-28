@@ -1,14 +1,16 @@
+@import "src/styles/imports/variables.scss";
+
 .category {
   &__header {
     padding: 5px;
-    background: orange;
+    background: $color-brand;
     text-align: center;
     font-size: 18px;
   }
 
   .part-number {
     font-size: 12px;
-    color: rgb(116, 116, 116);
+    color: $color-gray-4;
     padding-left: 10px;
   }
 

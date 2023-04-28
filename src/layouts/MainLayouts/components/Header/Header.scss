@@ -1,7 +1,9 @@
+@import "src/styles/imports/variables";
+
 .header {
   height: 48px;
-  background: black;
-  color: white;
+  background: $color-black;
+  color: $color-white;
   align-items: center;
   position: fixed;
   top: 0;
@@ -11,6 +13,6 @@
 
   .cart-link-icon {
     font-size: 30px;
-    color: white;
+    color: $color-white;
   }
 }

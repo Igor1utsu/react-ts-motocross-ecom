@@ -1,11 +1,12 @@
-@import "../../../../styles/imports/variables";
+@import "src/styles/imports/variables";
+@import "src/styles/imports/templates";
 
 .bg {
   width: 100vw;
   height: calc(100vh - 192px);
   position: relative;
   top: 96px;
-  background: orange no-repeat url("../../../../../public/img/background.jpg");
+  background: $color-brand no-repeat url("../../../../../public/img/background.jpg");
   background-size: cover;
 
   .products-nav {
@@ -21,7 +22,7 @@
       height: 100%;
       margin: 5px;
       cursor: pointer;
-      @extend %window-style;
+      @extend %window;
 
       &__content {
         max-height: 80px;

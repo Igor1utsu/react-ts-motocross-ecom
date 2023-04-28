@@ -1,7 +1,8 @@
-@import "../../styles/imports/variables";
+@import "src/styles/imports/variables";
+@import "src/styles/imports/templates";
 
 .product {
-  @extend %window-style;
+  @extend %window;
   padding: 40px;
 
   .product-box {
@@ -41,7 +42,7 @@
   }
 
   &__number {
-    color: rgb(116, 116, 116);
+    color: $color-gray-4;
     font-size: 16px;
     font-weight: normal;
   }
@@ -68,9 +69,9 @@
   .fit {
     padding: 8px;
     justify-content: start;
-    background: rgb(80, 206, 26);
-    color: #fff;
-    border-radius: 6px;
+    background: $color-green-2;
+    color: $color-white;
+    border-radius: $border-radius;
 
     span {
       padding: 5px;
@@ -78,7 +79,7 @@
   }
 
   .no-fit {
-    background: red;
+    background: $color-red;
   }
 
   .details {
@@ -93,7 +94,7 @@
     }
 
     &__fit-item {
-      color: rgb(116, 116, 116);
+      color: $color-gray-4;
       font-size: 14px;
     }
   }
