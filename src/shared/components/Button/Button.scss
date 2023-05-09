@@ -1,0 +1,26 @@
+@import "src/styles/imports/variables.scss";
+
+.Button {
+  &[data-color="green"] {
+    border-color: transparent;
+    background: $color-green-2;
+    color: $color-white;
+
+    &:hover {
+      border-color: transparent;
+      background: $color-green-1;
+      color: $color-white;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border: $border;
+      background: $color-opacity-1;
+      color: $color-opacity-2;
+    }
+  }
+
+  &[data-max-width="true"] {
+    width: 100%;
+  }
+}

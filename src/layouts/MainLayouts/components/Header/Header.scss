@@ -15,4 +15,20 @@
     font-size: 30px;
     color: $color-white;
   }
+
+  &__show-drawer {
+    height: 48px;
+    border: 0;
+    border-radius: 0;
+    background: $color-black;
+
+    &:hover {
+      background: $color-gray-9;
+    }
+
+    &:focus {
+      outline: 0 !important;
+      background: $color-gray-9;
+    }
+  }
 }

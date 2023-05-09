@@ -1,5 +1,6 @@
-import { Button } from "antd"
+
 import { FC, memo } from "react"
+import { Button } from "../../../../../../shared/components"
 import { useGetAddress } from "../../../../hooks/useGetAddress"
 import { useGetStoreData } from "../../../../hooks/useGetStoreData"
 import "./BallonComponent.scss"

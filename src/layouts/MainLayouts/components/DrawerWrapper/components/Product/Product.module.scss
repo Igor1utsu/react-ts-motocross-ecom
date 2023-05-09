@@ -36,4 +36,16 @@
       object-fit: contain;
     }
   }
+
+  &__remove {
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 2px;
+    border: 0;
+    color: $color-red;
+
+    &:hover {
+      color: $color-red !important;
+    }
+  }
 }

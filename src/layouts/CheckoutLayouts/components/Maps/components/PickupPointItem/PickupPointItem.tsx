@@ -1,8 +1,8 @@
 import "./PickupPointItem.scss"
-import { Button } from "antd"
 import { IPoint } from "./model/IPoint.model"
 import { useGetAddress } from "../../../../hooks/useGetAddress"
 import { FC, memo } from "react"
+import { Button } from "../../../../../../shared/components"
 
 interface IPickPointItemProps {
   point: IPoint

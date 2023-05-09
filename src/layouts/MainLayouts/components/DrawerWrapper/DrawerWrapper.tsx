@@ -1,10 +1,11 @@
 import styles from "./DrawerWrapper.module.scss"
 import clsx from "clsx"
-import { Button, Drawer } from "antd"
+import { Drawer } from "antd"
 import { FC, useContext } from "react"
 import { CartContext } from "../../../../context/CartContext"
 import { Product } from "./components/Product/Product"
 import { useNavigate } from "react-router-dom"
+import { Button } from "../../../../shared/components"
 
 interface IDrawerWrapperProps {
   open: boolean
@@ -34,11 +35,7 @@ export const DrawerWrapper: FC<IDrawerWrapperProps> = (props) => {
             <>
               {shoppingCart.map((product) => {
                 return (
-                  <Product
-                    id={product.id}
-                    qty={product.qty}
-                    key={product.id}
-                  />
+                  <Product id={product.id} qty={product.qty} key={product.id} />
                 )
               })}
             </>
@@ -49,7 +46,8 @@ export const DrawerWrapper: FC<IDrawerWrapperProps> = (props) => {
 
         <Button
           type="primary"
-          className="btn--large"
+          size="large"
+          maxWidth
           onClick={() => history("/checkout")}
         >
           Сheckout

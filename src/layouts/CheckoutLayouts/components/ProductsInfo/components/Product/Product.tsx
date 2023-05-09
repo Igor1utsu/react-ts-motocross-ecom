@@ -3,9 +3,9 @@ import clsx from "clsx"
 import { FC, memo, useContext, useMemo } from "react"
 import { getProduct } from "../../../../../../shared/utils/GetProduct.utils"
 import { PATH_TO_PICTURE } from "../../../../../../shared/constants/Path.constants"
-import { Button } from "antd"
 import { CartContext } from "../../../../../../context/CartContext"
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons"
+import { Button } from "../../../../../../shared/components"
 
 interface IProductProps {
   id: number
@@ -37,27 +37,15 @@ export const Product: FC<IProductProps> = memo((props) => {
           <Button
             disabled={qty === 1}
             onClick={() => deCrement(qty)}
-            style={{
-              padding: 0,
-              borderLeft: 0,
-              borderBottom: 0,
-              borderTop: 0,
-            }}
-          >
-            <MinusOutlined />
-          </Button>
-          <span>{qty}</span>
+            className={styles.counter__button}
+            icon={<MinusOutlined />}
+          ></Button>
+          <span className={styles.counter__value}>{qty}</span>
           <Button
             onClick={() => inCrement(qty)}
-            style={{
-              padding: 0,
-              borderRight: 0,
-              borderBottom: 0,
-              borderTop: 0,
-            }}
-          >
-            <PlusOutlined />
-          </Button>
+            className={styles.counter__button}
+            icon={<PlusOutlined />}
+          ></Button>
         </div>
         <Button
           onClick={() => product && removeFromCart(product.id)}

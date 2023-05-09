@@ -8,4 +8,10 @@ export const antDesignThemeConfig: ThemeConfig = {
     borderRadiusLG: 0,
     borderRadiusXS: 0,
   },
+  components: {
+    Button: {
+      borderRadius: 4,
+      borderRadiusLG: 4
+    },
+  },
 }

@@ -1,7 +1,8 @@
 import styles from "./UserContact.module.scss"
 import clsx from "clsx"
 import { FC, memo, useContext } from "react"
-import { Button, Form, Input } from "antd"
+import { Form, Input } from "antd"
+import { Button } from "../../../../shared/components"
 import { CartContext } from "../../../../context/CartContext"
 import { sendOrder } from "../../utils/SendOrder.utils"
 import { IUserContact } from "../../model/IUserContact.model"
@@ -105,7 +106,7 @@ export const UserContact: FC<IUserContactProps> = memo((props) => {
         <Form.Item {...formItemLayout}>
           <Button
             disabled={!shoppingCart.length}
-            type='primary'
+            color="green"
             htmlType="submit"
           >
             Buy

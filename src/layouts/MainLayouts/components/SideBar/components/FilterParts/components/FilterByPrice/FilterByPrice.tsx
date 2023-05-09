@@ -1,6 +1,7 @@
 import React, { FC, memo, useContext, useState } from "react"
 import { ArrowRightOutlined } from "@ant-design/icons"
-import { Button, Input } from "antd"
+import { Input } from "antd"
+import { Button } from "../../../../../../../../shared/components"
 import { FilterOptionsContext } from "../../../../../../../../context/FilterOptionsContext"
 
 export const FilterByPrice: FC = memo(() => {

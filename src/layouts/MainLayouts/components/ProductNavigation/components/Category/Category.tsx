@@ -1,5 +1,6 @@
 import "./Category.scss"
-import { Button, Image, InputNumber, Table } from "antd"
+import { Image, InputNumber, Table } from "antd"
+import { Button } from "../../../../../../shared/components"
 import type { ColumnsType } from "antd/es/table"
 import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom"
@@ -88,12 +89,10 @@ export const Category: FC<ICategoryProps> = (props) => {
               className="buy__input"
             />
             <Button
-              type="ghost"
+              color="green"
               onClick={() => handleAddToCart()}
-              className="btn--gree"
-            >
-              <ShoppingCartOutlined />
-            </Button>
+              icon={<ShoppingCartOutlined />}
+            ></Button>
           </div>
         )
       },

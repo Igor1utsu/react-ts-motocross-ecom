@@ -3,7 +3,7 @@ import {
   ExclamationCircleOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons"
-import { Button, InputNumber } from "antd"
+import { InputNumber } from "antd"
 import "./PartDetail.scss"
 import BRANDS from "../../data/BRANDS.json"
 import { useNavigate, useParams } from "react-router-dom"
@@ -17,6 +17,7 @@ import { PAGE_404_TITLE } from "../../shared/constants/Page.constants"
 import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
 import { getProduct } from "../../shared/utils/GetProduct.utils"
 import { Breadcrumbs } from "../../layouts/MainLayouts/components/ProductNavigation/components/Breadcrumb/Breadcrumbs"
+import { Button } from "../../shared/components"
 
 export const PartDetail: FC = memo(() => {
   const params = useParams<IParams>()
@@ -87,18 +88,20 @@ export const PartDetail: FC = memo(() => {
               </div>
               {!isAdded ? (
                 <Button
-                  type="ghost"
+                  color="green"
+                  size="large"
+                  maxWidth
                   onClick={() => handleAddToCart()}
-                  className="btn--gree btn--large"
                 >
                   <ShoppingCartOutlined className="icon" />
                   Add to Cart
                 </Button>
               ) : (
                 <Button
-                  type="ghost"
-                  onClick={() => history("/shopcart")}
-                  className="btn--gree btn--large"
+                  color="green"
+                  size="large"
+                  maxWidth
+                  onClick={() => history("/checkout")}
                 >
                   View in cart
                 </Button>

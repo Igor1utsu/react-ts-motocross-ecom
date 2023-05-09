@@ -1,10 +1,11 @@
 import "./GettingPickup.scss"
-import { Button, Modal } from "antd"
+import { Modal } from "antd"
 import { FC, memo, useState } from "react"
 import { YMaps, Map, Placemark } from "react-yandex-maps"
 import { Maps } from "../Maps/Maps"
 import { useGetAddress } from "../../hooks/useGetAddress"
 import { useGetStoreData } from "../../hooks/useGetStoreData"
+import { Button } from "../../../../shared/components"
 
 interface IGettingPickupProps {
   selectedStore: number

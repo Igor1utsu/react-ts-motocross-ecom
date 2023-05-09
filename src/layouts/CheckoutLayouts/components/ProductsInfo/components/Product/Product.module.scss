@@ -41,18 +41,38 @@
   }
 
   &__counter {
-    height: 24px;
+    height: 26px;
     margin-bottom: 10px;
     align-items: center;
-    line-height: 16px;
-    font-size: 16px;
     border: $border;
     border-radius: $border-radius;
     overflow: hidden;
 
-    span {
-      min-width: 20px;
-      text-align: center;
+    .counter__button {
+      min-width: 22px;
+      width: min-content;
+      font-size: 10px;
+      border: 0;
+      color: $color-black;
+
+      &:hover {
+        background: $color-gray-1;
+        color: $color-black;
+      }
+
+      &:disabled {
+        color: $color-opacity-2;
+      }
+    }
+
+    .counter__value {
+      height: 100%;
+      min-width: 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-left: $border;
+      border-right: $border;
     }
   }
 }

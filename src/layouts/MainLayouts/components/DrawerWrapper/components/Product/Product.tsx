@@ -1,11 +1,11 @@
 import styles from "./Product.module.scss"
 import clsx from "clsx"
 import { CloseOutlined } from "@ant-design/icons"
-import { Button } from "antd"
 import { CartContext } from "../../../../../../context/CartContext"
 import { FC, memo, useContext, useMemo } from "react"
 import { PATH_TO_PICTURE } from "../../../../../../shared/constants/Path.constants"
 import { getProduct } from "../../../../../../shared/utils/GetProduct.utils"
+import { Button } from "../../../../../../shared/components"
 
 interface IProductProps {
   id: number
@@ -42,11 +42,10 @@ export const Product: FC<IProductProps> = memo((props) => {
           </>
         )}
         <Button
-          type="ghost"
           size="small"
           icon={<CloseOutlined />}
           onClick={() => product && removeFromCart(product.id)}
-          className="btn--remove-product"
+          className={styles.Product__remove}
         ></Button>
       </li>
     </>
