@@ -2,5 +2,6 @@
 
 %window {
   background: $color-white;
-  border: $border;
+  border: $border !important;
+  box-shadow: $box-shadow !important;
 }
