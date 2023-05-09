@@ -1,8 +1,8 @@
 # ReactTS - Motocross Ecomerce
 
 ![enter image description here](https://i.ibb.co/hD5Sp6k/01.png)
-![enter image description here](https://i.ibb.co/60BVP60/02.png)
-![enter image description here](https://i.ibb.co/dryCJTM/03.png)
+![enter image description here](https://i.ibb.co/KKK0QjK/02.png)
+![enter image description here](https://i.ibb.co/KhbNCJk/03.png)
 ![enter image description here](https://i.ibb.co/Vg0nVgg/04.png)
 
 ## Technologies
