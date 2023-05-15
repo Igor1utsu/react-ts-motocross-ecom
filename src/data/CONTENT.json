@@ -1,29 +1,29 @@
 [
   {
     "id": 1,
-    "name": "equipment",
     "title": "Equipment",
     "image": "equipment.jpg",
-    "text": ["Fly"]
+    "text": ["Fly"],
+    "path": "equipment"
   },
   {
     "id": 2,
-    "name": "parts",
     "title": "Parts",
     "image": "parts.jpg",
-    "text": ["Honda", "KTM", "Yamaha", "Kawasaki", "Suzuki"]
+    "text": ["Honda", "KTM", "Yamaha", "Kawasaki", "Suzuki"],
+    "path": "parts"
   },
   {
     "id": 3,
-    "name": "tires",
     "title": "Tires",
     "image": "tires.jpg",
-    "text": ["Dunlop", "Mitas", "Michelin"]
+    "text": ["Dunlop", "Mitas", "Michelin"],
+    "path": "tires"
   },
   {
     "id": 4,
-    "name": "oils&fluids",
     "title": "Oils & Fluids",
-    "image": "oil.jpg"
+    "image": "oil.jpg",
+    "path": "oils&fluids"
   }
 ]
