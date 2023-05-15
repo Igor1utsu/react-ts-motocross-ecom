@@ -22,7 +22,7 @@ export const Product: FC<IProductProps> = memo((props) => {
 
   return (
     <>
-      <li className={clsx(styles["Product"], "wrapper-row")}>
+      <li className={clsx(styles["Product"], "flex-row")}>
         {!product && <span>Product no longer available</span>}
         {product && (
           <>
@@ -32,7 +32,7 @@ export const Product: FC<IProductProps> = memo((props) => {
                 alt={product?.name}
               />
             </div>
-            <div className={clsx(styles["Product__content"], "wrapper-colum")}>
+            <div className={clsx(styles["Product__content"], "flex-col")}>
               <h3 className={styles["Product__title"]}>{product?.name}</h3>
               <p className={styles["Product__description"]}>
                 {product?.partNumber}

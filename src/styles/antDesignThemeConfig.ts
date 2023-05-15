@@ -3,6 +3,7 @@ import { ThemeConfig } from "antd"
 export const antDesignThemeConfig: ThemeConfig = {
   token: {
     fontFamily: "Roboto, sans-serif",
+    colorText: "#1d1d1d",
     borderRadius: 4,
     borderRadiusSM: 4,
     borderRadiusLG: 0,
@@ -11,7 +12,7 @@ export const antDesignThemeConfig: ThemeConfig = {
   components: {
     Button: {
       borderRadius: 4,
-      borderRadiusLG: 4
+      borderRadiusLG: 4,
     },
   },
 }

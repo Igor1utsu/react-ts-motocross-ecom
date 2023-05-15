@@ -1,3 +1,25 @@
+@import "src/styles/imports/variables";
+
+html {
+  font-family: Roboto, sans-serif;
+  color: $color-gray-9;
+
+  ::-webkit-scrollbar {
+    width: $scroll-size;
+    height: $scroll-size;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: $color-gray-2;
+    border-radius: calc($scroll-size / 2);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $color-gray-4;
+    border-radius: calc($scroll-size / 2);
+  }
+}
+
 .container {
   max-width: 1280px;
   padding-left: 40px;
@@ -10,12 +32,12 @@
   padding-bottom: 48px;
 }
 
-.wrapper-colum {
+.flex-col {
   display: flex;
   flex-direction: column;
 }
 
-.wrapper-row {
+.flex-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -23,17 +23,17 @@ export const Product: FC<IProductProps> = memo((props) => {
   const deCrement = (value: number) => product && setQTY(product.id, --value)
 
   return (
-    <li className={clsx(styles["Product"], "wrapper-row")}>
+    <li className={clsx(styles["Product"], "flex-row")}>
       <div className={styles["Product__img-wrapper"]}>
         <img src={PATH_TO_PICTURE.PARTS + product?.image} alt={product?.name} />
       </div>
-      <div className={clsx(styles["Product__content"], "wrapper-colum")}>
+      <div className={clsx(styles["Product__content"], "flex-col")}>
         <h3 className={styles["Product__title"]}>{product?.name}</h3>
         <p className={styles["Product__description"]}>{product?.partNumber}</p>
         <span className={styles["Product__price"]}>{productPrice}</span>
       </div>
-      <div className={clsx(styles["Product__application"], "wrapper-colum")}>
-        <div className={clsx(styles["Product__counter"], "wrapper-row")}>
+      <div className={clsx(styles["Product__application"], "flex-col")}>
+        <div className={clsx(styles["Product__counter"], "flex-row")}>
           <Button
             disabled={qty === 1}
             onClick={() => deCrement(qty)}

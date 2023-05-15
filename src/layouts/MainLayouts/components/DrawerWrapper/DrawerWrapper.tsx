@@ -29,7 +29,7 @@ export const DrawerWrapper: FC<IDrawerWrapperProps> = (props) => {
       className={styles["DrawerWrapper"]}
       headerStyle={{ textAlign: "center" }}
     >
-      <div className={clsx(styles["DrawerWrapper__body"], "wrapper-colum")}>
+      <div className={clsx(styles["DrawerWrapper__body"], "flex-col")}>
         <ul className={styles["DrawerWrapper__list"]}>
           {shoppingCart.length ? (
             <>
@@ -52,7 +52,7 @@ export const DrawerWrapper: FC<IDrawerWrapperProps> = (props) => {
         >
           Сheckout
         </Button>
-        <div className={clsx(styles["DrawerWrapper__total"], "wrapper-row")}>
+        <div className={clsx(styles["DrawerWrapper__total"], "flex-row")}>
           <span>Total:</span>
           <span>{totalPrice}</span>
         </div>

@@ -43,7 +43,7 @@ export const UserContact: FC<IUserContactProps> = memo((props) => {
   }
 
   return (
-    <section className={clsx(styles["UserContact"], "wrapper-colum")}>
+    <section className={clsx(styles["UserContact"], "flex-col")}>
       <h2 className={styles["UserContact__title"]}>User contact</h2>
       <Form
         className={styles["UserContact__form"]}
