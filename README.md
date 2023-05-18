@@ -1,18 +1,19 @@
 # ReactTS - Motocross Ecomerce
 
-![enter image description here](https://i.ibb.co/mtDdtHN/2023-02-15-170007475.png)
-![enter image description here](https://i.ibb.co/0CwgVvD/2023-02-15-170334235.png)
-![enter image description here](https://i.ibb.co/bPcZPp1/2023-02-15-170553000.png)
+![enter image description here](https://i.ibb.co/hD5Sp6k/01.png)
+![enter image description here](https://i.ibb.co/KKK0QjK/02.png)
+![enter image description here](https://i.ibb.co/KhbNCJk/03.png)
+![enter image description here](https://i.ibb.co/Vg0nVgg/04.png)
 
 ## Technologies
 
  - React (react-router-dom, SCSS)
  - Typescript 
- - react-router-dom
  - react-cookie
  - YandexMaps (**react-yandex-maps**)
  - AntDesign (**antd**)
  - axios
+ - clsx
 
 
 # Getting Started with Create React App
