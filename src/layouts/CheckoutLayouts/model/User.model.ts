@@ -1,4 +1,4 @@
-export interface IUserContact {
+export type User = {
   firstName: string
   lastName: string
   phone: string

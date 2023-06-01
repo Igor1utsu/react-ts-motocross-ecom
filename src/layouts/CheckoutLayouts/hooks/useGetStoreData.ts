@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import PICKUP_POINT from "../../../data/PICKUP-POINT.json"
-import { IStoreData } from "../../../shared/model/IStoreData"
-import { IPickupPoint } from '../../../shared/model/IPickupPoint'
+import { IStoreData } from "../../../shared/model/IStoreData.model"
+import { IPickupPoint } from '../../../shared/model/IPickupPoint.model'
 
 
 export const useGetStoreData = (storeID: number) => {

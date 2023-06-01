@@ -3,9 +3,9 @@ import {
   showErrorModal,
   showSuccessModal,
 } from "../../../shared/utils/Modal.utils"
-import { IOrder } from "../model/IOrder.model"
+import { Order } from "../model/Order.model"
 
-export const sendOrder = async (order: IOrder) => {
+export const sendOrder = async (order: Order) => {
   try {
     const response = await API.createOrder(order)
     showSuccessModal("Order successfully completed")

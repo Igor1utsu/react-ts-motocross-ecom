@@ -1,20 +1,21 @@
 import styles from "./UserContact.module.scss"
 import clsx from "clsx"
-import { FC, memo, useContext } from "react"
+import { FC, memo } from "react"
 import { Form, Input } from "antd"
 import { Button } from "../../../../shared/components"
-import { CartContext } from "../../../../context/CartContext"
 import { sendOrder } from "../../utils/SendOrder.utils"
-import { IUserContact } from "../../model/IUserContact.model"
+import { User } from "../../model/User.model"
+import { useStore } from "../../../../store/context"
 
-interface IUserContactProps {
+interface UserContactProps {
   selectedStore: number
 }
 
-export const UserContact: FC<IUserContactProps> = memo((props) => {
+export const UserContact: FC<UserContactProps> = memo((props) => {
   const { selectedStore } = props
 
-  const { shoppingCart, clearCart } = useContext(CartContext)
+  const { cart } = useStore()
+  const { list, clearCart } = cart
 
   const [form] = Form.useForm()
 
@@ -26,10 +27,10 @@ export const UserContact: FC<IUserContactProps> = memo((props) => {
     },
   }
 
-  const onSubmit = async (values: IUserContact) => {
+  const onSubmit = async (values: User) => {
     const order = {
       date: Date.now,
-      products: shoppingCart,
+      products: list,
       user: values,
       shopId: selectedStore,
     }
@@ -105,7 +106,7 @@ export const UserContact: FC<IUserContactProps> = memo((props) => {
 
         <Form.Item {...formItemLayout}>
           <Button
-            disabled={!shoppingCart.length}
+            disabled={!list.length}
             color="green"
             htmlType="submit"
           >

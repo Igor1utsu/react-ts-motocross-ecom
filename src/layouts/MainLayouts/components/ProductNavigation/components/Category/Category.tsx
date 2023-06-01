@@ -4,13 +4,14 @@ import { Button } from "../../../../../../shared/components"
 import type { ColumnsType } from "antd/es/table"
 import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom"
-import { IDataParts } from "../../../../../../shared/model/IDataParts"
 import { FC, useContext } from "react"
 import { FilterOptionsContext } from "../../../../../../context/FilterOptionsContext"
-import { CartContext } from "../../../../../../context/CartContext"
 import { useGetProductList } from "../../../../hooks/useGetProductList"
 import { useNotification } from "../../../../../../shared/hooks/useNotification"
 import { PATH_TO_PICTURE } from "../../../../../../shared/constants/Path.constants"
+import { observer } from "mobx-react-lite"
+import { useStore } from "../../../../../../store/context"
+import { PartData } from "../../../../../../shared/model/Product.model"
 
 interface ICategoryProps {
   id: number
@@ -18,15 +19,18 @@ interface ICategoryProps {
   title: string
 }
 
-export const Category: FC<ICategoryProps> = (props) => {
+export const Category: FC<ICategoryProps> = observer((props) => {
   const { id, category, title } = props
+
+  const { products, cart } = useStore()
+  const { addToCart } = cart
 
   const { make, model, year, checkedBrand, minPrice, maxPrice } =
     useContext(FilterOptionsContext)
-  const { addToCart } = useContext(CartContext)
 
-  const { openNotification, contextHolder } = useNotification()
+  // const { openNotification, contextHolder } = useNotification()
   const PartsDataArray = useGetProductList(
+    products.list,
     make,
     model,
     year,
@@ -36,7 +40,7 @@ export const Category: FC<ICategoryProps> = (props) => {
     checkedBrand
   )
 
-  const columns: ColumnsType<IDataParts> = [
+  const columns: ColumnsType<PartData> = [
     {
       title: "Image",
       dataIndex: "image",
@@ -50,7 +54,7 @@ export const Category: FC<ICategoryProps> = (props) => {
       dataIndex: "name",
       key: "name",
       render: (name, data) => (
-        <Link to={`${data.partNumber}`}>
+        <Link to={`${data.id}`}>
           {name}
           <span className="part-number">{` #${data.partNumber}`}</span>
         </Link>
@@ -76,7 +80,8 @@ export const Category: FC<ICategoryProps> = (props) => {
       render: (_, data) => {
         let value: number = 1
         const handleAddToCart = () => {
-          openNotification("bottomRight", data)
+          // Уведомления
+          // openNotification("bottomRight", data)
           addToCart(data.id, value)
         }
 
@@ -104,7 +109,7 @@ export const Category: FC<ICategoryProps> = (props) => {
   return (
     <li className="category">
       <h2 className="category__header">{title}</h2>
-      {contextHolder}
+      {/* {contextHolder} */}
       <Table
         columns={columns}
         dataSource={PartsDataArray}
@@ -113,4 +118,4 @@ export const Category: FC<ICategoryProps> = (props) => {
       />
     </li>
   )
-}
+})

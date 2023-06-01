@@ -15,7 +15,7 @@ export const MainLayouts: FC = memo(() => {
         <Routes>
           <Route path="/" element={<ProductNavigation />}></Route>
           <Route path="parts/" element={<Parts />}></Route>
-          <Route path="parts/:number" element={<PartDetail />}></Route>
+          <Route path="parts/:id" element={<PartDetail />}></Route>
           <Route path="*" element={<PageNotFound />}></Route>
         </Routes>
       </FilterOptionsState>

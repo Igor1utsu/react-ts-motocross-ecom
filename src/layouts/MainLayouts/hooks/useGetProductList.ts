@@ -1,7 +1,8 @@
 import { useMemo } from "react"
-import PARTS from "../../../data/PARTS.json"
+import { PartData } from "../../../shared/model/Product.model"
 
 export const useGetProductList = (
+  products: PartData[],
   make: string | null,
   model: string | null,
   year: number | null,
@@ -12,8 +13,8 @@ export const useGetProductList = (
 ) => {
   // фильтруем данные по категориям
   const dataByCategory = useMemo(() => {
-    return PARTS.filter((data) => data.category === category)
-  }, [category])
+    return products.filter((data) => data.category === category)
+  }, [products, category])
 
   // фильтруем данные по выбранным брендам
   const dataByBrand = useMemo(() => {

@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "Athena Complete Engine Gasket Kit",
     "brand": "athena",
     "category": "engine",
@@ -16,7 +16,7 @@
     ]
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Cometic Gasket Crankshaft Seals",
     "brand": "cometic",
     "category": "engine",
@@ -35,7 +35,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Wiseco Piston Kits",
     "brand": "wiseco",
     "category": "engine",
@@ -53,7 +53,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "Pro-X Crankshaft",
     "brand": "prox",
     "category": "engine",
@@ -69,7 +69,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": "5",
     "name": "Pro Circuit Platinum Pipe",
     "brand": "pro-circuit",
     "category": "exhaust",
@@ -85,7 +85,7 @@
     ]
   },
   {
-    "id": 6,
+    "id": "6",
     "name": "Pro Circuit Factory 304 Silencer - 2-Stroke",
     "brand": "pro-circuit",
     "category": "exhaust",
@@ -101,7 +101,7 @@
     ]
   },
   {
-    "id": 7,
+    "id": "7",
     "name": "FMF Gnarly 2-Stroke Pipe",
     "brand": "fmf",
     "category": "exhaust",
@@ -117,7 +117,7 @@
     ]
   },
   {
-    "id": 8,
+    "id": "8",
     "name": "FMF Powercore 2 Muffler",
     "brand": "fmf",
     "category": "exhaust",
@@ -133,7 +133,7 @@
     ]
   },
   {
-    "id": 9,
+    "id": "9",
     "name": "Moose Qualifier Brake Pads Front",
     "brand": "moose",
     "category": "brakes",
@@ -159,7 +159,7 @@
     ]
   },
   {
-    "id": 10,
+    "id": "10",
     "name": "Moose Qualifier Brake Pads Rear",
     "brand": "moose",
     "category": "brakes",
@@ -185,7 +185,7 @@
     ]
   },
   {
-    "id": 11,
+    "id": "11",
     "name": "Moose Brake Caliper Rebuild Kit Front",
     "brand": "moose",
     "category": "brakes",
@@ -213,7 +213,7 @@
     ]
   },
   {
-    "id": 12,
+    "id": "12",
     "name": "EBC Standard Brake Rotor Front",
     "brand": "ebc",
     "category": "brakes",
@@ -239,7 +239,7 @@
     ]
   },
   {
-    "id": 13,
+    "id": "13",
     "name": "EBC Standard Brake Rotor Rear",
     "brand": "ebc",
     "category": "brakes",
@@ -265,7 +265,7 @@
     ]
   },
   {
-    "id": 14,
+    "id": "14",
     "name": "Maxima Racing Oils ProFilter Premium Air Filter",
     "brand": "maxima",
     "category": "fuel&air",
@@ -291,7 +291,7 @@
     ]
   },
   {
-    "id": 15,
+    "id": "15",
     "name": "Moose Precision Pre-Oiled Air Filter",
     "brand": "moose",
     "category": "fuel&air",
@@ -317,7 +317,7 @@
     ]
   },
   {
-    "id": 16,
+    "id": "16",
     "name": "Boyesen Reed Valves",
     "brand": "boyesen",
     "category": "fuel&air",
@@ -333,7 +333,7 @@
     ]
   },
   {
-    "id": 17,
+    "id": "17",
     "name": "Renthal 7/8in. Handlebar",
     "brand": "renthal",
     "category": "controls",
@@ -361,7 +361,7 @@
     ]
   },
   {
-    "id": 18,
+    "id": "18",
     "name": "Motion Pro Throttle Cable",
     "brand": "motion-pro",
     "category": "controls",
