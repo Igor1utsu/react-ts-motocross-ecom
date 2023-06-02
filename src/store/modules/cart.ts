@@ -1,4 +1,6 @@
 import { makeAutoObservable, runInAction, autorun } from "mobx"
+import { storage } from "../../shared/utils"
+import { STORAGE_CART } from "../../shared/constants"
 import { API } from "../../shared/http/api"
 import { IdForReq } from "../../shared/model/IdForReq.model"
 import {
@@ -14,16 +16,16 @@ class CartStore {
     makeAutoObservable(this)
     autorun(() => {
       // При загрузке сайта, автоматически считываем localStorage и отправляем запрос для получения данных
-      const storage = JSON.parse(localStorage.getItem("cart") ?? "[]")
+      const dataStorage = storage.get<ProductFromStorage[]>(STORAGE_CART) ?? []
 
       Promise.all(
-        storage.map((prod: ProductFromStorage) => {
+        dataStorage.map((prod) => {
           return API.loadProduct(prod.id)
         })
       ).then((data) => {
         const products = data.map((prod, idx) => ({
           ...prod,
-          qty: storage[idx].qty,
+          qty: dataStorage[idx].qty,
         }))
 
         this.updateCart(products)
@@ -36,7 +38,7 @@ class CartStore {
         qty: product.qty,
       }))
 
-      localStorage.setItem("cart", JSON.stringify(update))
+      storage.set<ProductFromStorage[]>(STORAGE_CART, update)
     })
   }
 

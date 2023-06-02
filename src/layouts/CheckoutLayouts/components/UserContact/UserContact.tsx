@@ -8,11 +8,11 @@ import { User } from "../../model/User.model"
 import { useStore } from "../../../../store/context"
 
 interface UserContactProps {
-  selectedStore: number
+  selectedShopID: number
 }
 
 export const UserContact: FC<UserContactProps> = memo((props) => {
-  const { selectedStore } = props
+  const { selectedShopID } = props
 
   const { cart } = useStore()
   const { list, clearCart } = cart
@@ -32,7 +32,7 @@ export const UserContact: FC<UserContactProps> = memo((props) => {
       date: Date.now,
       products: list,
       user: values,
-      shopId: selectedStore,
+      shopId: selectedShopID,
     }
 
     const response = await sendOrder(order)
