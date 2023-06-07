@@ -7,6 +7,7 @@ import { observer } from "mobx-react-lite"
 import { PATH_TO_PICTURE } from "../../../../../../shared/constants/Path.constants"
 import { Button } from "../../../../../../shared/components"
 import { ProductFromCart } from "../../../../../../shared/model/Product.model"
+import { getPrice } from "../../../../../../shared/utils"
 
 interface IProductProps {
   product: ProductFromCart
@@ -18,8 +19,6 @@ export const Product: FC<IProductProps> = observer((props) => {
   const { cart } = useStore()
   const { removeFromCart } = cart
 
-  const productPrice = `${product.qty} x $${product.price}`
-
   return (
     <li className={clsx(styles["Product"], "flex-row")}>
       <div className={styles["Product__img-wrapper"]}>
@@ -28,7 +27,7 @@ export const Product: FC<IProductProps> = observer((props) => {
       <div className={clsx(styles["Product__content"], "flex-col")}>
         <h3 className={styles["Product__title"]}>{product.name}</h3>
         <p className={styles["Product__description"]}>{product.partNumber}</p>
-        <span>{productPrice}</span>
+        <span>{getPrice(product.price, product.qty)}</span>
       </div>
 
       <Button

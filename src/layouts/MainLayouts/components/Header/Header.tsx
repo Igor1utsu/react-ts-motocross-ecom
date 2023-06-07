@@ -11,6 +11,7 @@ import "./Header.scss"
 
 export const Header: FC = observer(() => {
   const { cart } = useStore()
+  const { total } = cart
 
   const [openDrawer, setOpenDrawer] = useState(false)
 
@@ -34,7 +35,7 @@ export const Header: FC = observer(() => {
             onClick={showDrawer}
             className="header__show-drawer"
           >
-            <Badge size="small" count={cart.items}>
+            <Badge size="small" count={total.items}>
               <ShoppingCartOutlined className="cart-link-icon" />
             </Badge>
           </Button>

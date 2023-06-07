@@ -59,11 +59,14 @@ class CartStore {
   }
 
   get total() {
-    return this.list.reduce((acc, p) => (acc += p.price * p.qty), 0)
-  }
-
-  get items() {
-    return this.list.reduce((acc, p) => (acc += p.qty), 0)
+    return this.list.reduce(
+      (acc, p) =>
+        (acc = {
+          items: (acc.items += p.qty),
+          price: (acc.price += p.price * p.qty),
+        }),
+      { items: 0, price: 0 }
+    )
   }
 
   addToCart = (productID: IdForReq, value: number) => {
@@ -79,14 +82,14 @@ class CartStore {
     this.list = []
   }
 
-  inCrement = (productID: IdForReq, value: number) => {
+  inCrement = (productID: IdForReq) => {
     const index = this.list.findIndex((p) => p.id === productID)
-    this.list[index].qty = ++value
+    this.list[index].qty = ++this.list[index].qty
   }
 
-  deCrement = (productID: IdForReq, value: number) => {
+  deCrement = (productID: IdForReq) => {
     const index = this.list.findIndex((p) => p.id === productID)
-    this.list[index].qty = --value
+    this.list[index].qty = --this.list[index].qty
   }
 }
 

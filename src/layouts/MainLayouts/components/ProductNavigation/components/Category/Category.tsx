@@ -12,6 +12,7 @@ import { PATH_TO_PICTURE } from "../../../../../../shared/constants/Path.constan
 import { observer } from "mobx-react-lite"
 import { useStore } from "../../../../../../store/context"
 import { PartData } from "../../../../../../shared/model/Product.model"
+import { getPrice } from "../../../../../../shared/utils"
 
 interface ICategoryProps {
   id: number
@@ -64,12 +65,7 @@ export const Category: FC<ICategoryProps> = observer((props) => {
       title: "Price",
       dataIndex: "price",
       key: "price",
-      render: (price) => (
-        <>
-          <span>$</span>
-          <span>{price}</span>
-        </>
-      ),
+      render: (price) => getPrice(price),
       width: 64,
       align: "center",
     },

@@ -7,6 +7,7 @@ import { PATH_TO_PICTURE } from "../../../../../../shared/constants/Path.constan
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons"
 import { Button } from "../../../../../../shared/components"
 import { ProductFromCart } from "../../../../../../shared/model/Product.model"
+import { getPrice } from "../../../../../../shared/utils"
 
 interface IProductProps {
   product: ProductFromCart
@@ -18,8 +19,6 @@ export const Product: FC<IProductProps> = observer((props) => {
   const { cart } = useStore()
   const { removeFromCart, inCrement, deCrement } = cart
 
-  const productPrice = `${product} x $${product.price}`
-
   return (
     <li className={clsx(styles["Product"], "flex-row")}>
       <div className={styles["Product__img-wrapper"]}>
@@ -28,19 +27,21 @@ export const Product: FC<IProductProps> = observer((props) => {
       <div className={clsx(styles["Product__content"], "flex-col")}>
         <h3 className={styles["Product__title"]}>{product.name}</h3>
         <p className={styles["Product__description"]}>{product.partNumber}</p>
-        <span className={styles["Product__price"]}>{productPrice}</span>
+        <span className={styles["Product__price"]}>
+          {getPrice(product.price, product.qty)}
+        </span>
       </div>
       <div className={clsx(styles["Product__application"], "flex-col")}>
         <div className={clsx(styles["Product__counter"], "flex-row")}>
           <Button
             disabled={product.qty === 1}
-            onClick={() => deCrement(product.id, product.qty)}
+            onClick={() => deCrement(product.id)}
             className={styles.counter__button}
             icon={<MinusOutlined />}
           ></Button>
           <span className={styles.counter__value}>{product.qty}</span>
           <Button
-            onClick={() => inCrement(product.id, product.qty)}
+            onClick={() => inCrement(product.id)}
             className={styles.counter__button}
             icon={<PlusOutlined />}
           ></Button>
