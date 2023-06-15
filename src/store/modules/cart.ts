@@ -3,11 +3,7 @@ import { storage } from "../../shared/utils"
 import { STORAGE_CART } from "../../shared/constants"
 import { API } from "../../shared/http/api"
 import { IdForReq } from "../../shared/model/IdForReq.model"
-import {
-  ProductFromCart,
-  ProductFromStorage,
-  PartData,
-} from "../../shared/model/Product.model"
+import { ProductFromCart, ProductFromStorage } from "../../shared/model"
 
 class CartStore {
   list: ProductFromCart[] = []
@@ -48,7 +44,7 @@ class CartStore {
 
   loadProduct = async (id: IdForReq, qty: number = 1) => {
     try {
-      const result: PartData = await API.loadProduct(id)
+      const result = await API.loadProduct(id)
       const data = { ...result, qty: qty }
       runInAction(() => {
         this.list.push(data)

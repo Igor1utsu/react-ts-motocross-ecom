@@ -1,4 +1,5 @@
 import { IdForReq } from "./IdForReq.model"
+import { ProductCategories } from "./ProductСategories.model"
 
 /**
  * Модель мотоцикла, к которой подходит запчасть
@@ -12,18 +13,18 @@ type BikeData = {
 /**
  * Запчасть для мотоцикла
  */
-export type PartData = {
+export type ProductData = {
   id: IdForReq
   name: string
   brand: string
-  category: string
+  category: ProductCategories
   partNumber: string
   price: number
   image: string
   fits: BikeData[]
 }
 
-export type ProductFromCart = PartData & { qty: number }
+export type ProductFromCart = ProductData & { qty: number }
 
 export type ProductFromStorage = {
   id: IdForReq

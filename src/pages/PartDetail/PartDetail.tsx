@@ -17,7 +17,7 @@ import { PAGE_404_TITLE } from "../../shared/constants/Page.constants"
 import { PATH_TO_PICTURE } from "../../shared/constants/Path.constants"
 import { Breadcrumbs } from "../../layouts/MainLayouts/components/ProductNavigation/components/Breadcrumb/Breadcrumbs"
 import { Button } from "../../shared/components"
-import { PartData } from "../../shared/model/Product.model"
+import { ProductData } from "../../shared/model"
 
 export const PartDetail: FC = memo(() => {
   const history = useNavigate()
@@ -32,7 +32,7 @@ export const PartDetail: FC = memo(() => {
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-  const [part, setPart] = useState<PartData | null>(null)
+  const [part, setPart] = useState<ProductData | null>(null)
 
   const loadProduct = async () => {
     try {

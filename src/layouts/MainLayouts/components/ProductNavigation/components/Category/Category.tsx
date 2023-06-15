@@ -6,42 +6,37 @@ import { ShoppingCartOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom"
 import { FC, useContext } from "react"
 import { FilterOptionsContext } from "../../../../../../context/FilterOptionsContext"
-import { useGetProductList } from "../../../../hooks/useGetProductList"
 import { useNotification } from "../../../../../../shared/hooks/useNotification"
 import { PATH_TO_PICTURE } from "../../../../../../shared/constants/Path.constants"
 import { observer } from "mobx-react-lite"
 import { useStore } from "../../../../../../store/context"
-import { PartData } from "../../../../../../shared/model/Product.model"
 import { getPrice } from "../../../../../../shared/utils"
+import { getFilteredProducts } from "../../../../utils"
+import {
+  productCategoryNames,
+  ProductCategories,
+  ProductData,
+} from "../../../../../../shared/model"
 
 interface ICategoryProps {
-  id: number
-  category: string
-  title: string
+  category: ProductCategories
+  list: ProductData[]
+  showHeader?: boolean
 }
 
 export const Category: FC<ICategoryProps> = observer((props) => {
-  const { id, category, title } = props
+  const { category, list, showHeader = false } = props
 
-  const { products, cart } = useStore()
+  const { cart } = useStore()
   const { addToCart } = cart
 
-  const { make, model, year, checkedBrand, minPrice, maxPrice } =
-    useContext(FilterOptionsContext)
+  const filterParams = useContext(FilterOptionsContext)
 
   // const { openNotification, contextHolder } = useNotification()
-  const PartsDataArray = useGetProductList(
-    products.list,
-    make,
-    model,
-    year,
-    minPrice,
-    maxPrice,
-    category,
-    checkedBrand
-  )
 
-  const columns: ColumnsType<PartData> = [
+  const products = getFilteredProducts(list, filterParams)
+
+  const columns: ColumnsType<ProductData> = [
     {
       title: "Image",
       dataIndex: "image",
@@ -104,13 +99,14 @@ export const Category: FC<ICategoryProps> = observer((props) => {
 
   return (
     <li className="category">
-      <h2 className="category__header">{title}</h2>
+      <h2 className="category__header">{productCategoryNames[category]}</h2>
       {/* {contextHolder} */}
       <Table
         columns={columns}
-        dataSource={PartsDataArray}
+        dataSource={products}
         pagination={false}
-        showHeader={id === 1 && true}
+        showHeader={showHeader}
+        rowKey={(product) => product.id}
       />
     </li>
   )
