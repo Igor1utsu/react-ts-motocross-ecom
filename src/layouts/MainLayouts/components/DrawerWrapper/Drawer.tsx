@@ -7,6 +7,7 @@ import { observer } from "mobx-react-lite"
 import { Product } from "./components/Product/Product"
 import { useNavigate } from "react-router-dom"
 import { Button } from "../../../../shared/components"
+import { getPrice } from "../../../../shared/utils"
 
 interface IDrawerProps {
   open: boolean
@@ -18,13 +19,11 @@ export const Drawer: FC<IDrawerProps> = observer((props) => {
   const history = useNavigate()
 
   const { cart } = useStore()
-  const { list, total, items } = cart
-
-  const totalPrice = `$ ${total.toFixed(2)}`
+  const { list, total } = cart
 
   return (
     <DrawerAnt
-      title={`items: ${items}`}
+      title={`items: ${total.items}`}
       placement="right"
       onClose={onClose}
       open={open}
@@ -49,7 +48,7 @@ export const Drawer: FC<IDrawerProps> = observer((props) => {
         </Button>
         <div className={clsx(styles["Drawer__total"], "flex-row")}>
           <span>Total:</span>
-          <span>{totalPrice}</span>
+          <span>{getPrice(total.price)}</span>
         </div>
       </div>
     </DrawerAnt>

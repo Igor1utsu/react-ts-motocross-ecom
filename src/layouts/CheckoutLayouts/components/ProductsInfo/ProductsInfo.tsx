@@ -4,12 +4,11 @@ import { FC } from "react"
 import { useStore } from "../../../../store/context"
 import { observer } from "mobx-react-lite"
 import { Product } from "./components/Product/Product"
+import { getPrice } from "../../../../shared/utils"
 
 export const ProductsInfo: FC = observer(() => {
   const { cart } = useStore()
   const { list, total } = cart
-
-  const totalPrice = `$ ${total.toFixed(2)}`
 
   return (
     <section className={clsx(styles["ProductsInfo"], "flex-col")}>
@@ -22,7 +21,7 @@ export const ProductsInfo: FC = observer(() => {
       </ul>
       <div className={clsx(styles["ProductsInfo__footer"], "flex-row")}>
         <span>Total:</span>
-        <span>{totalPrice}</span>
+        <span>{getPrice(total.price)}</span>
       </div>
     </section>
   )

@@ -1,24 +1,37 @@
 import { makeAutoObservable, runInAction } from "mobx"
 import { API } from "../../shared/http/api"
-import { showErrorModal } from "../../shared/utils/Modal.utils"
+import { ProductCategories, ProductData, StatusOfReq } from "../../shared/model"
 
 class ProductsStore {
-  list = []
+  status: StatusOfReq = "init"
+  map = new Map<ProductCategories, ProductData[]>()
 
   constructor() {
     makeAutoObservable(this)
   }
 
-  async load() {
-    try {
-      const data = await API.loadProducts()
-      runInAction(() => {
-        this.list = data
-      })
-    } catch (e: any) {
-      console.error("Ошибка загрузки товаров:", e)
-      showErrorModal(e)
-      throw e
+  load = async () => {
+    if (this.status === "success") {
+      return
+    } else {
+      try {
+        this.status = "loading"
+        this.map.clear()
+        const data = await API.loadProducts()
+        runInAction(() => {
+          data.forEach((prod) => {
+            this.map.set(prod.category, [
+              ...(this.map.get(prod.category) ?? []),
+              prod,
+            ])
+          })
+          this.status = "success"
+        })
+      } catch (e: any) {
+        this.status = "error"
+        console.error("Ошибка загрузки товаров:", e)
+        throw e
+      }
     }
   }
 }

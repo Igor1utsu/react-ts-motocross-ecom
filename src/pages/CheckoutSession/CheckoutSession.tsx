@@ -4,10 +4,12 @@ import { GettingPickup } from "../../layouts/CheckoutLayouts/components/GettingP
 import { UserContact } from "../../layouts/CheckoutLayouts/components/UserContact/UserContact"
 import { ProductsInfo } from "../../layouts/CheckoutLayouts/components/ProductsInfo/ProductsInfo"
 import clsx from "clsx"
+import { storage } from "../../shared/utils"
+import { STORAGE_SHOPID } from "../../shared/constants"
 
 export const CheckoutSession: FC = memo(() => {
-  const [selectedStore, setSelectedStore] = useState<number>(
-    Number(localStorage.getItem("Store")) || 1
+  const [selectedShopID, setSelectedShopID] = useState(
+    storage.get<number>(STORAGE_SHOPID) ?? 1
   )
 
   return (
@@ -15,11 +17,11 @@ export const CheckoutSession: FC = memo(() => {
       <h1 className={styles["CheckoutSession__title"]}>Checkout</h1>
       <div className={styles["CheckoutSession__grid"]}>
         <GettingPickup
-          selectedStore={selectedStore}
-          setSelectedStore={setSelectedStore}
+          selectedShopID={selectedShopID}
+          setSelectedShopID={setSelectedShopID}
         />
         <ProductsInfo />
-        <UserContact selectedStore={selectedStore} />
+        <UserContact selectedShopID={selectedShopID} />
       </div>
     </main>
   )

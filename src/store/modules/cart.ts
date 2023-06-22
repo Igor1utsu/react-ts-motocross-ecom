@@ -1,11 +1,9 @@
 import { makeAutoObservable, runInAction, autorun } from "mobx"
+import { storage } from "../../shared/utils"
+import { STORAGE_CART } from "../../shared/constants"
 import { API } from "../../shared/http/api"
 import { IdForReq } from "../../shared/model/IdForReq.model"
-import {
-  ProductFromCart,
-  ProductFromStorage,
-  PartData,
-} from "../../shared/model/Product.model"
+import { ProductFromCart, ProductFromStorage } from "../../shared/model"
 
 class CartStore {
   list: ProductFromCart[] = []
@@ -14,16 +12,16 @@ class CartStore {
     makeAutoObservable(this)
     autorun(() => {
       // При загрузке сайта, автоматически считываем localStorage и отправляем запрос для получения данных
-      const storage = JSON.parse(localStorage.getItem("cart") ?? "[]")
+      const dataStorage = storage.get<ProductFromStorage[]>(STORAGE_CART) ?? []
 
       Promise.all(
-        storage.map((prod: ProductFromStorage) => {
+        dataStorage.map((prod) => {
           return API.loadProduct(prod.id)
         })
       ).then((data) => {
         const products = data.map((prod, idx) => ({
           ...prod,
-          qty: storage[idx].qty,
+          qty: dataStorage[idx].qty,
         }))
 
         this.updateCart(products)
@@ -36,7 +34,7 @@ class CartStore {
         qty: product.qty,
       }))
 
-      localStorage.setItem("cart", JSON.stringify(update))
+      storage.set<ProductFromStorage[]>(STORAGE_CART, update)
     })
   }
 
@@ -46,7 +44,7 @@ class CartStore {
 
   loadProduct = async (id: IdForReq, qty: number = 1) => {
     try {
-      const result: PartData = await API.loadProduct(id)
+      const result = await API.loadProduct(id)
       const data = { ...result, qty: qty }
       runInAction(() => {
         this.list.push(data)
@@ -57,11 +55,14 @@ class CartStore {
   }
 
   get total() {
-    return this.list.reduce((acc, p) => (acc += p.price * p.qty), 0)
-  }
-
-  get items() {
-    return this.list.reduce((acc, p) => (acc += p.qty), 0)
+    return this.list.reduce(
+      (acc, p) =>
+        (acc = {
+          items: (acc.items += p.qty),
+          price: (acc.price += p.price * p.qty),
+        }),
+      { items: 0, price: 0 }
+    )
   }
 
   addToCart = (productID: IdForReq, value: number) => {
@@ -77,14 +78,14 @@ class CartStore {
     this.list = []
   }
 
-  inCrement = (productID: IdForReq, value: number) => {
+  inCrement = (productID: IdForReq) => {
     const index = this.list.findIndex((p) => p.id === productID)
-    this.list[index].qty = ++value
+    this.list[index].qty = ++this.list[index].qty
   }
 
-  deCrement = (productID: IdForReq, value: number) => {
+  deCrement = (productID: IdForReq) => {
     const index = this.list.findIndex((p) => p.id === productID)
-    this.list[index].qty = --value
+    this.list[index].qty = --this.list[index].qty
   }
 }
 

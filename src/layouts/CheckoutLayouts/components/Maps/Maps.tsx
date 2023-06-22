@@ -5,21 +5,23 @@ import { Portal } from "./components/Portal/Portal"
 import { BallonComponent } from "./components/BallonComponent/BallonComponent"
 import PICKUP_POINT from "../../../../data/PICKUP-POINT.json"
 import { PickPointItem } from "./components/PickupPointItem/PickupPointItem"
+import { storage } from "../../../../shared/utils"
+import { STORAGE_SHOPID } from "../../../../shared/constants"
 
 interface IMapsProps {
-  selectedStore: number
-  setSelectedStore: (arg0: number) => void
+  selectedShopID: number
+  setSelectedShopID: (arg0: number) => void
 }
 
 export const Maps: FC<IMapsProps> = memo((props) => {
-  const { selectedStore, setSelectedStore } = props
+  const { selectedShopID, setSelectedShopID } = props
 
   const [activePortal, setActivePortal] = useState(false)
   const [point, setPoint] = useState<number | null>(null)
 
   const handleStore = (id: number) => {
-    localStorage.setItem("Store", id.toString())
-    setSelectedStore(id)
+    storage.set(STORAGE_SHOPID, id)
+    setSelectedShopID(id)
   }
 
   return (
@@ -28,7 +30,7 @@ export const Maps: FC<IMapsProps> = memo((props) => {
         {PICKUP_POINT.map((data) => (
           <PickPointItem
             point={data}
-            selectedStore={selectedStore}
+            selectedShopID={selectedShopID}
             handleStore={handleStore}
             key={data.id}
           />
@@ -70,8 +72,8 @@ export const Maps: FC<IMapsProps> = memo((props) => {
               {/* ставим свой компонент */}
               <BallonComponent
                 point={point}
-                selectedStore={selectedStore}
-                setSelectedStore={setSelectedStore}
+                selectedShopID={selectedShopID}
+                setSelectedShopID={setSelectedShopID}
                 handleStore={handleStore}
               />
             </Portal>

@@ -6,12 +6,12 @@ import { Button } from "../../../../../../shared/components"
 
 interface IPickPointItemProps {
   point: IPoint
-  selectedStore: number
+  selectedShopID: number
   handleStore: (pointId: number) => void
 }
 
 export const PickPointItem: FC<IPickPointItemProps> = memo((props) => {
-  const { point, selectedStore, handleStore } = props
+  const { point, selectedShopID, handleStore } = props
 
   const address = useGetAddress(point.coordinates)
 
@@ -20,10 +20,10 @@ export const PickPointItem: FC<IPickPointItemProps> = memo((props) => {
       <h3 className="point-item__title">{point.title}</h3>
       <div className="point-item__address">{address}</div>
       <Button
-        type={point.id === selectedStore ? "primary" : "default"}
+        type={point.id === selectedShopID ? "primary" : "default"}
         onClick={() => handleStore(point.id)}
       >
-        {point.id === selectedStore ? "Selected" : "Select"}
+        {point.id === selectedShopID ? "Selected" : "Select"}
       </Button>
     </li>
   )

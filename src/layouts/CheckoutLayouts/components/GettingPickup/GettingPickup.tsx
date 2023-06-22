@@ -8,14 +8,14 @@ import { useGetStoreData } from "../../hooks/useGetStoreData"
 import { Button } from "../../../../shared/components"
 
 interface IGettingPickupProps {
-  selectedStore: number
-  setSelectedStore: React.Dispatch<React.SetStateAction<number>>
+  selectedShopID: number
+  setSelectedShopID: React.Dispatch<React.SetStateAction<number>>
 }
 
 export const GettingPickup: FC<IGettingPickupProps> = memo((props) => {
-  const { selectedStore, setSelectedStore } = props
+  const { selectedShopID, setSelectedShopID } = props
 
-  const { title, coordinates } = useGetStoreData(selectedStore)
+  const { title, coordinates } = useGetStoreData(selectedShopID)
   const address = useGetAddress(coordinates)
   const [openMaps, setOpenMaps] = useState(false)
 
@@ -70,8 +70,8 @@ export const GettingPickup: FC<IGettingPickupProps> = memo((props) => {
         className="modal-maps"
       >
         <Maps
-          selectedStore={selectedStore}
-          setSelectedStore={setSelectedStore}
+          selectedShopID={selectedShopID}
+          setSelectedShopID={setSelectedShopID}
         />
       </Modal>
     </>
