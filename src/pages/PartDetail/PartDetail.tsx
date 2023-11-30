@@ -72,7 +72,7 @@ export const PartDetail: FC = memo(() => {
 
   return (
     <div className="container content-wrapper flex-col">
-      <Breadcrumbs />
+      {/* <Breadcrumbs /> */}
       {error && <PageNotFound />}
       {loading && <h3>Loading...</h3>}
       {!error && !loading && (
